@@ -1,0 +1,22 @@
+# Created by .ignore support plugin (hsz.mobi)
+### My Template template
+*.o
+*.so
+*~
+*#
+*.test
+*.swp
+a.out
+*.cbp
+
+.idea/
+cmake_install.cmake
+CMakeLists.txt
+CMakeCache.txt
+CMakeFiles
+cmake_modules
+cmake-build-debug
+
+vgcore.*
+
+.idea/*
