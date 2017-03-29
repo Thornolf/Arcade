@@ -8,10 +8,41 @@
 ## Last update Fri Mar 24 10:19:35 2017 Guillaume CAUCHOIS
 ##
 
-SRC_ARCADE_DIR		=	./src/
+#########################
+##                     ##
+##    ARACADE CORE     ##
+##                     ##
+#########################
+SRC_ARCADE_DIR	=	./src/
+SRC_ARCADE		=	$(SRC_ARCADE_DIR)main.cpp				\
+					$(SRC_ARCADE_DIR)ArcadeException.cpp	\
+					$(SRC_ARCADE_DIR)ArcadeCore.cpp
+OBJ_ARCADE		=	$(SRC_ARCADE:.cpp=.o)
 
-SRC_ARCADE			=	$(SRC_ARCADE_DIR)main.cpp				\
-						$(SRC_ARCADE_DIR)ArcadeException.cpp	\
-						$(SRC_ARCADE_DIR)ArcadeCore.cpp
+#########################
+##                     ##
+##  GRAPHIC LIBRARIES  ##
+##                     ##
+#########################
+LIBRARY_DIR					=	./lib/
+SRC_LIB_GRAPHIC_NCURSES_DIR	=	./lib/ncurses/
+SRC_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES_DIR)GraphicMenu.cpp
+OBJ_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES:.cpp=.o)
 
-OBJ_ARCADE			=	$(SRC_ARCADE:.cpp=.o)
+SRC_LIB_GRAPHIC_SFML_DIR	=	./lib/sfml/
+SRC_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML_DIR)GraphicMenu.cpp
+OBJ_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML:.cpp=.o)
+
+#########################
+##                     ##
+##   GAME LIBRARIES    ##
+##                     ##
+#########################
+GAME_DIR				=	./games/
+SRC_LIB_GAME_SNAKE_DIR	=	./games/snake/
+SRC_LIB_GAME_SNAKE		=	$(SRC_LIB_GRAPHIC_NCURSES_DIR)GameCore.cpp
+OBJ_LIB_GAME_SNAKE		=	$(SRC_LIB_GRAPHIC_NCURSES:.cpp=.o)
+
+SRC_LIB_GAME_PACMAN_DIR	=	./games/pacman/
+SRC_LIB_GAME_PACMAN		=	$(SRC_LIB_GAME_PACMAN_DIR)GameCore.cpp
+OBJ_LIB_GAME_PACMAN		=	$(SRC_LIB_GAME_PACMAN:.cpp=.o)

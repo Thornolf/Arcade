@@ -10,7 +10,17 @@
 
 #ifndef		_ARCADE_CORE__HPP_
 # define	_ARCADE_CORE__HPP_
-# include	"ArcadeException.hpp"
+
+# define	LIBRARY_GAME_DIRECTORY "games/"
+# define	LIBRARY_GRAPHIC_DIRECTORY "lib/"
+
+# include <iostream>
+# include <string>
+# include <vector>
+# include <dirent.h>
+# include <regex>
+# include <sstream>
+# include "ArcadeException.hpp"
 
 namespace Arcade
 {
@@ -24,7 +34,11 @@ namespace Arcade
       ArcadeCore	&operator=(const ArcadeCore &);
 
       /* Member functions */
-      void		startCore(void);
+      void				startCore(void);
+      const std::vector<std::string>	getListDynamicLibrary(const std::string &);
+    public:
+      /* Member Functions */
+      bool	isDynamicLibraryFilename(const std::string &);
   };
 }
 

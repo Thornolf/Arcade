@@ -1,0 +1,28 @@
+/*
+** NCursesMenu.hpp for cpp_arcade
+**
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
+**
+** Started on  Wed Mar 29 15:07:47 2017 Guillaume CAUCHOIS
+** Last update Wed Mar 29 15:07:47 2017 Guillaume CAUCHOIS
+*/
+
+
+#ifndef		_MENU__HPP_
+# define	_MENU__HPP_
+
+class GraphicMenu
+{
+  public:
+    /* Canonical Methods */
+    GraphicMenu();
+    GraphicMenu(const GraphicMenu &);
+    virtual ~GraphicMenu();
+    GraphicMenu		&operator=(const GraphicMenu &);
+
+    /* Member Methods */
+    void	startMenu();
+};
+
+#endif		/* _NCRUSRS_MENU__HPP_ */

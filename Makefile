@@ -10,27 +10,59 @@
 
 include source.mk
 
-ARCADE		=	arcade
+ARCADE				=	arcade
 
-CC			=	g++
+LIB_GRAPHIC_NCURSES	=	lib_arcade_ncurses.so
 
-RM			=	@rm -vf
+LIB_GRAPHIC_SFML	=	lib_arcade_sfml.so
 
-CFLAGS		=	-W -Wall -Wextra -Werror -I./inc/
+LIB_GAME_SNAKE		=	lib_arcade_snake.so
 
-CXXFLAGS	=	-W -Wall -Wextra -Werror -I./inc/
+LIB_GAME_PACMAN		=	lib_arcade_pacman.so
 
-DEBUG		?=	no
+CC					=	g++
 
-all:			$(ARCADE)
+RM					=	@rm -vf
 
-$(ARCADE):		$(OBJ_ARCADE)
-				$(CC) $(OBJ_ARCADE) -o $(ARCADE)
+CFLAGS				=	-W -Wall -Wextra -Werror -I./inc/ -fPIC
+
+CXXFLAGS			=	-W -Wall -Wextra -Werror -I./inc/ -fPIC
+
+LDFLAGS				=	-shared
+
+DEBUG				?=	no
+
+ifeq					($(DEBUG), yes)
+CFLAGS				=	-g -ggdb3
+CXXFLAGS			+=	-g -ggdb3
+endif
+
+all:					$(LIB_GRAPHIC_NCURSES) $(LIB_GRAPHIC_SFML) $(LIB_GAME_SNAKE) $(LIB_GAME_PACMAN) $(ARCADE)
+
+$(LIB_GRAPHIC_NCURSES):	$(OBJ_LIB_GRAPHIC_NCURSES)
+						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_NCURSES) $(OBJ_LIB_GRAPHIC_NCURSES)
+
+$(LIB_GRAPHIC_SFML):	$(OBJ_LIB_GRAPHIC_SFML)
+						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML)
+
+$(LIB_GAME_SNAKE):		$(OBJ_LIB_GAME_SNAKE)
+						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_SNAKE) $(OBJ_LIB_GAME_SNAKE)
+
+$(LIB_GAME_PACMAN):		$(OBJ_LIB_GAME_PACMAN)
+						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_PACMAN) $(OBJ_LIB_GAME_PACMAN)
+
+
+$(ARCADE):				$(OBJ_ARCADE)
+						$(CC) $(OBJ_ARCADE) -o $(ARCADE)
 
 clean:
-				$(RM) $(OBJ_ARCADE)
+						$(RM) $(OBJ_ARCADE)
+						$(RM) $(OBJ_LIB_GRAPHIC_NCURSES)
+						$(RM) $(OBJ_LIB_GRAPHIC_SFML)
 
-fclean:			clean
-				$(RM) $(ARCADE)
+fclean:					clean
+						$(RM) $(ARCADE)
+						$(RM) $(LIB_GRAPHIC_NCURSES)
+						$(RM) $(LIB_GRAPHIC_SFML)
 
-re:				fclean all
+re:						fclean all
