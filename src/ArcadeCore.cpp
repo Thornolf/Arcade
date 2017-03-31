@@ -1,5 +1,5 @@
 /*
-** AracadeCore.cpp for cpp_arcade
+** ArcadeCore.cpp for cpp_arcade
 **
 ** Made by Guillaume CAUCHOIS
 ** Login   <guillaume.cauchois@epitech.eu>
@@ -40,7 +40,6 @@ std::string	ctostring(const char *c_str)
   return (sstream.str());
 }
 
-
 const std::vector<std::string>	Arcade::ArcadeCore::getListDynamicLibrary(const std::string &path)
 {
   std::vector<std::string>	list;
@@ -61,23 +60,32 @@ const std::vector<std::string>	Arcade::ArcadeCore::getListDynamicLibrary(const s
   return (list);
 }
 
-void	Arcade::ArcadeCore::startCore(void)
+void	Arcade::ArcadeCore::FindLibraries(void)
 {
-  std::vector<std::string>	listGames;
-  std::vector<std::string>	listGraphic;
-
   try
   {
-    listGames = this->getListDynamicLibrary(LIBRARY_GAME_DIRECTORY);
-    listGraphic = this->getListDynamicLibrary(LIBRARY_GRAPHIC_DIRECTORY);
+    this->_listGames = this->getListDynamicLibrary(LIBRARY_GAME_DIRECTORY);
+    this->_listGraphic = this->getListDynamicLibrary(LIBRARY_GRAPHIC_DIRECTORY);
   }
   catch (const Arcade::ArcadeException &e)
   {
     std::cerr << e.what() << std::endl;
     return;
   }
-  /**
-   * Créer une méthode dans chaque librarie graphique "DisplayMenu" qui retournera
-   * le path vers la librarie "game" correspondant au choix de l'utilisateur.
-   */
+}
+
+void	Arcade::ArcadeCore::startCore(const char *library_menu_path)
+{
+  Arcade::DLLoader<Graph::IGraph>	*LibraryLoader;
+  Graph::IGraph				*GraphicLib;
+  std::string				libpath;
+
+  LibraryLoader = new Arcade::DLLoader<Graph::IGraph>(library_menu_path);
+  libpath = ctostring(library_menu_path);
+  this->FindLibraries();
+  GraphicLib = LibraryLoader->getInstance("instanceGraphicMenu");
+  if (GraphicLib == NULL)
+    throw (Arcade::ArcadeException("Cannot make instance of ncurses from this library"));
+  GraphicLib->startMenu();
+  delete LibraryLoader;
 }

@@ -15,20 +15,21 @@
 # include	<map>
 # include	<ncurses.h>
 
-namespace graph
+namespace Graph
 {
   class IGraph
   {
     protected:
       std::map<int, std::map<int, int>> _gamemap;
     public:
+      virtual ~IGraph(void) {}
       virtual void createMap() = 0;
       virtual void Game() = 0;
       virtual void SetSprite(int x, int y) = 0;
       virtual void UnsetSprite(int x, int y) = 0;
       virtual void Animation() = 0;
-      virtual ~IGraph(void) { }
-    };
+      virtual void startMenu() = 0;
+  };
 }
 
 #endif		/*__IGRAPH_HPP__ */

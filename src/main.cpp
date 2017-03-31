@@ -11,13 +11,27 @@
 #include <iostream>
 #include "ArcadeCore.hpp"
 
-int		main()
+void		show_usage(const char *binaryName)
+{
+  std::cerr << "USAGE:" << std::endl;
+  std::cerr << "\t" << binaryName << " path_to_graphic_lib" << std::endl;
+  std::cerr << "DESCRIPTION:" << std::endl;
+  std::cerr << "\t" << "path_to_graphic_lib" << "\t";
+  std::cerr << "path to a compatible graphic library" << std::endl;
+}
+
+int		main(int argc, char **argv)
 {
   Arcade::ArcadeCore	Core;
 
+  if (argc < 2)
+  {
+    show_usage(argv[0]);
+    return (84);
+  }
   try
   {
-    Core.startCore();
+    Core.startCore(argv[1]);
   }
   catch (Arcade::ArcadeException &e)
   {

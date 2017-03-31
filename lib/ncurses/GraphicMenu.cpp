@@ -8,24 +8,52 @@
 ** Last update Wed Mar 29 15:27:57 2017 Guillaume CAUCHOIS
 */
 
+#include <ncurses.h>
 #include "GraphicMenu.hpp"
 
-GraphicMenu::GraphicMenu() {}
+Graph::GraphicMenu::GraphicMenu() {}
 
-GraphicMenu::GraphicMenu(const GraphicMenu &obj)
+Graph::GraphicMenu::GraphicMenu(const Graph::GraphicMenu &obj)
 {
   (void)obj;
 }
 
-GraphicMenu::~GraphicMenu() {}
+Graph::GraphicMenu::~GraphicMenu() {}
 
-GraphicMenu	&GraphicMenu::operator=(const GraphicMenu &obj)
+Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &obj)
 {
   (void)obj;
   return (*this);
 }
 
-void	GraphicMenu::startMenu()
+void	Graph::GraphicMenu::startMenu(void)
 {
+  erase();
+  timeout(-1);
+  mvprintw(0, 0, "Press any key to exit...\n");
+  getch();
+  endwin();
+}
 
+void	Graph::GraphicMenu::Game(void)  {}
+
+void	Graph::GraphicMenu::SetSprite(int x, int y)
+{
+  (void)x;
+  (void)y;
+}
+void	Graph::GraphicMenu::UnsetSprite(int x, int y)
+{
+  (void)x;
+  (void)y;
+}
+
+void	Graph::GraphicMenu::Animation() {}
+
+extern "C"
+{
+  Graph::IGraph	*instanceGraphicMenu()
+  {
+    return (new Graph::GraphicMenu());
+  }
 }

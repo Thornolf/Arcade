@@ -13,7 +13,7 @@
 
 # include	<iostream>
 
-namespace game
+namespace Game
 {
   enum State
   {

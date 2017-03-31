@@ -10,16 +10,22 @@
 
 #include "GraphicMenu.hpp"
 
-GraphicMenu::GraphicMenu() {}
+Graph::GraphicMenu::GraphicMenu() {}
 
-GraphicMenu::GraphicMenu(const GraphicMenu &obj)
+Graph::GraphicMenu::GraphicMenu(const Graph::GraphicMenu &obj)
 {
   (void)obj;
 }
-GraphicMenu::~GraphicMenu() {}
+Graph::GraphicMenu::~GraphicMenu() {}
 
-GraphicMenu	&GraphicMenu::operator=(const GraphicMenu &obj)
+Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &obj)
 {
   (void)obj;
   return (*this);
+}
+
+
+void	Graph::GraphicMenu::startMenu(void)
+{
+
 }

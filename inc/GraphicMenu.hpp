@@ -12,17 +12,27 @@
 #ifndef		_MENU__HPP_
 # define	_MENU__HPP_
 
-class GraphicMenu
-{
-  public:
-    /* Canonical Methods */
-    GraphicMenu();
-    GraphicMenu(const GraphicMenu &);
-    virtual ~GraphicMenu();
-    GraphicMenu		&operator=(const GraphicMenu &);
+#include "IGraph.hpp"
 
-    /* Member Methods */
-    void	startMenu();
-};
+namespace Graph
+{
+  class GraphicMenu : public IGraph
+  {
+    public:
+      /* Canonical Methods */
+      GraphicMenu();
+      GraphicMenu(const GraphicMenu &);
+      virtual ~GraphicMenu();
+      GraphicMenu	&operator=(const GraphicMenu &);
+
+      /* Member Methods */
+      void	createMap();
+      void	Game();
+      void	SetSprite(int x, int y);
+      void	UnsetSprite(int x, int y);
+      void	Animation();
+      void	startMenu();
+  };
+}
 
 #endif		/* _NCRUSRS_MENU__HPP_ */
