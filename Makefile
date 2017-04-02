@@ -24,9 +24,9 @@ CC					=	g++
 
 RM					=	@rm -vf
 
-CFLAGS				=	-W -Wall -Wextra -Werror -I./inc/ -fPIC
+CFLAGS				=	-fPIC -W -Wall -Wextra -Werror -I./inc/ -lncurses
 
-CXXFLAGS			=	-W -Wall -Wextra -Werror -I./inc/ -fPIC
+CXXFLAGS			=	-fPIC -W -Wall -Wextra -Werror -I./inc/ -lncurses
 
 LDFLAGS				=	-shared
 
@@ -46,7 +46,7 @@ all:					$(LIB_GRAPHIC_NCURSES) $(LIB_GRAPHIC_SFML) $(LIB_GAME_SNAKE) $(LIB_GAME
 #########################
 
 $(LIB_GRAPHIC_NCURSES):	$(OBJ_LIB_GRAPHIC_NCURSES)
-						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_NCURSES) $(OBJ_LIB_GRAPHIC_NCURSES) -lncurses
+						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_NCURSES) $(OBJ_LIB_GRAPHIC_NCURSES) -lncurses -lmenu
 
 $(LIB_GRAPHIC_SFML):	$(OBJ_LIB_GRAPHIC_SFML)
 						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML)
@@ -70,7 +70,7 @@ $(LIB_GAME_PACMAN):		$(OBJ_LIB_GAME_PACMAN)
 #########################
 
 $(ARCADE):				$(OBJ_ARCADE)
-						$(CC) $(OBJ_ARCADE) -o $(ARCADE) -ldl
+						$(CC) $(OBJ_ARCADE) -o $(ARCADE) -ldl -rdynamic
 
 clean:
 						$(RM) $(OBJ_ARCADE)

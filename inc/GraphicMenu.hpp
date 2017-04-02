@@ -13,6 +13,9 @@
 # define	_MENU__HPP_
 
 #include "IGraph.hpp"
+#include "ArcadeException.hpp"
+#include <vector>
+#include <new>
 
 namespace Graph
 {
@@ -31,7 +34,10 @@ namespace Graph
       void	SetSprite(int x, int y);
       void	UnsetSprite(int x, int y);
       void	Animation();
-      void	startMenu();
+      void	startMenu(const std::vector<std::string>, const std::vector<std::string>) const;
+      void	SetLibraryChoices(const std::vector<std::string> &ListGraphics);
+    public:
+      std::vector<std::string>	_choicesLibraries;
   };
 }
 

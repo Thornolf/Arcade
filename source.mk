@@ -16,8 +16,7 @@
 SRC_ARCADE_DIR	=	./src/
 SRC_ARCADE		=	$(SRC_ARCADE_DIR)main.cpp				\
 					$(SRC_ARCADE_DIR)ArcadeException.cpp	\
-					$(SRC_ARCADE_DIR)ArcadeCore.cpp			\
-					$(SRC_ARCADE_DIR)DLLoader.cpp
+					$(SRC_ARCADE_DIR)ArcadeCore.cpp
 OBJ_ARCADE		=	$(SRC_ARCADE:.cpp=.o)
 
 #########################

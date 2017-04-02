@@ -74,7 +74,7 @@ void	Arcade::ArcadeCore::FindLibraries(void)
   }
 }
 
-void	Arcade::ArcadeCore::startCore(const char *library_menu_path)
+void	Arcade::ArcadeCore::startCore(char *library_menu_path)
 {
   Arcade::DLLoader<Graph::IGraph>	*LibraryLoader;
   Graph::IGraph				*GraphicLib;
@@ -83,9 +83,9 @@ void	Arcade::ArcadeCore::startCore(const char *library_menu_path)
   LibraryLoader = new Arcade::DLLoader<Graph::IGraph>(library_menu_path);
   libpath = ctostring(library_menu_path);
   this->FindLibraries();
-  GraphicLib = LibraryLoader->getInstance("instanceGraphicMenu");
+  GraphicLib = LibraryLoader->getInstance("getInstanceGraphicMenu");
   if (GraphicLib == NULL)
     throw (Arcade::ArcadeException("Cannot make instance of ncurses from this library"));
-  GraphicLib->startMenu();
+  GraphicLib->startMenu(this->_listGraphic, this->_listGames);
   delete LibraryLoader;
 }

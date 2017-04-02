@@ -12,8 +12,12 @@
 #define		_CPP_ARCADE_DLLOADER__HPP_
 
 # include <string>
+# ifndef _GNU_SOURCE
+#  define _GNU_SOURCE
+# endif /* !_GNU_SOURCE */
 # include <dlfcn.h>
 # include "IGraph.hpp"
+# include "GraphicMenu.hpp"
 # include "ArcadeException.hpp"
 
 namespace Arcade
@@ -23,7 +27,7 @@ namespace Arcade
   {
     public:
       /* Canonical Functions */
-      DLLoader(const char *);
+      DLLoader(char *);
       virtual ~DLLoader();
       DLLoader(const DLLoader<T> &);
       DLLoader<T>	&operator=(const DLLoader<T> &);

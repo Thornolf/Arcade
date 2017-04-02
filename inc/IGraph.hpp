@@ -12,15 +12,13 @@
 # define	__IGRAPH_HPP__
 
 # include	<iostream>
-# include	<map>
+# include	<vector>
 # include	<ncurses.h>
 
 namespace Graph
 {
   class IGraph
   {
-    protected:
-      std::map<int, std::map<int, int>> _gamemap;
     public:
       virtual ~IGraph(void) {}
       virtual void createMap() = 0;
@@ -28,7 +26,7 @@ namespace Graph
       virtual void SetSprite(int x, int y) = 0;
       virtual void UnsetSprite(int x, int y) = 0;
       virtual void Animation() = 0;
-      virtual void startMenu() = 0;
+      virtual void startMenu(const std::vector<std::string>, const std::vector<std::string>) const = 0;
   };
 }
 

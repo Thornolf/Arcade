@@ -38,7 +38,7 @@ namespace Arcade
       ArcadeCore	&operator=(const ArcadeCore &);
 
       /* Member functions */
-      void				startCore(const char *);
+      void				startCore(char *);
       void				FindLibraries(void);
       const std::vector<std::string>	getListDynamicLibrary(const std::string &);
 
@@ -49,7 +49,6 @@ namespace Arcade
     private:
       std::vector<std::string>	_listGames;
       std::vector<std::string>	_listGraphic;
-
   };
 }
 

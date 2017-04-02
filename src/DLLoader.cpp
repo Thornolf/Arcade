@@ -11,10 +11,10 @@
 #include "DLLoader.hpp"
 
 template <class T>
-Arcade::DLLoader<T>::DLLoader(const char *path_lib)
+Arcade::DLLoader<T>::DLLoader(char *path_lib)
 {
   if ((this->_handler = dlopen(path_lib, RTLD_LAZY)) == NULL)
-    std::cout << "ERROR DLOPEN" << std::endl;
+    std::cout << dlerror() << std::endl;
 }
 
 template <class T>
