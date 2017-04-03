@@ -103,6 +103,7 @@ std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::v
   initscr();
   keypad(stdscr, TRUE);
   noecho();
+  curs_set(0);
   refresh();
   erase();
   timeout(-1);
