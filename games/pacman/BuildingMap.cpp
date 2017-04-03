@@ -5,11 +5,11 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Mon Apr 03 19:33:20 2017 Quentin Baudet
+** Last update Mon Apr 03 22:51:18 2017 Quentin Baudet
 */
 
-#include "/home/baudet_q/rendu/CPP/cpp_arcade/inc/BuildingMap.hpp"
-#include "/home/baudet_q/rendu/CPP/cpp_arcade/inc/ParserMap.hpp"
+#include "BuildingMap.hpp"
+#include "ParserMap.hpp"
 
 BuildingMap::BuildingMap() {
 	// this->_map = new int*[0];

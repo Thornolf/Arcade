@@ -5,10 +5,10 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 17:45:24 2017 Quentin Baudet
-** Last update Mon Apr 03 19:31:29 2017 Quentin Baudet
+** Last update Mon Apr 03 22:51:23 2017 Quentin Baudet
 */
 
-#include "/home/baudet_q/rendu/CPP/cpp_arcade/inc/ParserMap.hpp"
+#include "ParserMap.hpp"
 
 /*Constructor */
 
