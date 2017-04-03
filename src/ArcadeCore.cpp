@@ -69,7 +69,7 @@ void	Arcade::ArcadeCore::FindLibraries(void)
   }
   catch (const Arcade::ArcadeException &e)
   {
-    std::cerr << e.what() << std::endl;
+    throw Arcade::ArcadeException(e.what());
     return;
   }
 }
@@ -84,13 +84,19 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   std::string				library_games_path;
   std::string				library_graphic_path;
 
-  this->FindLibraries();
-  LibraryLoaderMenu	= new Arcade::DLLoader<Graph::IGraph>(library_menu_path);
+  try
+  {
+    this->FindLibraries();
+    LibraryLoaderMenu	= new Arcade::DLLoader<Graph::IGraph>(library_menu_path);
+  }
+  catch (const Arcade::ArcadeException &e)
+  {
+    throw Arcade::ArcadeException(e.what());
+  }
   if (!(Menu = LibraryLoaderMenu->getInstance("getInstanceGraphicMenu")))
-    throw (Arcade::ArcadeException("Cannot make instance of ncurses from this library"));
+    throw (Arcade::ArcadeException("Cannot make instance of menu from this library"));
   library_graphic_path	= Menu->startMenu(std::string("CHOSE A GRAPHIC LIBRARY"), this->_listGraphic);
   library_games_path	= Menu->startMenu(std::string("CHOSE A GAME LIBRARY"), this->_listGames);
-
   LibraryLoaderGame	= new Arcade::DLLoader<Game::IGame>(LIBRARY_GAME_DIRECTORY + library_games_path);
   LibraryLoaderGraphic	= new Arcade::DLLoader<Graph::IGraph>(LIBRARY_GRAPHIC_DIRECTORY + library_graphic_path);
   if (!(Game = LibraryLoaderGame->getInstance("getInstanceGame")))

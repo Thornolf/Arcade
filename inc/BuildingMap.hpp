@@ -8,21 +8,27 @@
 ** Last update Mon Apr 03 22:51:29 2017 Quentin Baudet
 */
 
-#ifndef BUILDINGMAP_HPP
-# define BUILDINGMAP_HPP
+#ifndef		BUILDINGMAP_HPP
+# define	BUILDINGMAP_HPP
 
-#include <iostream>
-#include <fstream>
+# include <iostream>
+# include <fstream>
 
-class BuildingMap {
-	private:
-		int**		_map;
+class BuildingMap
+{
+  public:
+    /* Canonical functions */
+    BuildingMap();
+    BuildingMap(const BuildingMap &);
+    virtual ~BuildingMap () {}
+    BuildingMap		&operator=(const BuildingMap &);
 
-	public:
-		BuildingMap ();
-		void setMap(int, int);
-		void addDataInMap(std::string);
-		virtual ~BuildingMap () {}
-	};
+    /* Member functions */
+    void setMap(int, int);
+    void addDataInMap(std::string);
+
+  private:
+    int**		_map;
+};
 
 #endif /* !BUILDINGMAP_HPP */

@@ -49,7 +49,7 @@ $(LIB_GRAPHIC_NCURSES):	$(OBJ_LIB_GRAPHIC_NCURSES)
 						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_NCURSES) $(OBJ_LIB_GRAPHIC_NCURSES) -lncurses -lmenu
 
 $(LIB_GRAPHIC_SFML):	$(OBJ_LIB_GRAPHIC_SFML)
-						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML)
+						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML) -lsfml-graphics -lsfml-window
 
 #########################
 ##                     ##

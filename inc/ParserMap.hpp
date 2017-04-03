@@ -11,28 +11,37 @@
 #ifndef 	PARSERMAP_HPP
 # define 	PARSERMAP_HPP
 
-#include <iostream>
-#include <fstream>
+# include <iostream>
+# include <fstream>
 
-class ParserMap {
-	private:
-		int		_mapHeight;
-		int		_mapLength;
+class ParserMap
+{
+  public:
+    /**
+     * Canonical function
+     */
+    ParserMap ();
+    ParserMap (const ParserMap &);
+    virtual ~ParserMap ();
+    ParserMap	&operator=(const ParserMap &);
 
-	public:
-		ParserMap ();
-		virtual ~ParserMap ();
+    /**
+     * Member Functions
+     */
+     /* GETTER */
+    int		getMapHeight() const;
+    int		getMapLength() const;
 
-		/* GETTER */
-		int		getMapHeight();
-		int		getMapLength();
+    /* SETTER */
+    void	setMapHeight(int);
+    void	setMapLength(int);
 
-		/* SETTER */
-		void	setMapHeight(int);
-		void	setMapLength(int);
+    /* Get Info from cnf */
+    void 	setMapIntel(std::string);
 
-		/* Get Info from cnf */
-		void 	setMapIntel(std::string);
+  private:
+    int		_mapHeight;
+    int		_mapLength;
 };
 
 #endif	/* !PARSERMAP_HPP */
