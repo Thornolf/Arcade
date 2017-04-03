@@ -43,7 +43,17 @@ namespace Graph
 
       /* Member Methods */
       void		SetLibraryChoices(const std::vector<std::string> &ListGraphics);
-      std::string	MenuLoop(MENU*) const;
+      void		initScreen() const;
+      std::string	MenuLoop(WINDOW *, MENU*) const;
+      void		displayAofARCADE(void) const;
+      void		displayRofARCADE(void) const;
+      void		displayCofARCADE(void) const;
+      void		displayA_BIS_ofARCADE(void) const;
+      void		displayDofARCADE(void) const;
+      void		displayEofARCADE(void) const;
+      void		displayArcadeTitle(void) const;
+      void		displayRulesMenu(void) const;
+      void		postMenuInWindow(WINDOW *, MENU *, const std::string &) const;
     public:
       std::vector<std::string>	_choicesLibraries;
   };

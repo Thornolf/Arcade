@@ -68,13 +68,13 @@ ITEM	**getItemsList(std::vector<std::string> listChoices)
   return (itemsList);
 }
 
-std::string	Graph::GraphicMenu::MenuLoop(MENU *menu) const
+std::string	Graph::GraphicMenu::MenuLoop(WINDOW *win, MENU *menu) const
 {
   int			pkey;
   ITEM			*cur;
   std::stringstream	ss;
 
-  while ((pkey = getch()) != 10 && pkey != KEY_RIGHT)
+  while ((pkey = wgetch(win)) != 10 && pkey != KEY_RIGHT)
   {
     switch (pkey)
     {
@@ -94,28 +94,152 @@ std::string	Graph::GraphicMenu::MenuLoop(MENU *menu) const
   return (ss.str());
 }
 
+void		Graph::GraphicMenu::displayAofARCADE(void) const
+{
+  init_pair(1, COLOR_BLUE, COLOR_BLACK);
+  if (has_colors())
+    attron(COLOR_PAIR(1));
+  mvprintw(0, 3, "AAAAAA");
+  mvprintw(1, 3, "AA  AA");
+  mvprintw(2, 3, "AAAAAA");
+  mvprintw(3, 3, "AA  AA");
+  mvprintw(4, 3, "AA  AA");
+  if (has_colors())
+    attroff(COLOR_PAIR(3));
+}
+
+void		Graph::GraphicMenu::displayRofARCADE(void) const
+{
+  init_pair(2, COLOR_RED, COLOR_BLACK);
+  if (has_colors())
+    attron(COLOR_PAIR(2));
+  mvprintw(0, 11, "RRRRRR");
+  mvprintw(1, 11, "RR  RR");
+  mvprintw(2, 11, "RR RRR");
+  mvprintw(3, 11, "RRRR");
+  mvprintw(4, 11, "RR  RR");
+  if (has_colors())
+    attroff(COLOR_PAIR(2));
+}
+
+void		Graph::GraphicMenu::displayCofARCADE(void) const
+{
+  init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+  if (has_colors())
+    attron(COLOR_PAIR(3));
+  mvprintw(0, 19, "CCCCCC  ");
+  mvprintw(1, 19, "CC      ");
+  mvprintw(2, 19, "CC      ");
+  mvprintw(3, 19, "CC      ");
+  mvprintw(4, 19, "CCCCCC  ");
+  if (has_colors())
+    attroff(COLOR_PAIR(3));
+}
+
+void		Graph::GraphicMenu::displayA_BIS_ofARCADE(void) const
+{
+  init_pair(4, COLOR_GREEN, COLOR_BLACK);
+  if (has_colors())
+    attron(COLOR_PAIR(4));
+  mvprintw(0, 27, "AAAAAA");
+  mvprintw(1, 27, "AA  AA");
+  mvprintw(2, 27, "AAAAAA");
+  mvprintw(3, 27, "AA  AA");
+  mvprintw(4, 27, "AA  AA");
+  if (has_colors())
+    attroff(COLOR_PAIR(4));
+}
+
+void		Graph::GraphicMenu::displayDofARCADE(void) const
+{
+  init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
+  if (has_colors())
+    attron(COLOR_PAIR(5));
+  mvprintw(0, 35, "DDDDE");
+  mvprintw(1, 35, "DD DD");
+  mvprintw(2, 35, "DD  DD");
+  mvprintw(3, 35, "DD DD");
+  mvprintw(4, 35, "DDDD");
+  if (has_colors())
+    attroff(COLOR_PAIR(5));
+}
+
+void		Graph::GraphicMenu::displayEofARCADE(void) const
+{
+  init_pair(6, COLOR_YELLOW, COLOR_BLACK);
+  if (has_colors())
+    attron(COLOR_PAIR(6));
+  mvprintw(0, 43, "EEEEEE");
+  mvprintw(1, 43, "EE");
+  mvprintw(2, 43, "EEEE");
+  mvprintw(3, 43, "EE");
+  mvprintw(4, 43, "EEEEEE");
+  if (has_colors())
+    attroff(COLOR_PAIR(6));
+}
+
+void		Graph::GraphicMenu::displayArcadeTitle(void) const
+{
+  this->displayAofARCADE();
+  this->displayRofARCADE();
+  this->displayCofARCADE();
+  this->displayA_BIS_ofARCADE();
+  this->displayDofARCADE();
+  this->displayEofARCADE();
+}
+
+void	Graph::GraphicMenu::initScreen() const
+{
+  initscr();
+  start_color();
+  cbreak();
+  noecho();
+  keypad(stdscr, TRUE);
+  curs_set(0);
+}
+
+void	Graph::GraphicMenu::displayRulesMenu(void) const
+{
+  mvprintw(6, 3, "1- Select the graphic library to use for the display");
+  mvprintw(7, 3, "2- Select the game to play");
+  mvprintw(8, 3, "3- Play!");
+  mvprintw(LINES - 2, 0, "Press ESC to exit");
+}
+
+void	Graph::GraphicMenu::postMenuInWindow(WINDOW *window, MENU* menu, const std::string &title) const
+{
+  set_menu_win(menu, window);
+  set_menu_sub(menu, derwin(window, 6, 38, 3, 1));
+  set_menu_mark(menu, " | ");
+  box(window, 0, 0);
+  mvwprintw(window, 1, 10, "%s", title.c_str());
+  mvwaddch(window, 2, 0, ACS_LTEE);
+  mvwaddch(window, 2, 39, ACS_RTEE);
+  mvwhline(window, 2, 1, ACS_HLINE, 38);
+  wattroff(window, COLOR_PAIR(1));
+  refresh();
+  post_menu(menu);
+  wrefresh(window);
+}
+
 std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
 {
   ITEM		**items;
   MENU		*menu;
   std::string	name_library_chosen;
+  WINDOW	*window;
 
-  initscr();
-  keypad(stdscr, TRUE);
-  noecho();
-  curs_set(0);
-  refresh();
-  erase();
-  timeout(-1);
-
+  this->initScreen();
+  window = newwin(10, 40, 10, 5);
+  keypad(window, TRUE);
   items	= getItemsList(listItems);
   menu	= new_menu(items);
-  /* Menu */
-  mvprintw(listItems.size() + 2, 0, title.c_str());
-  post_menu(menu);
+  this->displayArcadeTitle();
+  this->displayRulesMenu();
+  this->postMenuInWindow(window, menu, title);
   try
   {
-    name_library_chosen = this->MenuLoop(menu);
+    name_library_chosen = this->MenuLoop(window, menu);
   }
   catch (const Arcade::ArcadeException &e)
   {
@@ -123,9 +247,8 @@ std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::v
   }
   endwin();
   for (unsigned int i = 0; i != listItems.size(); i++)
-  {
    free_item(items[i]);
-  }
+  unpost_menu(menu);
   free_menu(menu);
   delete[] items;
   return (name_library_chosen);
