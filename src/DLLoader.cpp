@@ -13,7 +13,7 @@
 template <class T>
 Arcade::DLLoader<T>::DLLoader(const std::string &path_lib)
 {
-  if ((this->_handler = dlopen(path_lib.c_str(), RTLD_LAZY)) == NULL)
+  if (!(this->_handler = dlopen(path_lib.c_str(), RTLD_LAZY)))
     throw Arcade::ArcadeException(dlerror());
 }
 
@@ -26,7 +26,8 @@ Arcade::DLLoader<T>::DLLoader(const Arcade::DLLoader<T> &obj)
 template <class T>
 Arcade::DLLoader<T>::~DLLoader()
 {
-  dlclose(this->_handler);
+  if (this->_handler)
+    dlclose(this->_handler);
 }
 
 template <class T>

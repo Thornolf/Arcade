@@ -68,12 +68,13 @@ ITEM	**getItemsList(std::vector<std::string> listChoices)
   return (itemsList);
 }
 
-std::string	Graph::GraphicMenu::MenuLoop(WINDOW *win, MENU *menu) const
+std::string	Graph::GraphicMenu::MenuLoop(const std::string &title, WINDOW *win, MENU *menu) const
 {
   int			pkey;
   ITEM			*cur;
   std::stringstream	ss;
 
+  this->postMenuInWindow(win, menu, title);
   while ((pkey = wgetch(win)) != 10 && pkey != KEY_RIGHT)
   {
     switch (pkey)
@@ -91,6 +92,8 @@ std::string	Graph::GraphicMenu::MenuLoop(WINDOW *win, MENU *menu) const
   if (!(item_name(cur)))
     throw Arcade::ArcadeException("You have to select a library");
   ss << item_name(cur);
+  unpost_menu(menu);
+  free_menu(menu);
   return (ss.str());
 }
 
@@ -222,36 +225,42 @@ void	Graph::GraphicMenu::postMenuInWindow(WINDOW *window, MENU* menu, const std:
   wrefresh(window);
 }
 
-std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
+std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames) const
 {
-  ITEM		**items;
-  MENU		*menu;
-  std::string	name_library_chosen;
+  ITEM		**items_graphics;
+  ITEM		**items_games;
+  MENU		*menu_graphics;
+  MENU		*menu_games;
+  std::string	name_library_graphic;
+  std::string	name_library_game;
   WINDOW	*window;
 
   this->initScreen();
   window = newwin(10, 40, 10, 5);
   keypad(window, TRUE);
-  items	= getItemsList(listItems);
-  menu	= new_menu(items);
+  items_graphics	= getItemsList(listGraphics);
+  menu_graphics		= new_menu(items_graphics);
+  items_games		= getItemsList(listGames);
+  menu_games		= new_menu(items_games);
   this->displayArcadeTitle();
   this->displayRulesMenu();
-  this->postMenuInWindow(window, menu, title);
   try
   {
-    name_library_chosen = this->MenuLoop(window, menu);
+    name_library_graphic	= this->MenuLoop("GRAPHIC LIBRARY", window, menu_graphics);
+    name_library_game		= this->MenuLoop("GAME LIBRARY", window, menu_games);
   }
   catch (const Arcade::ArcadeException &e)
   {
     throw Arcade::ArcadeException(e.what());
   }
+  for (unsigned int i = 0; i != listGraphics.size(); i++)
+    free_item(items_graphics[i]);
+  for (unsigned int i = 0; i != listGames.size(); i++)
+    free_item(items_games[i]);
+  delete[] items_graphics;
+  delete[] items_games;
   endwin();
-  for (unsigned int i = 0; i != listItems.size(); i++)
-   free_item(items[i]);
-  unpost_menu(menu);
-  free_menu(menu);
-  delete[] items;
-  return (name_library_chosen);
+  return (std::make_pair(name_library_graphic, name_library_game));
 }
 
 extern "C"

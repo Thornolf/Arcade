@@ -14,6 +14,7 @@
 # include "IGraph.hpp"
 # include "ArcadeException.hpp"
 # include <vector>
+# include <utility>
 # include <new>
 # include <sstream>
 
@@ -39,12 +40,12 @@ namespace Graph
       void	Animation();
 
       /* Pure Methods */
-      std::string	startMenu(const std::string &, const std::vector<std::string> &) const;
+      std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &) const;
 
       /* Member Methods */
       void		SetLibraryChoices(const std::vector<std::string> &ListGraphics);
       void		initScreen() const;
-      std::string	MenuLoop(WINDOW *, MENU*) const;
+      std::string	MenuLoop(const std::string &, WINDOW *, MENU*) const;
       void		displayAofARCADE(void) const;
       void		displayRofARCADE(void) const;
       void		displayCofARCADE(void) const;

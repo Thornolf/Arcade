@@ -44,11 +44,10 @@ void	Graph::GraphicMenu::displayRulesMenu(void) const
    */
 }
 
-std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
-{
-  (void)title;
-  (void)listItems;
-  sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames) const{
+  (void)listGraphics;
+  (void)listGames;
+  sf::RenderWindow window(sf::VideoMode(800, 600), "ARCADE - C++ 2020");
   while (window.isOpen())
   {
     sf::Event event;
@@ -60,7 +59,7 @@ std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::v
     window.clear();
     window.display();
   }
-  return (std::string());
+  return (std::make_pair("lib_arcade_ncurses.so", "lib_arcade_pacman.so"));
 }
 
 extern "C"

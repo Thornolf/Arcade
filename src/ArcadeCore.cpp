@@ -81,8 +81,7 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   Arcade::DLLoader<Graph::IGraph>	*LibraryLoaderGraphic;
   Graph::IGraph				*Menu;
   Game::IGame				*Game;
-  std::string				library_games_path;
-  std::string				library_graphic_path;
+  std::pair<std::string, std::string>	libs;
 
   try
   {
@@ -95,10 +94,17 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   }
   if (!(Menu = LibraryLoaderMenu->getInstance("getInstanceGraphicMenu")))
     throw (Arcade::ArcadeException("Cannot make instance of menu from this library"));
-  library_graphic_path	= Menu->startMenu(std::string("CHOSE A GRAPHIC LIBRARY"), this->_listGraphic);
-  library_games_path	= Menu->startMenu(std::string("CHOSE A GAME LIBRARY"), this->_listGames);
-  LibraryLoaderGame	= new Arcade::DLLoader<Game::IGame>(LIBRARY_GAME_DIRECTORY + library_games_path);
-  LibraryLoaderGraphic	= new Arcade::DLLoader<Graph::IGraph>(LIBRARY_GRAPHIC_DIRECTORY + library_graphic_path);
+  libs			= Menu->startMenu(this->_listGraphic, this->_listGames);
+  try
+  {
+    LibraryLoaderGraphic	= new Arcade::DLLoader<Graph::IGraph>(LIBRARY_GRAPHIC_DIRECTORY + libs.first);
+    LibraryLoaderGame		= new Arcade::DLLoader<Game::IGame>(LIBRARY_GAME_DIRECTORY + libs.second);
+  }
+  catch (const Arcade::ArcadeException &e)
+  {
+    throw Arcade::ArcadeException(e.what());
+  }
+
   if (!(Game = LibraryLoaderGame->getInstance("getInstanceGame")))
     throw Arcade::ArcadeException("Cannot load the Game Library");
   try
@@ -109,7 +115,6 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   {
     throw Arcade::ArcadeException(e.what());
   }
-  delete LibraryLoaderGame;
-  delete LibraryLoaderGraphic;
   delete LibraryLoaderMenu;
+  delete LibraryLoaderGame;
 }
