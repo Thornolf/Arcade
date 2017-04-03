@@ -11,7 +11,9 @@
 #ifndef		__IGAME_HPP__
 # define	__IGAME_HPP__
 
-# include	<iostream>
+# include <iostream>
+# include "IGraph.hpp"
+# include "ArcadeCore.hpp"
 
 namespace Game
 {
@@ -24,20 +26,20 @@ namespace Game
   class IGame
   {
     public:
+      virtual ~IGame(void) { };
+
+      virtual void startCore(Arcade::DLLoader<Graph::IGraph> &) = 0;
       virtual void move() = 0;
       virtual void setX(int pos) = 0;
       virtual void setY(int pos) = 0;
-      virtual void setState(game::State state) = 0;
+      virtual void setState(Game::State state) = 0;
       virtual void setSpeed(size_t speed) = 0;
-      //virtual void setPoint(size_t point) = 0;
       virtual int getX() const = 0;
       virtual int getY() const = 0;
-      virtual game::State getState() const = 0;
+      virtual Game::State getState() const = 0;
       virtual size_t getSpeed() const = 0;
-      //virtual size_t getPoint() const = 0;
       virtual bool isAlive() const = 0;
       virtual void Dump(void) const = 0;
-      virtual ~IGame(void) { };
   };
 }
 

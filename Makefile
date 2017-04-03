@@ -24,9 +24,9 @@ CC					=	g++
 
 RM					=	@rm -vf
 
-CFLAGS				=	-fPIC -W -Wall -Wextra -Werror -I./inc/ -lncurses
+CFLAGS				=	-fPIC -W -Wall -Wextra -Werror -I./inc/
 
-CXXFLAGS			=	-fPIC -W -Wall -Wextra -Werror -I./inc/ -lncurses
+CXXFLAGS			=	-fPIC -W -Wall -Wextra -Werror -I./inc/
 
 LDFLAGS				=	-shared
 
@@ -58,10 +58,10 @@ $(LIB_GRAPHIC_SFML):	$(OBJ_LIB_GRAPHIC_SFML)
 #########################
 
 $(LIB_GAME_SNAKE):		$(OBJ_LIB_GAME_SNAKE)
-						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_SNAKE) $(OBJ_LIB_GAME_SNAKE)
+						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_SNAKE) $(OBJ_LIB_GAME_SNAKE) -g -ggdb3
 
 $(LIB_GAME_PACMAN):		$(OBJ_LIB_GAME_PACMAN)
-						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_PACMAN) $(OBJ_LIB_GAME_PACMAN)
+						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_PACMAN) $(OBJ_LIB_GAME_PACMAN) -g -ggdb3
 
 #########################
 ##                     ##
@@ -76,10 +76,14 @@ clean:
 						$(RM) $(OBJ_ARCADE)
 						$(RM) $(OBJ_LIB_GRAPHIC_NCURSES)
 						$(RM) $(OBJ_LIB_GRAPHIC_SFML)
+						$(RM) $(OBJ_LIB_GAME_SNAKE)
+						$(RM) $(OBJ_LIB_GAME_PACMAN)
 
 fclean:					clean
 						$(RM) $(ARCADE)
-						$(RM) $(LIB_GRAPHIC_NCURSES)
-						$(RM) $(LIB_GRAPHIC_SFML)
+						$(RM) $(LIBRARY_DIR)$(LIB_GRAPHIC_NCURSES)
+						$(RM) $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML)
+						$(RM) $(GAME_DIR)$(LIB_GAME_SNAKE)
+						$(RM) $(GAME_DIR)$(LIB_GAME_PACMAN)
 
 re:						fclean all

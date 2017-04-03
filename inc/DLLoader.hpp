@@ -27,7 +27,7 @@ namespace Arcade
   {
     public:
       /* Canonical Functions */
-      DLLoader(char *);
+      DLLoader(const std::string &);
       virtual ~DLLoader();
       DLLoader(const DLLoader<T> &);
       DLLoader<T>	&operator=(const DLLoader<T> &);

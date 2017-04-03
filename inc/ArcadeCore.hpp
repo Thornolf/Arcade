@@ -21,10 +21,13 @@
 # include <regex>
 # include <sstream>
 # include <dlfcn.h>
+
 # include "ArcadeException.hpp"
 # include "DLLoader.hpp"
 # include "../src/DLLoader.cpp"
 # include "IGraph.hpp"
+# include "IGame.hpp"
+# include "GameCore.hpp"
 
 namespace Arcade
 {
@@ -38,7 +41,7 @@ namespace Arcade
       ArcadeCore	&operator=(const ArcadeCore &);
 
       /* Member functions */
-      void				startCore(char *);
+      void				startCore(const std::string &);
       void				FindLibraries(void);
       const std::vector<std::string>	getListDynamicLibrary(const std::string &);
 

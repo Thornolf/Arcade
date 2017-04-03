@@ -4,16 +4,13 @@
 ** Made by Guillaume CAUCHOIS
 ** Login   <guillaume.cauchois@epitech.eu>
 **
-** Started on  Wed Mar 29 18:28:26 2017 Guillaume CAUCHOIS
-** Last update Wed Mar 29 18:28:26 2017 Guillaume CAUCHOIS
+** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
+** Last update Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
 */
 
 #include "GameCore.hpp"
 
-GameCore::GameCore()
-{
-
-}
+GameCore::GameCore() {}
 
 GameCore::GameCore(const GameCore &obj)
 {
@@ -26,4 +23,31 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 {
   (void)obj;
   return (*this);
+}
+
+void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
+{
+  (void)LoaderGraphicLib;
+  std::cout << "LOAD SNAKE-CORE" << std::endl;
+}
+
+/* Unused function pure form IGame */
+void		GameCore::move() {}
+void		GameCore::setX(int pos) {(void)pos;}
+void		GameCore::setY(int pos) {(void)pos;}
+void		GameCore::setState(Game::State state) {(void)state;}
+void		GameCore::setSpeed(size_t speed) {{(void)speed;}}
+int		GameCore::getX() const {return (0);}
+int		GameCore::getY() const {return (0);}
+Game::State	GameCore::getState() const {return (Game::INVUNERABLE);}
+size_t		GameCore::getSpeed() const {return (0);}
+bool		GameCore::isAlive() const {return (false);}
+void		GameCore::Dump(void) const {}
+
+extern "C"
+{
+Game::IGame	*getInstanceGame()
+{
+  return ((Game::IGame *)new GameCore());
+}
 }

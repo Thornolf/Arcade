@@ -32,7 +32,7 @@ bool	Arcade::ArcadeCore::isDynamicLibraryFilename(const std::string &filename)
   return false;
 }
 
-std::string	ctostring(const char *c_str)
+std::string	ctostring(char *c_str)
 {
   std::stringstream	sstream;
 
@@ -74,19 +74,36 @@ void	Arcade::ArcadeCore::FindLibraries(void)
   }
 }
 
-void	Arcade::ArcadeCore::startCore(char *library_menu_path)
+void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
 {
-  Arcade::DLLoader<Graph::IGraph>	*LibraryLoader;
-  Graph::IGraph				*GraphicLib;
-  std::string				libpath;
+  Arcade::DLLoader<Graph::IGraph>	*LibraryLoaderMenu;
+  Arcade::DLLoader<Game::IGame>		*LibraryLoaderGame;
+  Arcade::DLLoader<Graph::IGraph>	*LibraryLoaderGraphic;
+  Graph::IGraph				*Menu;
+  Game::IGame				*Game;
+  std::string				library_games_path;
+  std::string				library_graphic_path;
 
   this->FindLibraries();
-  LibraryLoader	= new Arcade::DLLoader<Graph::IGraph>(library_menu_path);
-  libpath	= ctostring(library_menu_path);
-  GraphicLib	= LibraryLoader->getInstance("getInstanceGraphicMenu");
-  if (GraphicLib == NULL)
+  LibraryLoaderMenu	= new Arcade::DLLoader<Graph::IGraph>(library_menu_path);
+  if (!(Menu = LibraryLoaderMenu->getInstance("getInstanceGraphicMenu")))
     throw (Arcade::ArcadeException("Cannot make instance of ncurses from this library"));
-  GraphicLib->startMenu(std::string("CHOSE A GRAPHIC LIBRARY"), this->_listGraphic);
-  GraphicLib->startMenu(std::string("CHOSE A GAME LIBRARY"), this->_listGames);
-  delete LibraryLoader;
+  library_graphic_path	= Menu->startMenu(std::string("CHOSE A GRAPHIC LIBRARY"), this->_listGraphic);
+  library_games_path	= Menu->startMenu(std::string("CHOSE A GAME LIBRARY"), this->_listGames);
+
+  LibraryLoaderGame	= new Arcade::DLLoader<Game::IGame>(LIBRARY_GAME_DIRECTORY + library_games_path);
+  LibraryLoaderGraphic	= new Arcade::DLLoader<Graph::IGraph>(LIBRARY_GRAPHIC_DIRECTORY + library_graphic_path);
+  if (!(Game = LibraryLoaderGame->getInstance("getInstanceGame")))
+    throw Arcade::ArcadeException("Cannot load the Game Library");
+  try
+  {
+    (static_cast<GameCore *>(Game))->startCore(*LibraryLoaderGraphic);
+  }
+  catch (const Arcade::ArcadeException &e)
+  {
+    throw Arcade::ArcadeException(e.what());
+  }
+  delete LibraryLoaderGame;
+  delete LibraryLoaderGraphic;
+  delete LibraryLoaderMenu;
 }
