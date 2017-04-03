@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 17:45:24 2017 Quentin Baudet
-** Last update Mon Apr 03 19:05:49 2017 Quentin Baudet
+** Last update Mon Apr 03 19:31:29 2017 Quentin Baudet
 */
 
 #include "/home/baudet_q/rendu/CPP/cpp_arcade/inc/ParserMap.hpp"
@@ -44,22 +44,22 @@ void 	ParserMap::setMapIntel(std::string fileName) {
 
 	/* Robin doit faire un regex pour vérifier que c'est bien un .cnf */
 
-	int i = 0;
-	std::string line;
-  	std::ifstream myfile (fileName);
-	 if (myfile.is_open()) {
-	    while (getline(myfile,line))
-	    {
-			if (i == 0)
-				setMapHeight(std::stoi(line));
-			else if (i == 1)
-				setMapLength(std::stoi(line));
-		  i++;
-	    }
-	    myfile.close();
-	 } else {
-	  	std::cerr << "Unable to open file" << std::endl;
-  }
+		int i = 0;
+		std::string line;
+	  	std::ifstream myfile (fileName);
+		 if (myfile.is_open()) {
+		    while (getline(myfile,line))
+		    {
+				if (i == 0)
+					setMapHeight(std::stoi(line));
+				else if (i == 1)
+					setMapLength(std::stoi(line));
+			  i++;
+		    }
+		    myfile.close();
+		 } else {
+		  	std::cerr << "Unable to open file" << std::endl;
+	  }
 }
 /* Destructor */
 

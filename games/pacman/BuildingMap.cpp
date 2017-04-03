@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Mon Apr 03 19:24:34 2017 Quentin Baudet
+** Last update Mon Apr 03 19:33:20 2017 Quentin Baudet
 */
 
 #include "/home/baudet_q/rendu/CPP/cpp_arcade/inc/BuildingMap.hpp"
@@ -25,6 +25,23 @@ void 	BuildingMap::setMap(int newLength, int newHeight) {
 		this->_map[i] = new int[newLength];
 	}
 }
+
+void 	BuildingMap::addDataInMap(std::string fileName) {
+	int i = 0;
+	std::string line;
+ 	std::ifstream myfile (fileName);
+ if (myfile.is_open()) {
+    while (getline(myfile,line))
+    {
+		if (i > 1)
+			/* ADD DATA*/
+	  i++;
+    }
+myfile.close();
+ } else {
+  	std::cerr << "Unable to open file" << std::endl;
+ }
+}
 int main(void) {
 	ParserMap *i = new ParserMap();
 	BuildingMap *mapy = new BuildingMap();
@@ -32,4 +49,5 @@ int main(void) {
 	i->setMapIntel("./assets/map.cnf");
 	std::cout << "Height -> " <<  i->getMapHeight() << "Length -> " << i->getMapLength() << '\n';
 	mapy->setMap(i->getMapLength(), i->getMapHeight());
+
 }
