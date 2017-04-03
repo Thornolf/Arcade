@@ -27,3 +27,12 @@ GameCore	&GameCore::operator=(const GameCore &obj)
   (void)obj;
   return (*this);
 }
+
+extern "C"
+{
+  Game::IGame	*getInstanceGame()
+  {
+  	return (GameCore());
+  }
+}
+}

@@ -25,9 +25,10 @@ Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &obj)
   return (*this);
 }
 
-void	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames) const
+const char*	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
 {
-  (void)listGraphics;
-  (void)listGames;
+  (void)title;
+  (void)listItems;
+  return (NULL);
 }
 

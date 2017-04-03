@@ -8,14 +8,16 @@
 ** Last update Wed Mar 29 15:07:47 2017 Guillaume CAUCHOIS
 */
 
-
 #ifndef		_MENU__HPP_
 # define	_MENU__HPP_
 
-#include "IGraph.hpp"
-#include "ArcadeException.hpp"
-#include <vector>
-#include <new>
+# include "IGraph.hpp"
+# include "ArcadeException.hpp"
+# include <vector>
+# include <new>
+
+# include <ncurses.h>
+# include <menu.h>
 
 namespace Graph
 {
@@ -28,14 +30,17 @@ namespace Graph
       virtual ~GraphicMenu();
       GraphicMenu	&operator=(const GraphicMenu &);
 
-      /* Member Methods */
+      /* Unused pure methods */
       void	createMap();
       void	Game();
       void	SetSprite(int x, int y);
       void	UnsetSprite(int x, int y);
       void	Animation();
-      void	startMenu(const std::vector<std::string> &, const std::vector<std::string> &) const;
-      void	SetLibraryChoices(const std::vector<std::string> &ListGraphics);
+
+      /* Member Methods */
+      const char*	startMenu(const std::string &, const std::vector<std::string> &) const;
+      void		SetLibraryChoices(const std::vector<std::string> &ListGraphics);
+      const char	*MenuLoop(MENU*) const;
     public:
       std::vector<std::string>	_choicesLibraries;
   };
