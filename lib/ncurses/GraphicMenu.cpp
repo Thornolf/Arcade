@@ -56,7 +56,7 @@ ITEM	**getItemsList(std::vector<std::string> listChoices)
   unsigned int		i;
   char**	CItemList;
 
-  itemsList = (ITEM **)calloc(listChoices.size() + 1, sizeof(ITEM *));
+  itemsList = new ITEM*[listChoices.size() + 1];
   CItemList = vectorStringToArrayArrayChar(listChoices);
   i = 0;
   while (i != listChoices.size())
@@ -68,10 +68,11 @@ ITEM	**getItemsList(std::vector<std::string> listChoices)
   return (itemsList);
 }
 
-const char	*Graph::GraphicMenu::MenuLoop(MENU *menu) const
+std::string	Graph::GraphicMenu::MenuLoop(MENU *menu) const
 {
-  int	pkey;
-  ITEM	*cur;
+  int			pkey;
+  ITEM			*cur;
+  std::stringstream	ss;
 
   while ((pkey = getch()) != 10 && pkey != KEY_RIGHT)
   {
@@ -89,25 +90,27 @@ const char	*Graph::GraphicMenu::MenuLoop(MENU *menu) const
     throw Arcade::ArcadeException("You have to select a library");
   if (!(item_name(cur)))
     throw Arcade::ArcadeException("You have to select a library");
-  return (item_name(cur));
+  ss << item_name(cur);
+  return (ss.str());
 }
 
-const char*	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
+std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
 {
   ITEM		**items;
   MENU		*menu;
-  const char	*name_library_chosen;
+  std::string	name_library_chosen;
 
   initscr();
   keypad(stdscr, TRUE);
   noecho();
+  curs_set(0);
   refresh();
   erase();
   timeout(-1);
 
-  /* Menu */
   items	= getItemsList(listItems);
   menu	= new_menu(items);
+  /* Menu */
   mvprintw(listItems.size() + 2, 0, title.c_str());
   post_menu(menu);
   try
@@ -119,6 +122,12 @@ const char*	Graph::GraphicMenu::startMenu(const std::string &title, const std::v
     throw Arcade::ArcadeException(e.what());
   }
   endwin();
+  for (unsigned int i = 0; i != listItems.size(); i++)
+  {
+   free_item(items[i]);
+  }
+  free_menu(menu);
+  delete[] items;
   return (name_library_chosen);
 }
 

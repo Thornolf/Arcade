@@ -8,6 +8,9 @@
 ** Last update Wed Mar 29 15:27:57 2017 Guillaume CAUCHOIS
 */
 
+#include <cstring>
+#include <ncurses.h>
+#include <menu.h>
 #include "GraphicMenu.hpp"
 
 Graph::GraphicMenu::GraphicMenu() {}
@@ -25,10 +28,29 @@ Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &obj)
   return (*this);
 }
 
-const char*	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
+void	Graph::GraphicMenu::SetLibraryChoices(const std::vector<std::string> &ListGraphics)
+{
+  this->_choicesLibraries = ListGraphics;
+}
+
+std::string	Graph::GraphicMenu::startMenu(const std::string &title, const std::vector<std::string> &listItems) const
 {
   (void)title;
   (void)listItems;
-  return (NULL);
+  return (std::string());
 }
 
+extern "C"
+{
+Graph::IGraph	*getInstanceGraphicMenu()
+{
+  return (new Graph::GraphicMenu());
+}
+}
+
+/* Unused pure methods */
+void	Graph::GraphicMenu::createMap(void) {}
+void	Graph::GraphicMenu::Game(void)  {}
+void	Graph::GraphicMenu::SetSprite(int x, int y)  {(void)x; (void)y;}
+void	Graph::GraphicMenu::UnsetSprite(int x, int y) {(void)x; (void)y;}
+void	Graph::GraphicMenu::Animation() {}

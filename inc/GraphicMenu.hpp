@@ -15,6 +15,7 @@
 # include "ArcadeException.hpp"
 # include <vector>
 # include <new>
+# include <sstream>
 
 # include <ncurses.h>
 # include <menu.h>
@@ -37,10 +38,12 @@ namespace Graph
       void	UnsetSprite(int x, int y);
       void	Animation();
 
+      /* Pure Methods */
+      std::string	startMenu(const std::string &, const std::vector<std::string> &) const;
+
       /* Member Methods */
-      const char*	startMenu(const std::string &, const std::vector<std::string> &) const;
       void		SetLibraryChoices(const std::vector<std::string> &ListGraphics);
-      const char	*MenuLoop(MENU*) const;
+      std::string	MenuLoop(MENU*) const;
     public:
       std::vector<std::string>	_choicesLibraries;
   };

@@ -31,7 +31,7 @@ int		main(int argc, char **argv)
   }
   try
   {
-    Core.startCore(argv[1]);
+    Core.startCore(std::string(argv[1]));
   }
   catch (Arcade::ArcadeException &e)
   {

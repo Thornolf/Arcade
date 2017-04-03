@@ -11,7 +11,12 @@
 #ifndef		_GAME_CORE__HPP_
 # define	_GAME_CORE__HPP_
 
-class GameCore
+# include "IGame.hpp"
+# include "IGraph.hpp"
+# include "ArcadeException.hpp"
+# include "ArcadeCore.hpp"
+
+class GameCore : public Game::IGame
 {
   public:
     /* Canonical Methods */
@@ -19,6 +24,20 @@ class GameCore
     virtual ~GameCore();
     GameCore(const GameCore &);
     GameCore	&operator=(const GameCore &);
+
+    /* Pures Methods from IGames */
+    void	startCore(Arcade::DLLoader<Graph::IGraph> &);
+    void	move();
+    void	setX(int pos);
+    void	setY(int pos);
+    void	setState(Game::State state);
+    void	setSpeed(size_t speed);
+    int		getX() const;
+    int		getY() const;
+    Game::State	getState() const;
+    size_t	getSpeed() const;
+    bool	isAlive() const;
+    void	Dump(void) const;
 };
 
 #endif		/* !_GAME_CORE__HPP_ */
