@@ -26,7 +26,7 @@ namespace Graph
       virtual void SetSprite(int x, int y) = 0;
       virtual void UnsetSprite(int x, int y) = 0;
       virtual void Animation() = 0;
-      virtual void startMenu(const std::vector<std::string>, const std::vector<std::string>) const = 0;
+      virtual void startMenu(const std::vector<std::string> &, const std::vector<std::string> &) const = 0;
   };
 }
 

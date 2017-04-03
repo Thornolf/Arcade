@@ -12,7 +12,6 @@
 #include <ncurses.h>
 #include <menu.h>
 #include "GraphicMenu.hpp"
-# define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 
 Graph::GraphicMenu::GraphicMenu() {}
 
@@ -34,36 +33,61 @@ void	Graph::GraphicMenu::SetLibraryChoices(const std::vector<std::string> &ListG
   this->_choicesLibraries = ListGraphics;
 }
 
-void	Graph::GraphicMenu::startMenu(const std::vector<std::string> listGraphics, const std::vector<std::string> listGames) const
+char**	vectorStringToArrayArrayChar(const std::vector<std::string> &vector)
 {
+  char	**array;
   int	i;
-  std::vector<std::string>::const_iterator	it;
 
+  array = new char*[vector.size() + 1];
+  i = 0;
+  for (auto it = vector.begin(); it != vector.end(); ++it)
+  {
+    array[i] = new char[strlen(it->c_str()) + 1];
+    strcpy(array[i], it->c_str());
+    i++;
+  }
+  array[i] = NULL;
+  return (array);
+}
+
+ITEM	**getItemsList(std::vector<std::string> listChoices)
+{
+  ITEM**	itemsList;
+  unsigned int		i;
+  char**	CItemList;
+
+  itemsList = (ITEM **)calloc(listChoices.size() + 1, sizeof(ITEM *));
+  CItemList = vectorStringToArrayArrayChar(listChoices);
+  i = 0;
+  while (i != listChoices.size())
+  {
+    itemsList[i] = new_item(CItemList[i], CItemList[i]);
+    i++;
+  }
+  itemsList[i] = NULL;
+  return (itemsList);
+}
+
+void	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames) const
+{
+  ITEM	**items_graphic;
+  MENU	*menu_graphic;
+
+  (void)items_graphic;
+  (void)menu_graphic;
   (void)listGames;
-  (void)listGraphics;
   initscr();
   keypad(stdscr, TRUE);
   noecho();
+  refresh();
   erase();
   timeout(-1);
-  mvprintw(0, 0, "AVAIBLE LIBRARIES:\n");
-  i = 5;
-  it = listGraphics.begin();
-  while (it != listGraphics.end())
-  {
-    mvprintw(i, 0, it->c_str());
-    i++;
-    it++;
-  }
-  i++;
-  it = listGames.begin();
-  while (it != listGames.end())
-  {
-    mvprintw(i, 0, it->c_str());
-    i++;
-    it++;
-  }
-  mvprintw(10, 0, "Press any key to exit...\n");
+
+  /* Menu */
+  items_graphic	= getItemsList(listGraphics);
+  menu_graphic	= new_menu(items_graphic);
+  post_menu(menu_graphic);
+
   getch();
   endwin();
 }
