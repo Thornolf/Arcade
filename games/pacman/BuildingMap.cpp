@@ -11,27 +11,22 @@
 #include "BuildingMap.hpp"
 #include "ParserMap.hpp"
 
-BuildingMap::BuildingMap() {
-  // this->_map = new int*[0];
-  // for (int i = 0; i < 1; i++) {
-  // 	this->_map[i] = new int[0];
-  // }
-  std::cout << "Construction" << std::endl;
+BuildingMap::BuildingMap(int length, int height) {
+  this->setMap(length, height);
 }
 
-/* SETTER */
-
-void 	BuildingMap::setMap(int newLength, int newHeight) {
-  this->_map = new int*[newHeight];
-  for (int i = 0; i < newHeight; i++) {
-    this->_map[i] = new int[newLength];
-  }
+void 	BuildingMap::setMap(int newLength, int newHeight)
+{
+  this->_map = new int*[newHeight + 1];
+  for (int i = 0; i <= newHeight + 1; i++)
+    this->_map[i] = new int[newLength + 1];
 }
 
 /* GETTER */
 
-int		**BuildingMap::getMap() const {
-	return (this->_map);
+int	**BuildingMap::getMap() const
+{
+  return (this->_map);
 }
 
 void 	BuildingMap::addDataInMap(std::string fileName)
@@ -40,30 +35,32 @@ void 	BuildingMap::addDataInMap(std::string fileName)
   size_t width = 0;
   std::string line;
   std::ifstream myfile (fileName);
-  if (myfile.is_open())
+  if (!myfile.is_open())
+  	return ;
+  while (getline(myfile,line))
   {
-    while (getline(myfile,line))
+    if (height <= 1)
     {
-      if (height > 1) {
-		  for (size_t i = 0; i < line.length(); i++) {
-			  this->_map[height][width] = line[width];
-		  }
-	  }
-	height++;
+      height++;
+      continue;
     }
-    myfile.close();
+    for (int i = 0; i != width ; ++i)
+    {
+      this->_map[height - 2][i] = (line.c_str())[i];
+    }
+    std::cout << std::endl;
+    height++;
   }
-  else
-    std::cerr << "Unable to open file" << std::endl;
+  myfile.close();
 }
 
 
 int main(void) {
   ParserMap *i = new ParserMap();
-  BuildingMap *mapy = new BuildingMap();
+  BuildingMap *mapy;
 
   i->setMapIntel("./assets/map.cnf");
+  mapy = new BuildingMap(i->getMapLength(), i->getMapHeight());
   std::cout << "Height -> " <<  i->getMapHeight() << "Length -> " << i->getMapLength() << '\n';
-  mapy->setMap(i->getMapLength(), i->getMapHeight());
-
+  mapy->addDataInMap("./assets/map.cnf");
 }

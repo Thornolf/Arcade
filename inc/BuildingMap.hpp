@@ -18,13 +18,13 @@ class BuildingMap
 {
   public:
     /* Canonical functions */
-    BuildingMap();
+    BuildingMap(int, int);
     BuildingMap(const BuildingMap &);
     virtual ~BuildingMap () {}
     BuildingMap		&operator=(const BuildingMap &);
 
     /* Member functions */
-	int**	getMap() const;
+    int**	getMap() const;
     void 	setMap(int, int);
     void 	addDataInMap(std::string);
 
