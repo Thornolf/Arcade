@@ -46,6 +46,6 @@ OBJ_LIB_GAME_SNAKE		=	$(SRC_LIB_GAME_SNAKE:.cpp=.o)
 
 SRC_LIB_GAME_PACMAN_DIR	=	./games/pacman/
 SRC_LIB_GAME_PACMAN		=	$(SRC_LIB_GAME_PACMAN_DIR)GameCore.cpp		\
-							$(SRC_LIB_GAME_PACMAN_DIR)BuildingMap.cpp	\
+							$(SRC_LIB_GAME_PACMAN_DIR)MapGame.cpp	\
 							$(SRC_LIB_GAME_PACMAN_DIR)ParserMap.cpp
 OBJ_LIB_GAME_PACMAN		=	$(SRC_LIB_GAME_PACMAN:.cpp=.o)

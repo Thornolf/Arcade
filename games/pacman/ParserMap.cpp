@@ -10,57 +10,57 @@
 
 #include "ParserMap.hpp"
 
+/*       this->_map[height - 2][i] = (line.c_str())[i];
+ */
+
 /*Constructor */
-ParserMap::ParserMap()
+ParserMap::ParserMap(const std::string &filepath)
 {
-  this->_mapHeight = 0;
-  this->_mapLength = 0;
+  std::ifstream	myfile (filepath);
+  std::string	line;
+  size_t	i = 0;
+
+  if (!myfile.is_open())
+    throw Arcade::ArcadeException("Cannot read the map file");
+  while (getline(myfile,line))
+  {
+    if (i == 0)
+      this->_height = std::stoi(line);
+    else if (i == 1)
+      this->_length = std::stoi(line);
+    if (i >= 2)
+      this->_buffer.push_back(line);
+    i++;
+  }
+  myfile.close();
 }
 
 /* Destructor */
 ParserMap::~ParserMap() {}
 
-/* GETTER */
-int	ParserMap::getMapHeight() const
+MapGame		*ParserMap::getMap() const
 {
-  return(this->_mapHeight);
+  return (this->_map);
 }
 
-int	ParserMap::getMapLength() const
+void 	ParserMap::generateMap(void)
 {
-  return(this->_mapLength);
-}
+  int		index_line;
+  MapGame	map(this->_length, this->_height);
+  int		**data;
 
-/* SETTER */
-void 	ParserMap::setMapHeight(int newHeight)
-{
-  this->_mapHeight = newHeight;
-}
+  /* Malloc */
+  data = new int*[this->_height + 1];
+  for (int i = 0; i != this->_height + 1; i++)
+    data[i] = new int[this->_length + 1];
 
-void 	ParserMap::setMapLength(int newLength)
-{
-  this->_mapLength = newLength;
-}
-
-/* Get Info From Cnf */
-void 	ParserMap::setMapIntel(std::string fileName)
-{
-  /* Robin doit faire un regex pour vérifier que c'est bien un .cnf */
-
-  int i = 0;
-  std::string line;
-  std::ifstream myfile (fileName);
-  if (myfile.is_open()) {
-    while (getline(myfile,line))
-    {
-      if (i == 0)
-	setMapHeight(std::stoi(line));
-      else if (i == 1)
-	setMapLength(std::stoi(line));
-      i++;
-    }
-    myfile.close();
-  } else {
-    std::cerr << "Unable to open file" << std::endl;
+  /* Fill up data */
+  index_line = 0;
+  for (auto it = this->_buffer.begin(); it != this->_buffer.end(); ++it)
+  {
+    for (size_t index_char = 0; index_char != it->length(); ++index_char)
+      data[index_line][index_char] = (it->c_str())[index_char] - '0';
   }
+  map.setData(data);
+  this->_map = &map;
 }

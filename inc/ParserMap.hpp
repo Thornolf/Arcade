@@ -11,37 +11,34 @@
 #ifndef 	PARSERMAP_HPP
 # define 	PARSERMAP_HPP
 
+# include "ArcadeException.hpp"
+# include "MapGame.hpp"
 # include <iostream>
 # include <fstream>
+# include <vector>
 
 class ParserMap
 {
   public:
     /**
-     * Canonical function
+     * Canonical functions
      */
-    ParserMap ();
+    ParserMap (const std::string &);
     ParserMap (const ParserMap &);
     virtual ~ParserMap ();
     ParserMap	&operator=(const ParserMap &);
 
     /**
-     * Member Functions
+     * Member functions
      */
-     /* GETTER */
-    int		getMapHeight() const;
-    int		getMapLength() const;
-
-    /* SETTER */
-    void	setMapHeight(int);
-    void	setMapLength(int);
-
-    /* Get Info from cnf */
-    void 	setMapIntel(std::string);
+    void	generateMap(void);
+    MapGame	*getMap(void) const;
 
   private:
-    int		_mapHeight;
-    int		_mapLength;
+    int				_height;
+    int				_length;
+    std::vector<std::string>	_buffer;
+    MapGame			*_map;
 };
 
 #endif	/* !PARSERMAP_HPP */

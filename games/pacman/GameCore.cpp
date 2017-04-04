@@ -8,6 +8,8 @@
 ** Last update Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
 */
 
+#include "ParserMap.hpp"
+#include "MapGame.hpp"
 #include "GameCore.hpp"
 
 GameCore::GameCore() {}
@@ -28,7 +30,12 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
   (void)LoaderGraphicLib;
-  std::cout << "LOAD PACMAN-CORE" << std::endl;
+  ParserMap	*parser;
+
+  parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
+  parser->generateMap();
+  (void)parser;
+  delete parser;
 }
 
 /* Unused function pure form IGame */
