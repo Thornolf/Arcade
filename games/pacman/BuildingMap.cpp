@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Mon Apr 03 22:51:18 2017 Quentin Baudet
+** Last update Tue Apr 04 11:58:42 2017 Quentin Baudet
 */
 
 #include "BuildingMap.hpp"
@@ -19,6 +19,8 @@ BuildingMap::BuildingMap() {
   std::cout << "Construction" << std::endl;
 }
 
+/* SETTER */
+
 void 	BuildingMap::setMap(int newLength, int newHeight) {
   this->_map = new int*[newHeight];
   for (int i = 0; i < newHeight; i++) {
@@ -26,18 +28,28 @@ void 	BuildingMap::setMap(int newLength, int newHeight) {
   }
 }
 
+/* GETTER */
+
+int		**BuildingMap::getMap() const {
+	return (this->_map);
+}
+
 void 	BuildingMap::addDataInMap(std::string fileName)
 {
-  int i = 0;
+  size_t height = 0;
+  size_t width = 0;
   std::string line;
   std::ifstream myfile (fileName);
   if (myfile.is_open())
   {
     while (getline(myfile,line))
     {
-      if (i > 1)
-	/* ADD DATA*/
-	i++;
+      if (height > 1) {
+		  for (size_t i = 0; i < line.length(); i++) {
+			  this->_map[height][width] = line[width];
+		  }
+	  }
+	height++;
     }
     myfile.close();
   }
@@ -45,7 +57,7 @@ void 	BuildingMap::addDataInMap(std::string fileName)
     std::cerr << "Unable to open file" << std::endl;
 }
 
-/*
+
 int main(void) {
   ParserMap *i = new ParserMap();
   BuildingMap *mapy = new BuildingMap();
@@ -53,5 +65,5 @@ int main(void) {
   i->setMapIntel("./assets/map.cnf");
   std::cout << "Height -> " <<  i->getMapHeight() << "Length -> " << i->getMapLength() << '\n';
   mapy->setMap(i->getMapLength(), i->getMapHeight());
+
 }
-*/
