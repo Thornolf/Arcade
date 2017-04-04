@@ -21,6 +21,8 @@
 # include <ncurses.h>
 # include <menu.h>
 
+# define SFML_LOGO_FADE_EFFECT_SPEED (5)
+
 namespace Graph
 {
   class GraphicMenu : public IGraph
