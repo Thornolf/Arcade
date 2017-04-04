@@ -30,8 +30,8 @@ namespace Game
 
       virtual void startCore(Arcade::DLLoader<Graph::IGraph> &) = 0;
       virtual void move() = 0;
-      virtual void setX(int pos) = 0;
-      virtual void setY(int pos) = 0;
+      virtual void setX(int) = 0;
+      virtual void setY(int) = 0;
       virtual void setState(Game::State state) = 0;
       virtual void setSpeed(size_t speed) = 0;
       virtual int getX() const = 0;

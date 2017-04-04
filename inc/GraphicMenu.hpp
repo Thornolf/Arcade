@@ -17,9 +17,11 @@
 # include <utility>
 # include <new>
 # include <sstream>
-
+# include <cstring>
 # include <ncurses.h>
 # include <menu.h>
+# include <SFML/Audio.hpp>
+# include <SFML/Graphics.hpp>
 
 # define SFML_LOGO_FADE_EFFECT_SPEED (5)
 
@@ -40,14 +42,16 @@ namespace Graph
       void	SetSprite(int x, int y);
       void	UnsetSprite(int x, int y);
       void	Animation();
+      void	displayMap(int **);
 
       /* Pure Methods */
-      std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &) const;
+      std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &);
 
       /* Member Methods */
       void		SetLibraryChoices(const std::vector<std::string> &ListGraphics);
       void		initScreen() const;
       std::string	MenuLoop(const std::string &, WINDOW *, MENU*) const;
+      std::string	MenuLoop(sf::RenderWindow &, sf::Sprite &, sf::Sprite &, const std::string &, std::vector<std::string>);
       void		displayAofARCADE(void) const;
       void		displayRofARCADE(void) const;
       void		displayCofARCADE(void) const;
@@ -57,6 +61,9 @@ namespace Graph
       void		displayArcadeTitle(void) const;
       void		displayRulesMenu(void) const;
       void		postMenuInWindow(WINDOW *, MENU *, const std::string &) const;
+      void		LaunchMenuSound(sf::Music &, const std::string &) const;
+      sf::Sprite	createSpriteFromFile(sf::Texture &, const std::string&, bool) const;
+
     public:
       std::vector<std::string>	_choicesLibraries;
   };

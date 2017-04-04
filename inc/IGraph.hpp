@@ -11,9 +11,10 @@
 #ifndef		__IGRAPH_HPP__
 # define	__IGRAPH_HPP__
 
-# include	<iostream>
-# include	<vector>
-# include	<ncurses.h>
+# include <iostream>
+# include <vector>
+# include <ncurses.h>
+# include <utility>
 
 namespace Graph
 {
@@ -26,7 +27,8 @@ namespace Graph
       virtual void					SetSprite(int x, int y) = 0;
       virtual void					UnsetSprite(int x, int y) = 0;
       virtual void					Animation() = 0;
-      virtual std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &) const = 0;
+      virtual std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &) = 0;
+      virtual void					displayMap(int **) = 0;
   };
 }
 

@@ -26,11 +26,13 @@ OBJ_ARCADE		=	$(SRC_ARCADE:.cpp=.o)
 #########################
 LIBRARY_DIR					=	./lib/
 SRC_LIB_GRAPHIC_NCURSES_DIR	=	./lib/ncurses/
-SRC_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES_DIR)GraphicMenu.cpp
+SRC_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES_DIR)GraphicMenu.cpp			\
+								$(SRC_LIB_GRAPHIC_NCURSES_DIR)PacmanDisplayerMap.cpp
 OBJ_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES:.cpp=.o)
 
 SRC_LIB_GRAPHIC_SFML_DIR	=	./lib/sfml/
-SRC_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML_DIR)GraphicMenu.cpp
+SRC_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML_DIR)GraphicMenu.cpp				\
+								$(SRC_LIB_GRAPHIC_NCURSES_DIR)PacmanDisplayerMap.cpp
 OBJ_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML:.cpp=.o)
 
 #########################
@@ -46,6 +48,6 @@ OBJ_LIB_GAME_SNAKE		=	$(SRC_LIB_GAME_SNAKE:.cpp=.o)
 
 SRC_LIB_GAME_PACMAN_DIR	=	./games/pacman/
 SRC_LIB_GAME_PACMAN		=	$(SRC_LIB_GAME_PACMAN_DIR)GameCore.cpp		\
-							$(SRC_LIB_GAME_PACMAN_DIR)MapGame.cpp	\
+							$(SRC_LIB_GAME_PACMAN_DIR)MapGame.cpp		\
 							$(SRC_LIB_GAME_PACMAN_DIR)ParserMap.cpp
 OBJ_LIB_GAME_PACMAN		=	$(SRC_LIB_GAME_PACMAN:.cpp=.o)

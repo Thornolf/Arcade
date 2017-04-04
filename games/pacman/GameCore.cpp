@@ -8,6 +8,7 @@
 ** Last update Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
 */
 
+#include "PacmanDisplayerMap.hpp"
 #include "ParserMap.hpp"
 #include "MapGame.hpp"
 #include "GameCore.hpp"
@@ -29,12 +30,13 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-  (void)LoaderGraphicLib;
-  ParserMap	*parser;
+  ParserMap		*parser;
+  Graph::IGraph		*LibGraphic;
 
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();
-  (void)parser;
+  LibGraphic = LoaderGraphicLib.getInstance("getInstancePacmanDisplayerMap");
+  LibGraphic->displayMap(NULL);
   delete parser;
 }
 

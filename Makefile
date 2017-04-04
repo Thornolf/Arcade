@@ -49,7 +49,7 @@ $(LIB_GRAPHIC_NCURSES):	$(OBJ_LIB_GRAPHIC_NCURSES)
 						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_NCURSES) $(OBJ_LIB_GRAPHIC_NCURSES) -lncurses -lmenu
 
 $(LIB_GRAPHIC_SFML):	$(OBJ_LIB_GRAPHIC_SFML)
-						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML) -lsfml-graphics -lsfml-window
+						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 #########################
 ##                     ##
@@ -58,10 +58,10 @@ $(LIB_GRAPHIC_SFML):	$(OBJ_LIB_GRAPHIC_SFML)
 #########################
 
 $(LIB_GAME_SNAKE):		$(OBJ_LIB_GAME_SNAKE)
-						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_SNAKE) $(OBJ_LIB_GAME_SNAKE) -g -ggdb3
+						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_SNAKE) $(OBJ_LIB_GAME_SNAKE)
 
 $(LIB_GAME_PACMAN):		$(OBJ_LIB_GAME_PACMAN)
-						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_PACMAN) $(OBJ_LIB_GAME_PACMAN) -g -ggdb3
+						$(CC) ${LDFLAGS} -o $(GAME_DIR)$(LIB_GAME_PACMAN) $(OBJ_LIB_GAME_PACMAN)
 
 #########################
 ##                     ##

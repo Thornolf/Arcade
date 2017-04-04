@@ -225,7 +225,7 @@ void	Graph::GraphicMenu::postMenuInWindow(WINDOW *window, MENU* menu, const std:
   wrefresh(window);
 }
 
-std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames) const
+std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames)
 {
   ITEM		**items_graphics;
   ITEM		**items_games;
@@ -277,3 +277,27 @@ void	Graph::GraphicMenu::Game(void)  {}
 void	Graph::GraphicMenu::SetSprite(int x, int y)  {(void)x; (void)y;}
 void	Graph::GraphicMenu::UnsetSprite(int x, int y) {(void)x; (void)y;}
 void	Graph::GraphicMenu::Animation() {}
+void	Graph::GraphicMenu::displayMap(int **ptr){(void)ptr;};
+void	Graph::GraphicMenu::LaunchMenuSound(sf::Music &, const std::string &filepath) const {(void)filepath;}
+
+sf::Sprite	Graph::GraphicMenu::createSpriteFromFile(sf::Texture &texture, const std::string &filepath, bool smooth) const
+{
+  (void)texture;
+  (void)filepath;
+  (void)smooth;
+  return (sf::Sprite());
+}
+
+std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
+						sf::Sprite &sprite_bg,
+						sf::Sprite &sprite_logo,
+						const std::string &title,
+						std::vector<std::string> listItems)
+{
+  (void)window;
+  (void)sprite_bg;
+  (void)sprite_logo;
+  (void)title;
+  (void)listItems;
+  return ("");
+}

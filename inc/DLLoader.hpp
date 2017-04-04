@@ -18,6 +18,7 @@
 # include <dlfcn.h>
 # include "IGraph.hpp"
 # include "GraphicMenu.hpp"
+# include "PacmanDisplayerMap.hpp"
 # include "ArcadeException.hpp"
 
 namespace Arcade

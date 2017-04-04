@@ -104,7 +104,6 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   {
     throw Arcade::ArcadeException(e.what());
   }
-
   if (!(Game = LibraryLoaderGame->getInstance("getInstanceGame")))
     throw Arcade::ArcadeException("Cannot load the Game Library");
   try
