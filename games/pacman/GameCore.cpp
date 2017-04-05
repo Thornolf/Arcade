@@ -41,7 +41,7 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 }
 
 /* Unused function pure form IGame */
-void		GameCore::move() {}
+void		GameCore::movePlayer() {}
 void		GameCore::setX(int pos) {(void)pos;}
 void		GameCore::setY(int pos) {(void)pos;}
 void		GameCore::setState(Game::State state) {(void)state;}

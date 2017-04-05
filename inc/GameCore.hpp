@@ -11,6 +11,7 @@
 #ifndef		_GAME_CORE__HPP_
 # define	_GAME_CORE__HPP_
 
+# include <ncurses.h>
 # include "IGame.hpp"
 # include "IGraph.hpp"
 # include "ArcadeException.hpp"
@@ -26,8 +27,8 @@ class GameCore : public Game::IGame
     GameCore	&operator=(const GameCore &);
 
     /* Pures Methods from IGames */
-    void	startCore(Arcade::DLLoader<Graph::IGraph> &);
-    void	move();
+    virtual void	startCore(Arcade::DLLoader<Graph::IGraph> &);
+    void	movePlayer();
     void	setX(int pos);
     void	setY(int pos);
     void	setState(Game::State state);

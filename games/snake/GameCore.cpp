@@ -9,6 +9,7 @@
 */
 
 #include "GameCore.hpp"
+#include "SnakeCore.hpp"
 
 GameCore::GameCore() {}
 
@@ -27,12 +28,13 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-  (void)LoaderGraphicLib;
-  std::cout << "LOAD SNAKE-CORE" << std::endl;
+  SnakeCore	SnakeCore;
+
+  SnakeCore.startCore(LoaderGraphicLib);
 }
 
 /* Unused function pure form IGame */
-void		GameCore::move() {}
+void		GameCore::movePlayer() {}
 void		GameCore::setX(int pos) {(void)pos;}
 void		GameCore::setY(int pos) {(void)pos;}
 void		GameCore::setState(Game::State state) {(void)state;}

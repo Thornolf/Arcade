@@ -43,7 +43,10 @@ OBJ_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML:.cpp=.o)
 GAME_DIR				=	./games/
 
 SRC_LIB_GAME_SNAKE_DIR	=	./games/snake/
-SRC_LIB_GAME_SNAKE		=	$(SRC_LIB_GAME_SNAKE_DIR)GameCore.cpp
+SRC_LIB_GAME_SNAKE		=	$(SRC_LIB_GAME_SNAKE_DIR)GameCore.cpp		\
+							$(SRC_LIB_GAME_SNAKE_DIR)SnakeCore.cpp		\
+							$(SRC_LIB_GAME_SNAKE_DIR)SnakePart.cpp		\
+							$(SRC_LIB_GAME_SNAKE_DIR)SnakeGame.cpp
 OBJ_LIB_GAME_SNAKE		=	$(SRC_LIB_GAME_SNAKE:.cpp=.o)
 
 SRC_LIB_GAME_PACMAN_DIR	=	./games/pacman/

@@ -29,7 +29,7 @@ namespace Game
       virtual ~IGame(void) { };
 
       virtual void startCore(Arcade::DLLoader<Graph::IGraph> &) = 0;
-      virtual void move() = 0;
+      virtual void movePlayer() = 0;
       virtual void setX(int) = 0;
       virtual void setY(int) = 0;
       virtual void setState(Game::State state) = 0;
