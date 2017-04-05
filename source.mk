@@ -27,6 +27,7 @@ OBJ_ARCADE		=	$(SRC_ARCADE:.cpp=.o)
 LIBRARY_DIR					=	./lib/
 SRC_LIB_GRAPHIC_NCURSES_DIR	=	./lib/ncurses/
 SRC_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES_DIR)GraphicMenu.cpp			\
+								$(SRC_LIB_GRAPHIC_NCURSES_DIR)GraphicInit.cpp			\
 								$(SRC_LIB_GRAPHIC_NCURSES_DIR)PacmanDisplayerMap.cpp
 OBJ_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES:.cpp=.o)
 
