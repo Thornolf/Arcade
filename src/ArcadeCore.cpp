@@ -95,6 +95,8 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   if (!(Menu = LibraryLoaderMenu->getInstance("getInstanceGraphicMenu")))
     throw (Arcade::ArcadeException("Cannot make instance of menu from this library"));
   libs			= Menu->startMenu(this->_listGraphic, this->_listGames);
+  if (libs.first.empty() || libs.second.empty())
+    return ;
   try
   {
     LibraryLoaderGraphic	= new Arcade::DLLoader<Graph::IGraph>(LIBRARY_GRAPHIC_DIRECTORY + libs.first);

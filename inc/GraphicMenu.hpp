@@ -25,6 +25,12 @@
 
 # define SFML_LOGO_FADE_EFFECT_SPEED (5)
 
+struct		s_menu_item
+{
+  std::string		value;
+  sf::RectangleShape	shape_menu;
+};
+
 namespace Graph
 {
   class GraphicMenu : public IGraph
@@ -65,6 +71,7 @@ namespace Graph
       sf::Sprite	createSpriteFromFile(sf::Texture &, const std::string&, bool) const;
 
     public:
+      typedef s_menu_item t_menu_item;
       std::vector<std::string>	_choicesLibraries;
   };
 }
