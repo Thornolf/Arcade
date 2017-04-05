@@ -49,7 +49,7 @@ const std::vector<std::string>	Arcade::ArcadeCore::getListDynamicLibrary(const s
 
   if (!(directory = opendir(path.c_str())))
     throw Arcade::ArcadeException("Cannot access to the library directory");
-  while ((file_dirent = readdir(directory)))
+  while ((file_dirent = readdir(directory)) && list.size() <= MAX_GET_LIBRARY - 1)
   {
     filename = ctostring(file_dirent->d_name);
     if (this->isDynamicLibraryFilename(filename.c_str()))
@@ -95,6 +95,8 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   if (!(Menu = LibraryLoaderMenu->getInstance("getInstanceGraphicMenu")))
     throw (Arcade::ArcadeException("Cannot make instance of menu from this library"));
   libs			= Menu->startMenu(this->_listGraphic, this->_listGames);
+  if (libs.first.empty() || libs.second.empty())
+    return ;
   try
   {
     LibraryLoaderGraphic	= new Arcade::DLLoader<Graph::IGraph>(LIBRARY_GRAPHIC_DIRECTORY + libs.first);

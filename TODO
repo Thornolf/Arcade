@@ -1,3 +1,2 @@
 Vérifier les casts
-Optimiser la SFML (ne pas recharger le bg par exemple)
-Limiter la récupération des libaries à 5
+Vérifier les leaks

@@ -78,12 +78,15 @@ void		displayTitle(sf::RenderWindow &window, const std::string &title)
   window.draw(text);
 }
 
-void		displayListItems(sf::RenderWindow &window, const std::vector<std::string> &listItems)
+std::vector<Graph::GraphicMenu::t_menu_item>	displayListItems(sf::RenderWindow &window,
+								     const std::vector<std::string> &listItems)
 {
-  sf::RectangleShape	rectangle(sf::Vector2f(500, 50));
-  sf::Font		font;
-  sf::Text		text;
-  int			pos_y;
+  sf::RectangleShape				rectangle(sf::Vector2f(500, 50));
+  sf::Font					font;
+  sf::Text					text;
+  int						pos_y;
+  std::vector<Graph::GraphicMenu::t_menu_item>	drawList;
+  Graph::GraphicMenu::t_menu_item		itemMenu;
 
   if (!font.loadFromFile("assets/fonts/basic-regular.ttf"))
     throw Arcade::ArcadeException("Cannot load a font");
@@ -92,30 +95,37 @@ void		displayListItems(sf::RenderWindow &window, const std::vector<std::string> 
   rectangle.setFillColor(sf::Color(26, 188, 156));
   for (auto it = listItems.begin(); it != listItems.end(); ++it)
   {
+
     text.setString(*it);
     text.setPosition(720, pos_y + 5);
     rectangle.setPosition(700, pos_y);
     window.draw(rectangle);
     window.draw(text);
     pos_y += rectangle.getSize().y + 30;
+    itemMenu.shape_menu = rectangle;
+    itemMenu.value = *it;
+    drawList.push_back(itemMenu);
   }
+  return (drawList);
 }
 
-void		displayNextButton(sf::RenderWindow &window, const std::string &title_button)
+std::string	getItemClicked(sf::Vector2i mousePosition,
+				  std::vector<Graph::GraphicMenu::t_menu_item> drawList)
 {
-  sf::RectangleShape	rectangle(sf::Vector2f(150, 50));
-  sf::Font		font;
-  sf::Text		text;
-
-  if (!font.loadFromFile("assets/fonts/basic-regular.ttf"))
-    throw Arcade::ArcadeException("Cannot load a font");
-  text.setFont(font);
-  rectangle.setFillColor(sf::Color(231, 76, 60));
-  text.setString(title_button);
-  text.setPosition(1090, 605);
-  rectangle.setPosition(1050, 600);
-  window.draw(rectangle);
-  window.draw(text);
+  (void)drawList;
+  (void)mousePosition;
+  for (auto it = drawList.begin(); it != drawList.end(); ++it)
+  {
+    if ((mousePosition.x < it->shape_menu.getPosition().x) ||
+	(mousePosition.x > (it->shape_menu.getPosition().x + it->shape_menu.getSize().x)))
+      continue;
+    else if ((mousePosition.y < it->shape_menu.getPosition().y) ||
+	     (mousePosition.y > (it->shape_menu.getPosition().y + it->shape_menu.getSize().y)))
+      continue;
+    else
+      return (it->value);
+  }
+  return ("");
 }
 
 std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
@@ -124,30 +134,34 @@ std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
 						const std::string &title,
 						std::vector<std::string> listItems)
 {
-  sf::Event		event;
-  int			alpha = 170;
-  int			cursorSpeedFadeEffect = 0;
-  int			cursorFadeEffect = 1;
-  bool			selected = false;
+  sf::Event			event;
+  int				alpha = 190;
+  int				cursorSpeedFadeEffect = 0;
+  int				cursorFadeEffect = 1;
+  std::string			choice;
+  std::vector<t_menu_item>	drawListMenu;
 
   (void)listItems;
   (void)title;
-  while (!selected)
+  while (window.isOpen())
   {
     sprite_logo.setColor(sf::Color(255, 255, 255, alpha)); // à moitié transparent
-    while (window.pollEvent(event))
-    {
-      if (event.type == sf::Event::Closed)
-	window.close();
-      else if (event.type == sf::Event::KeyPressed)
-	selected = true;
-    }
     window.clear();
     window.draw(sprite_bg);
     window.draw(sprite_logo);
     displayTitle(window, title);
-    displayListItems(window, listItems);
-    displayNextButton(window, "Next");
+    drawListMenu = displayListItems(window, listItems);
+    while (window.pollEvent(event))
+    {
+      if (event.type == sf::Event::Closed || (sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
+	window.close();
+      if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+      {
+	choice = getItemClicked(sf::Mouse::getPosition(window), drawListMenu);
+	if (!choice.empty())
+	  return (choice);
+      }
+    }
     window.display();
     if (cursorSpeedFadeEffect >= SFML_LOGO_FADE_EFFECT_SPEED)
     {
@@ -158,7 +172,7 @@ std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
     }
     cursorSpeedFadeEffect++;
   }
-  return ("lib1");
+  return ("");
 }
 
 std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames)
