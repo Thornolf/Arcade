@@ -8,18 +8,11 @@
 ** Last update Thu Mar 30 16:31:23 2017 Guillaume CAUCHOIS
 */
 
-#ifndef		_CPP_ARCADE_DLLOADER__HPP_
-#define		_CPP_ARCADE_DLLOADER__HPP_
+#ifndef			_CPP_ARCADE_DLLOADER__HPP_
+# define		_CPP_ARCADE_DLLOADER__HPP_
 
-# include <string>
-# ifndef _GNU_SOURCE
-#  define _GNU_SOURCE
-# endif /* !_GNU_SOURCE */
 # include <dlfcn.h>
 # include "IGraph.hpp"
-# include "GraphicMenu.hpp"
-# include "PacmanDisplayerMap.hpp"
-# include "ArcadeException.hpp"
 
 namespace Arcade
 {

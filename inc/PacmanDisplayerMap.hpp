@@ -28,8 +28,8 @@ namespace Graph
       /* Unused Methods from Graph::IGraph */
       void					createMap();
       void					Game();
-      void					SetSprite(int x, int y);
-      void					UnsetSprite(int x, int y);
+      void					SetSprite(int x, int y, Game::IGame *);
+      void					UnsetSprite(int x, int y, Game::IGame *);
       void					Animation();
       std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &);
 

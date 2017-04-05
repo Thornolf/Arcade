@@ -45,8 +45,8 @@ namespace Graph
       /* Unused pure methods */
       void	createMap();
       void	Game();
-      void	SetSprite(int x, int y);
-      void	UnsetSprite(int x, int y);
+      void	SetSprite(int, int, Game::IGame *);
+      void	UnsetSprite(int, int, Game::IGame *);
       void	Animation();
       void	displayMap(int **);
 

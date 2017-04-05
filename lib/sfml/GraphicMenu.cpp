@@ -216,7 +216,7 @@ extern "C"
 /* Unused pure methods */
 void	Graph::GraphicMenu::createMap(void) {}
 void	Graph::GraphicMenu::Game(void)  {}
-void	Graph::GraphicMenu::SetSprite(int x, int y)  {(void)x; (void)y;}
-void	Graph::GraphicMenu::UnsetSprite(int x, int y) {(void)x; (void)y;}
+void	Graph::GraphicMenu::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
+void	Graph::GraphicMenu::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::GraphicMenu::Animation() {}
 void	Graph::GraphicMenu::displayMap(int **ptr){(void)ptr;};

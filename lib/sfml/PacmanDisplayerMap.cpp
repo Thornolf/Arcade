@@ -44,8 +44,8 @@ Graph::IGraph	*getInstancePacmanDisplayerMap()
 /* Unused Methods from Graph::IGraph */
 void	Graph::PacmanDisplayerMap::createMap() {}
 void	Graph::PacmanDisplayerMap::Game() {}
-void	Graph::PacmanDisplayerMap::SetSprite(int x, int y) {(void)x; (void)y;}
-void	Graph::PacmanDisplayerMap::UnsetSprite(int x, int y) {(void)x; (void)y;}
+void	Graph::PacmanDisplayerMap::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
+void	Graph::PacmanDisplayerMap::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::PacmanDisplayerMap::Animation() {}
 
 std::pair<std::string, std::string>	Graph::PacmanDisplayerMap::startMenu(const std::vector<std::string> &title, const std::vector<std::string> &list)

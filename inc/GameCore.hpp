@@ -27,18 +27,24 @@ class GameCore : public Game::IGame
     GameCore	&operator=(const GameCore &);
 
     /* Pures Methods from IGames */
-    virtual void	startCore(Arcade::DLLoader<Graph::IGraph> &);
-    void	movePlayer();
-    void	setX(int pos);
-    void	setY(int pos);
-    void	setState(Game::State state);
-    void	setSpeed(size_t speed);
-    int		getX() const;
-    int		getY() const;
-    Game::State	getState() const;
-    size_t	getSpeed() const;
-    bool	isAlive() const;
-    void	Dump(void) const;
+    void		startCore(Arcade::DLLoader<Graph::IGraph> &);
+    void		movePlayer(std::map<int, std::map<int, int>>);
+    void		setX(int);
+    void		setY(int);
+    void		setState(Game::State);
+    void		setSpeed(size_t);
+    void		setDirection(Game::Direction);
+    void		setLive(bool);
+    int			getX(void) const;
+    int			getY(void) const;
+    Game::State		getState(void) const;
+    size_t		getSpeed(void) const;
+    Game::Direction	getDirection(void) const;
+    int			getType(void) const;
+    bool		isAlive(void) const;
+    void		Dump(void) const;
+    int			getScore(void) const;
+    void		setScore(int);
 };
 
 #endif		/* !_GAME_CORE__HPP_ */
