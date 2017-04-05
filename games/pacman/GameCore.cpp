@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
+** Last update Wed Apr 05 14:26:07 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -32,11 +32,14 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
   ParserMap		*parser;
   Graph::IGraph		*LibGraphic;
+  int				**tmp;
 
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();
   LibGraphic = LoaderGraphicLib.getInstance("getInstancePacmanDisplayerMap");
   LibGraphic->displayMap(NULL);
+  tmp = parser->getMap()->getData();
+  (void)tmp;
   delete parser;
 }
 

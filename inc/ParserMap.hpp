@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 17:48:29 2017 Quentin Baudet
-** Last update Mon Apr 03 22:51:26 2017 Quentin Baudet
+** Last update Wed Apr 05 11:40:12 2017 Quentin Baudet
 */
 
 #ifndef 	PARSERMAP_HPP
@@ -35,7 +35,7 @@ class ParserMap
     MapGame	*getMap(void) const;
 
   private:
-    int				_height;
+	int				_height;
     int				_length;
     std::vector<std::string>	_buffer;
     MapGame			*_map;
