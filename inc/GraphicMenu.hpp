@@ -13,7 +13,6 @@
 
 # include "IGraph.hpp"
 # include "ArcadeException.hpp"
-# include "GraphicInit.hpp"
 # include <vector>
 # include <utility>
 # include <new>

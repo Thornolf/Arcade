@@ -24,8 +24,6 @@ CC					=	g++
 
 RM					=	@rm -vf
 
-CFLAGS				=	-fPIC -W -Wall -Wextra -Werror -I./inc/
-
 CXXFLAGS			=	-fPIC -W -Wall -Wextra -Werror -I./inc/
 
 LDFLAGS				=	-shared

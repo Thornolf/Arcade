@@ -8,18 +8,11 @@
 ** Last update Wed Apr 05 16:35:23 2017 Guillaume CAUCHOIS
 */
 
-#include "ncurses/GraphicInit.hpp"
+#include "sfml/GraphicInit.hpp"
 
-Graph::GraphicInit::GraphicInit()
+Graph::GraphicInit::GraphicInit(const std::string &title)
 {
-  initscr();
-  clear();
-  start_color();
-  cbreak();
-  noecho();
-  keypad(stdscr, TRUE);
-  curs_set(0);
-  nodelay(stdscr, TRUE);
+  this->_window = new sf::RenderWindow(sf::VideoMode(1280, 720), title);
 }
 
 Graph::GraphicInit::GraphicInit(const Graph::GraphicInit &obj)
@@ -29,9 +22,7 @@ Graph::GraphicInit::GraphicInit(const Graph::GraphicInit &obj)
 
 Graph::GraphicInit::~GraphicInit()
 {
-  clear();
-  nodelay(stdscr, FALSE);
-  endwin();
+  delete this->_window;
 }
 
 Graph::GraphicInit	&Graph::GraphicInit::operator=(const Graph::GraphicInit &obj)
@@ -40,6 +31,10 @@ Graph::GraphicInit	&Graph::GraphicInit::operator=(const Graph::GraphicInit &obj)
   return (*this);
 }
 
+sf::RenderWindow	*Graph::GraphicInit::getWindow(void)
+{
+  return (this->_window);
+}
 
 /* Unused function herit from IGraph */
 void	Graph::GraphicInit::createMap(void) {}
