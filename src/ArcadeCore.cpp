@@ -49,7 +49,7 @@ const std::vector<std::string>	Arcade::ArcadeCore::getListDynamicLibrary(const s
 
   if (!(directory = opendir(path.c_str())))
     throw Arcade::ArcadeException("Cannot access to the library directory");
-  while ((file_dirent = readdir(directory)))
+  while ((file_dirent = readdir(directory)) && list.size() <= MAX_GET_LIBRARY - 1)
   {
     filename = ctostring(file_dirent->d_name);
     if (this->isDynamicLibraryFilename(filename.c_str()))

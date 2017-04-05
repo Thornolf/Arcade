@@ -11,6 +11,8 @@
 #ifndef		_ARCADE_CORE__HPP_
 # define	_ARCADE_CORE__HPP_
 
+# define	MAX_GET_LIBRARY (5)
+
 # define	LIBRARY_GAME_DIRECTORY "games/"
 # define	LIBRARY_GRAPHIC_DIRECTORY "lib/"
 
