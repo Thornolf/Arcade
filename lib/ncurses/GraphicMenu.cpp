@@ -53,7 +53,7 @@ char**	vectorStringToArrayArrayChar(const std::vector<std::string> &vector)
 ITEM	**getItemsList(std::vector<std::string> listChoices)
 {
   ITEM**	itemsList;
-  unsigned int		i;
+  unsigned int	i;
   char**	CItemList;
 
   itemsList = new ITEM*[listChoices.size() + 1];
@@ -191,16 +191,6 @@ void		Graph::GraphicMenu::displayArcadeTitle(void) const
   this->displayEofARCADE();
 }
 
-void	Graph::GraphicMenu::initScreen() const
-{
-  initscr();
-  start_color();
-  cbreak();
-  noecho();
-  keypad(stdscr, TRUE);
-  curs_set(0);
-}
-
 void	Graph::GraphicMenu::displayRulesMenu(void) const
 {
   mvprintw(6, 3, "1- Select the graphic library to use for the display");
@@ -234,8 +224,8 @@ std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vec
   std::string	name_library_graphic;
   std::string	name_library_game;
   WINDOW	*window;
+  Graph::GraphicInit	initGraphic;
 
-  this->initScreen();
   window = newwin(10, 40, 10, 5);
   keypad(window, TRUE);
   items_graphics	= getItemsList(listGraphics);
@@ -259,7 +249,6 @@ std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vec
     free_item(items_games[i]);
   delete[] items_graphics;
   delete[] items_games;
-  endwin();
   return (std::make_pair(name_library_graphic, name_library_game));
 }
 

@@ -13,6 +13,7 @@
 
 # include "IGraph.hpp"
 # include "ArcadeException.hpp"
+# include "GraphicInit.hpp"
 # include <vector>
 # include <utility>
 # include <new>
@@ -55,7 +56,6 @@ namespace Graph
 
       /* Member Methods */
       void		SetLibraryChoices(const std::vector<std::string> &ListGraphics);
-      void		initScreen() const;
       std::string	MenuLoop(const std::string &, WINDOW *, MENU*) const;
       std::string	MenuLoop(sf::RenderWindow &, sf::Sprite &, sf::Sprite &, const std::string &, std::vector<std::string>);
       void		displayAofARCADE(void) const;
