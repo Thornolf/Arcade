@@ -11,29 +11,29 @@
 #include "APCharacter.hpp"
 #include "MapGame.hpp"
 APCharacter::APCharacter () {
-	this->_name = "Fossae_t";
-	this->_id = 1;
-	this->_hp = APCharacter::ALIVE;
-	this->_state = Game::VULNERABLE;
-	this->_direction = Game::UP;
-	this->_X = 0;
-	this->_Y = 0;
+  this->_name = "Fossae_t";
+  this->_id = 1;
+  this->_hp = APCharacter::ALIVE;
+  this->_state = Game::VULNERABLE;
+  this->_direction = Game::UP;
+  this->_X = 0;
+  this->_Y = 0;
 }
 
 APCharacter::APCharacter (	std::string newName,
-							int newId,
-							APCharacter::Hp newHp,
-							Game::State newState,
-							Game::Direction newDirection,
-							int newX,
-							int newY) {
-	this->_name = newName;
-	this->_id = newId;
-	this->_hp = newHp;
-	this->_state = newState;
-	this->_direction = newDirection;
-	this->_X = newX;
-	this->_Y = newY;
+				  int newId,
+				  APCharacter::Hp newHp,
+				  Game::State newState,
+				  Game::Direction newDirection,
+				  int newX,
+				  int newY) {
+  this->_name = newName;
+  this->_id = newId;
+  this->_hp = newHp;
+  this->_state = newState;
+  this->_direction = newDirection;
+  this->_X = newX;
+  this->_Y = newY;
 }
 
 APCharacter::~APCharacter () {}
@@ -41,96 +41,100 @@ APCharacter::~APCharacter () {}
 /* ACTION */
 
 void 			APCharacter::movePlayerUp(int **map) {
-	int oldPosX = this->getX();
-	int oldPosY = this->getY();
-	if (map[oldPosY + 1][oldPosX]) {
-	}
-	(void)map;
+  int oldPosX = this->getX();
+  int oldPosY = this->getY();
+  if (map[oldPosY + 1][oldPosX]) {
+  }
+  (void)map;
 }
 void 			APCharacter::movePlayerRight(int **map) {
-	int oldPosX = this->getX();
-	int oldPosY = this->getY();
+  int oldPosX = this->getX();
+  int oldPosY = this->getY();
 
-	if (map[oldPosY][oldPosX + 1]) {
-	}
-	(void)map;
+  if (map[oldPosY][oldPosX + 1]) {
+  }
+  (void)map;
 }
 void 			APCharacter::movePlayerLeft(int **map) {
-	int oldPosX = this->getX();
-	int oldPosY = this->getY();
+  int oldPosX = this->getX();
+  int oldPosY = this->getY();
 
-	if (map[oldPosY][oldPosX -1]) {
-	}
-	(void)map;
+  if (map[oldPosY][oldPosX -1]) {
+  }
+  (void)map;
 }
 void 			APCharacter::movePlayerDown(int **map) {
-	int oldPosX = this->getX();
-	int oldPosY = this->getY();
+  int oldPosX = this->getX();
+  int oldPosY = this->getY();
 
-	if (map[oldPosY - 1][oldPosX]) {
-	}
-	(void)map;
+  if (map[oldPosY - 1][oldPosX]) {
+  }
+  (void)map;
 }
 
-void 		APCharacter::movePlayer(int **map) {
-	/* Pointeur sur fonction */
-	/* Faire 4 func pour les 4 directions qui check si il peu aller là,
- 	si il peut alors il faut changer la position du player */
-	(void)map;
+void 		APCharacter::movePlayer(int **map, Game::Direction direction) {
+  std::map<Game::Direction, std::function<void(int **)>>	moveActions;
+
+  moveActions[Game::UP] = std::bind(&APCharacter::movePlayerUp, this, std::placeholders::_1);
+  moveActions[Game::DOWN] = std::bind(&APCharacter::movePlayerDown, this, std::placeholders::_1);
+  moveActions[Game::LEFT] = std::bind(&APCharacter::movePlayerLeft, this, std::placeholders::_1);
+  moveActions[Game::RIGHT] = std::bind(&APCharacter::movePlayerRight, this, std::placeholders::_1);
+
+  moveActions[direction](map);
 }
 
 /* SETTER */
 
 void		APCharacter::setX(int newX) {
-	this->_X = newX;
+  this->_X = newX;
 }
 
 void		APCharacter::setY(int newY) {
-	this->_Y = newY;
+  this->_Y = newY;
 }
 
 void		APCharacter::setState(Game::State newState){
-	this->_state = newState;
+  this->_state = newState;
 }
 
 
 void		APCharacter::setDirection(Game::Direction newDirection) {
-	this->_direction = newDirection;
+  this->_direction = newDirection;
 }
 
 /* GETTER */
 
 int			APCharacter::getX(void) const {
-	return (this->_X);
+  return (this->_X);
 }
 
 int			APCharacter::getY(void) const {
-	return (this->_Y);
+  return (this->_Y);
 }
 
 Game::State	APCharacter::getState(void) const {
-	return (this->_state);
+  return (this->_state);
 }
 
 Game::Direction	APCharacter::getDirection(void) const{
-	return (Game::UP);
+  return (Game::UP);
 }
 
 /* Return l'ID */
 int			APCharacter::getType(void) const{
-	return (0);
+  return (0);
 }
 
 bool		APCharacter::isAlive(void) const{
-	return (true);
+  return (true);
 }
 
 void		APCharacter::Dump(void) const{}
 
 void		APCharacter::setScore(int){}
-int			APCharacter::getScore(void) const{ return (0); }
+int		APCharacter::getScore(void) const{ return (0); }
 size_t		APCharacter::getSpeed(void) const{ return (0); }
 void		APCharacter::movePlayer(std::map<int, std::map<int, int>>){}
 void		APCharacter::setSpeed(size_t newSpeed){ (void)newSpeed;}
-void 	APCharacter::startCore(Arcade::DLLoader<Graph::IGraph> &lib) { (void)lib; }
+void 		APCharacter::startCore(Arcade::DLLoader<Graph::IGraph> &lib) { (void)lib; }
 void		APCharacter::setLive(bool newLive){	(void)newLive; }
