@@ -47,6 +47,7 @@ namespace Graph
       void	drawFood(int, int, char);
       void	drawLoose(void);
       int	recoverKey(void);
+      bool	checkSizeWindow(int x, int y);
 
     private:
       sf::RenderWindow	*_window;

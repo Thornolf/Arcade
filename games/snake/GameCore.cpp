@@ -30,7 +30,15 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
   SnakeCore	SnakeCore;
 
-  SnakeCore.startCore(LoaderGraphicLib);
+  try
+  {
+    SnakeCore.startCore(LoaderGraphicLib);
+  }
+  catch (const Arcade::ArcadeException &e)
+  {
+    throw e;
+  }
+
 }
 
 /* Unused function pure form IGame */

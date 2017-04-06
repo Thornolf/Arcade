@@ -126,7 +126,18 @@ void	Graph::SnakeGraph::drawLoose(void)
   printw("Game over !!");
 }
 
-/* Unused function herit from IGraph */
+bool	Graph::SnakeGraph::checkSizeWindow(int minX, int minY)
+{
+  int	x = 0;
+  int	y = 0;
+
+  getmaxyx(stdscr, y, x);
+  if (x <= minX + 15 || y <= minY)
+    return (false);
+  return (true);
+}
+
+/* Unused function inherit from IGraph */
 void	Graph::SnakeGraph::createMap(void) {}
 void	Graph::SnakeGraph::Game(void)  {}
 void	Graph::SnakeGraph::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}

@@ -227,3 +227,4 @@ void	Graph::GraphicMenu::drawScore(int, int) {};
 void	Graph::GraphicMenu::drawFood(int, int, char) {};
 void	Graph::GraphicMenu::drawLoose(void) {};
 int	Graph::GraphicMenu::recoverKey(void) {return (0);};
+bool	Graph::GraphicMenu::checkSizeWindow(int, int) {return (false);}

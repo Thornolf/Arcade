@@ -53,6 +53,7 @@ void	Graph::PacmanDisplayerMap::drawScore(int, int) {};
 void	Graph::PacmanDisplayerMap::drawFood(int, int, char) {};
 void	Graph::PacmanDisplayerMap::drawLoose(void) {};
 int	Graph::PacmanDisplayerMap::recoverKey(void) {return (0);};
+bool	Graph::PacmanDisplayerMap::checkSizeWindow(int, int) {return (false);}
 
 std::pair<std::string, std::string>	Graph::PacmanDisplayerMap::startMenu(const std::vector<std::string> &title, const std::vector<std::string> &list)
 {

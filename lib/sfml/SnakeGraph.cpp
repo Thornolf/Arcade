@@ -66,13 +66,14 @@ int	Graph::SnakeGraph::recoverKey(void)
 
 void	Graph::SnakeGraph::drawLoose(void) {}
 
-/* Unused function herit from IGraph */
+/* Unused function inherit from IGraph */
 void	Graph::SnakeGraph::createMap(void) {}
 void	Graph::SnakeGraph::Game(void)  {}
 void	Graph::SnakeGraph::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::SnakeGraph::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::SnakeGraph::Animation() {}
 void	Graph::SnakeGraph::displayMap(int **ptr){(void)ptr;}
+bool	Graph::SnakeGraph::checkSizeWindow(int, int) {return (false);}
 
 std::pair<std::string, std::string>	Graph::SnakeGraph::startMenu(const std::vector<std::string> &v1, const std::vector<std::string> &v2)
 {

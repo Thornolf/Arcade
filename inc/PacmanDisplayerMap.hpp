@@ -38,9 +38,8 @@ namespace Graph
       void					drawFood(int, int, char);
       void					drawLoose(void);
       int					recoverKey(void);
-
-
-      void	displayMap(int **);
+      bool					checkSizeWindow(int x, int y);
+      void					displayMap(int **);
   };
 }
 
