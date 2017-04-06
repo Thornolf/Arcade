@@ -46,6 +46,11 @@ void		SnakeCore::startCore(Arcade::DLLoader<Graph::IGraph> &libraryGraph)
   Graph::IGraph	*graph;
 
   graph = libraryGraph.getInstance("getInstanceSnakeGraph");
+  if (!graph->checkSizeWindow(this->game->getWidth(), this->game->getHeight()))
+  {
+    delete graph;
+    throw Arcade::ArcadeException("The window is too small to be displayed correctly");
+  }
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawPlayer(this->getSnakeBody(), this->game->getPartChar());
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawScore(this->game->getPoints(), this->game->getWidth());

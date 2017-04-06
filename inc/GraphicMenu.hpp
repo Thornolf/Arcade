@@ -55,6 +55,7 @@ namespace Graph
       void	drawFood(int, int, char);
       void	drawLoose(void);
       int	recoverKey(void);
+      bool	checkSizeWindow(int x, int y);
 
       /* Pure Methods */
       std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &);

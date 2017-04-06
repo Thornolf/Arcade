@@ -40,6 +40,7 @@ namespace Graph
       virtual void					drawFood(int, int, char) = 0;
       virtual void					drawLoose(void) = 0;
       virtual int					recoverKey(void) = 0;
+      virtual bool					checkSizeWindow(int x, int y) = 0;
   };
 }
 

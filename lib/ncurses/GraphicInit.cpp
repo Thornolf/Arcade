@@ -40,8 +40,7 @@ Graph::GraphicInit	&Graph::GraphicInit::operator=(const Graph::GraphicInit &obj)
   return (*this);
 }
 
-
-/* Unused function herit from IGraph */
+/* Unused function inherit from IGraph */
 void	Graph::GraphicInit::createMap(void) {}
 void	Graph::GraphicInit::Game(void)  {}
 void	Graph::GraphicInit::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
@@ -49,11 +48,12 @@ void	Graph::GraphicInit::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x
 void	Graph::GraphicInit::Animation() {}
 void	Graph::GraphicInit::displayMap(int **ptr){(void)ptr;}
 void	Graph::GraphicInit::drawMap(int, int, char) {}
-void	Graph::GraphicInit::drawPlayer(std::vector<Game::IGame*>, char) {};
-void	Graph::GraphicInit::drawScore(int, int) {};
-void	Graph::GraphicInit::drawFood(int, int, char) {};
-void	Graph::GraphicInit::drawLoose(void) {};
-int	Graph::GraphicInit::recoverKey(void) {return (0);};
+void	Graph::GraphicInit::drawPlayer(std::vector<Game::IGame*>, char) {}
+void	Graph::GraphicInit::drawScore(int, int) {}
+void	Graph::GraphicInit::drawFood(int, int, char) {}
+void	Graph::GraphicInit::drawLoose(void) {}
+int	Graph::GraphicInit::recoverKey(void) {return (0);}
+bool	Graph::GraphicInit::checkSizeWindow(int, int) {return (false);}
 
 std::pair<std::string, std::string>	Graph::GraphicInit::startMenu(const std::vector<std::string> &v1, const std::vector<std::string> &v2)
 {

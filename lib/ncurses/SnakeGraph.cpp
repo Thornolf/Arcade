@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 22:03:55 2017 Robin Grattepanche
+** Last update Thu Apr 06 22:05:12 2017 Robin Grattepanche
 */
 
 #include "ncurses/GraphicInit.hpp"
@@ -126,13 +126,18 @@ void	Graph::SnakeGraph::drawLoose(void)
   printw("Game over !!");
 }
 
-// void	Graph::SnakeGraph::drawTitle(void)
-// {
-// 	init_color(COLOR_YELLOW, 11, 128, 33);
-//
-// }
+bool	Graph::SnakeGraph::checkSizeWindow(int minX, int minY)
+{
+  int	x = 0;
+  int	y = 0;
 
-/* Unused function herit from IGraph */
+  getmaxyx(stdscr, y, x);
+  if (x <= minX + 15 || y <= minY)
+    return (false);
+  return (true);
+}
+
+/* Unused function inherit from IGraph */
 void	Graph::SnakeGraph::createMap(void) {}
 void	Graph::SnakeGraph::Game(void)  {}
 void	Graph::SnakeGraph::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
