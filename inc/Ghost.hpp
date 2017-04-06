@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Thu Apr 06 15:49:32 2017 Quentin Baudet
-** Last update Thu Apr 06 16:08:41 2017 Quentin Baudet
+** Last update Thu Apr 06 20:43:02 2017 Quentin Baudet
 */
 
 #ifndef GHOST_HPP
@@ -20,6 +20,8 @@ public:
 	Ghost ();
 	/* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY */
 	Ghost (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int);
+	/* NAME | ID | POS X | POS Y */
+	Ghost (std::string, int , int , int );
 	virtual ~Ghost ();
 };
 #endif	/* !GHOST_HPP */

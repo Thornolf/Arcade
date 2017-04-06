@@ -5,22 +5,42 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Thu Apr 06 15:49:36 2017 Quentin Baudet
-** Last update Thu Apr 06 15:59:03 2017 Quentin Baudet
+** Last update Thu Apr 06 20:38:37 2017 Quentin Baudet
 */
 
-#ifndef GHOST_HPP
-#define GHOST_HPP
-
 #include "Ghost.hpp"
-#include "APCharacter.hpp"
 
-class Ghost : public APCharacter {
-private:
-	/* data */
+Ghost::Ghost() : APCharacter() {
+}
 
-public:
-	Ghost ();
-	virtual ~Ghost ();
-};
+Ghost::Ghost(	std::string newName,
+			  	int newId,
+			  	APCharacter::Hp newHp,
+			  	Game::State newState,
+			  	Game::Direction newDirection,
+			  	int newX,
+			  	int newY) :
+				APCharacter(newName,
+							newId,
+							newHp,
+							newState,
+							newDirection,
+							newX,
+							newY) {
+}
 
-#endif
+Ghost::Ghost (	std::string newName,
+				  			int newId,
+				  			int newX,
+				  			int newY) : APCharacter (
+  newName,
+  newId,
+  APCharacter::ALIVE,
+  Game::INVUNERABLE,
+  Game::UP,
+  newX,
+  newY
+)
+{}
+
+Ghost::~Ghost () {}

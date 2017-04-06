@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Thu Apr 06 18:40:06 2017 Quentin Baudet
+** Last update Thu Apr 06 20:20:24 2017 Quentin Baudet
 */
 
 #include "ParserMap.hpp"
@@ -15,15 +15,18 @@ MapGame::MapGame(int newLength, int newHeight)
 {
   this->_height = newHeight;
   this->_length = newLength;
-  this->_data = new int*[this->_height + 1]; /* !! */
+  this->_data = new int*[this->_height + 1];
   for (int i = 0; i != this->_height + 1; i++)
-    this->_data[i] = new int[this->_length + 1]; /* !! */
+    this->_data[i] = new int[this->_length + 1]; 
 }
 
 void	MapGame::fillUpData(int index_line, const std::string &line)
 {
   for (size_t index_char = 0; index_char != line.length(); ++index_char) {
-    this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
+    if ( line.c_str()[index_char] - '0' == 9)
+		this->_data[index_line][index_char] = -1;
+	else
+    	this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
   }
 }
 

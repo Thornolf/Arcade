@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:55:13 2017 Quentin Baudet
-** Last update Thu Apr 06 20:01:41 2017 Quentin Baudet
+** Last update Thu Apr 06 20:22:38 2017 Quentin Baudet
 */
 
 #ifndef		APCHARACTER_HPP
@@ -42,11 +42,12 @@ class APCharacter : public Game::IGame {
     int 			_X;
     int 			_Y;
 
-  public:
-    APCharacter ();
-    /* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY */
-    APCharacter (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int);
-    virtual ~APCharacter ();
+public:
+	APCharacter ();
+	/* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY */
+	APCharacter (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int);
+	APCharacter (std::string, int, int, int);
+	virtual ~APCharacter ();
 
     void			startCore(Arcade::DLLoader<Graph::IGraph> &lib);
 
