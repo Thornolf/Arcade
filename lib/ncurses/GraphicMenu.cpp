@@ -12,6 +12,7 @@
 #include <ncurses.h>
 #include <menu.h>
 #include "GraphicMenu.hpp"
+#include "ncurses/GraphicInit.hpp"
 
 Graph::GraphicMenu::GraphicMenu() {}
 

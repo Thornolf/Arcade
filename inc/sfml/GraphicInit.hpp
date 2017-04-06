@@ -13,6 +13,7 @@
 
 # include "IGraph.hpp"
 # include "ArcadeException.hpp"
+# include <string>
 # include <ncurses.h>
 # include <SFML/Audio.hpp>
 # include <SFML/Graphics.hpp>
@@ -23,10 +24,14 @@ namespace Graph
   {
     public:
       /* Canonical form */
-      GraphicInit();
+      GraphicInit(const std::string &);
       GraphicInit(const GraphicInit &);
       virtual ~GraphicInit();
       GraphicInit	&operator=(const GraphicInit &);
+
+      /* Membre Function */
+      sf::RenderWindow	*getWindow(void);
+
 
       /* Unused pure methods */
       void	createMap();
@@ -36,6 +41,9 @@ namespace Graph
       void	Animation();
       void	displayMap(int **);
       std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &);
+
+    private:
+      sf::RenderWindow	*_window;
   };
 }
 

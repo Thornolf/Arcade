@@ -33,7 +33,8 @@ OBJ_LIB_GRAPHIC_NCURSES		=	$(SRC_LIB_GRAPHIC_NCURSES:.cpp=.o)
 
 SRC_LIB_GRAPHIC_SFML_DIR	=	./lib/sfml/
 SRC_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML_DIR)GraphicMenu.cpp				\
-								$(SRC_LIB_GRAPHIC_NCURSES_DIR)PacmanDisplayerMap.cpp
+								$(SRC_LIB_GRAPHIC_SFML_DIR)GraphicInit.cpp				\
+								$(SRC_LIB_GRAPHIC_SFML_DIR)PacmanDisplayerMap.cpp
 OBJ_LIB_GRAPHIC_SFML		=	$(SRC_LIB_GRAPHIC_SFML:.cpp=.o)
 
 #########################

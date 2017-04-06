@@ -9,6 +9,7 @@
 */
 
 #include "GraphicMenu.hpp"
+#include "sfml/GraphicInit.hpp"
 
 Graph::GraphicMenu::GraphicMenu() {}
 
@@ -177,14 +178,14 @@ std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
 
 std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames)
 {
-  sf::RenderWindow	window(sf::VideoMode(1280, 720), "ARCADE - C++ 2020");
-  sf::Sprite		sprite_bg;
-  sf::Sprite		sprite_logo;
-  sf::Texture		texture_bg;
-  sf::Texture		texture_logo;
-  sf::Music		music;
-  std::string		library_graphic_chosen;
-  std::string		library_games_chosen;
+  sf::Sprite				sprite_bg;
+  sf::Sprite				sprite_logo;
+  sf::Texture				texture_bg;
+  sf::Texture				texture_logo;
+  sf::Music				music;
+  std::string				library_graphic_chosen;
+  std::string				library_games_chosen;
+  Graph::GraphicInit			initGraphic("ARCADE - C++ 2020");
 
   try
   {
@@ -199,9 +200,9 @@ std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vec
   sprite_logo.setScale(0.8, 0.8);
   sprite_logo.setPosition(50, 100);
   this->LaunchMenuSound(music, "assets/music/menu.ogg");
-  library_graphic_chosen = this->MenuLoop(window, sprite_bg, sprite_logo, "Please select a graphic library", listGraphics);
+  library_graphic_chosen = this->MenuLoop(*(initGraphic.getWindow()), sprite_bg, sprite_logo, "Please select a graphic library", listGraphics);
   if (!library_graphic_chosen.empty())
-  library_games_chosen = this->MenuLoop(window, sprite_bg, sprite_logo, "Please select a game library", listGames);
+  library_games_chosen = this->MenuLoop(*(initGraphic.getWindow()), sprite_bg, sprite_logo, "Please select a game library", listGames);
   return (std::make_pair(library_graphic_chosen, library_games_chosen));
 }
 
