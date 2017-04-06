@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 10:59:53 2017 Guillaume CAUCHOIS
-** Last update Wed Apr 05 10:59:53 2017 Guillaume CAUCHOIS
+** Last update Thu Apr 06 22:07:37 2017 Robin Grattepanche
 */
 
 # include "SnakeCore.hpp"
@@ -54,7 +54,6 @@ void		SnakeCore::startCore(Arcade::DLLoader<Graph::IGraph> &libraryGraph)
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawPlayer(this->getSnakeBody(), this->game->getPartChar());
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawScore(this->game->getPoints(), this->game->getWidth());
-  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawFood(this->food->getY(), this->food->getX(), this->game->getFoodChar());
   this->putFood(graph);
   while(1)
   {
@@ -132,4 +131,3 @@ void	SnakeCore::putFood(Graph::IGraph *graph)
   }
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawFood(this->food->getY(), this->food->getX(), this->game->getFoodChar());
 }
-
