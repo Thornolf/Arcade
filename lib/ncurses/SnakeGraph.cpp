@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
+** Last update Thu Apr 06 22:03:55 2017 Robin Grattepanche
 */
 
 #include "ncurses/GraphicInit.hpp"
@@ -125,6 +125,12 @@ void	Graph::SnakeGraph::drawLoose(void)
   move(12,36);
   printw("Game over !!");
 }
+
+// void	Graph::SnakeGraph::drawTitle(void)
+// {
+// 	init_color(COLOR_YELLOW, 11, 128, 33);
+//
+// }
 
 /* Unused function herit from IGraph */
 void	Graph::SnakeGraph::createMap(void) {}
