@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Wed Apr 05 22:16:20 2017 Quentin Baudet
+** Last update Thu Apr 06 11:33:23 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -42,8 +42,14 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
   LibGraphic->displayMap(NULL);
   tmp = parser->getMap()->getData();
   (void)tmp;
-
-std::cout << character->getX() << std::endl;
+  std::cout << "Player UP" << '\n';
+  character->movePlayerUp(tmp);
+  std::cout << "Player DOWN" << '\n';
+  character->movePlayerDown(tmp);
+  std::cout << "Player LEFT" << '\n';
+  character->movePlayerLeft(tmp);
+  std::cout << "Player RIGHT" << '\n';
+  character->movePlayerRight(tmp);
 
   delete parser;
 }

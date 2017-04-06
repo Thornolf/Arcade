@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:55:13 2017 Quentin Baudet
-** Last update Thu Apr 06 10:56:57 2017 Quentin Baudet
+** Last update Thu Apr 06 11:29:21 2017 Quentin Baudet
 */
 
 #ifndef APCHARACTER_HPP
@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include "IGame.hpp"
+#include "MapGame.hpp"
 
 class APCharacter : public Game::IGame {
 public:
@@ -47,6 +48,7 @@ public:
 	void 			movePlayerRight(int **);
 	void 			movePlayerLeft(int **);
 	void 			movePlayerDown(int **);
+	bool 			isWalkable(int) const;
 
 	/* SETTER */
 	void			setX(int);
@@ -57,11 +59,13 @@ public:
 	void			setLive(bool);
 
 	/* GETTER */
+
 	int				getX(void) const;
 	int				getY(void) const;
 	Game::State		getState(void) const;
 	size_t			getSpeed(void) const;
 	Game::Direction	getDirection(void) const;
+	BlockType		getType(int) const;
 
 	/* fossae_t */
 	void		movePlayer(std::map<int, std::map<int, int>>);

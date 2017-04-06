@@ -5,19 +5,19 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:53:52 2017 Quentin Baudet
-** Last update Thu Apr 06 10:56:50 2017 Quentin Baudet
+** Last update Thu Apr 06 11:40:41 2017 Quentin Baudet
 */
 
 #include "APCharacter.hpp"
-#include "MapGame.hpp"
+
 APCharacter::APCharacter () {
 	this->_name = "Fossae_t";
 	this->_id = 1;
 	this->_hp = APCharacter::ALIVE;
 	this->_state = Game::VULNERABLE;
 	this->_direction = Game::UP;
-	this->_X = 0;
-	this->_Y = 0;
+	this->_X = 1;
+	this->_Y = 1;
 }
 
 APCharacter::APCharacter (	std::string newName,
@@ -40,10 +40,29 @@ APCharacter::~APCharacter () {}
 
 /* ACTION */
 
+BlockType 		APCharacter::getType(int newType) const {
+	if (newType == BlockType::WAY) {
+		return (BlockType::WAY);
+	} else {
+		return (BlockType::BLOCK);
+	}
+}
+
+bool 			APCharacter::isWalkable(int newBlock) const {
+	if (newBlock == BlockType::WAY) {
+		return (true);
+	} else {
+		return (false);
+	}
+}
 void 			APCharacter::movePlayerUp(int **map) {
 	int oldPosX = this->getX();
 	int oldPosY = this->getY();
-	if (map[oldPosY + 1][oldPosX]) {
+	if (this->isWalkable(map[oldPosY + 1][oldPosX]) == true) {
+		this->setX(oldPosX);
+		this->setY(oldPosY + 1);
+	} else {
+		std::cout << "You cannot move to this position Y: " << oldPosY + 1 << " | X : " << oldPosX  << '\n';
 	}
 	(void)map;
 }
@@ -51,7 +70,11 @@ void 			APCharacter::movePlayerRight(int **map) {
 	int oldPosX = this->getX();
 	int oldPosY = this->getY();
 
-	if (map[oldPosY][oldPosX + 1]) {
+	if (this->isWalkable(map[oldPosY][oldPosX + 1]) == true) {
+		this->setX(oldPosX + 1);
+		this->setY(oldPosY);
+	} else {
+		std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX  + 1<< '\n';
 	}
 	(void)map;
 }
@@ -59,7 +82,11 @@ void 			APCharacter::movePlayerLeft(int **map) {
 	int oldPosX = this->getX();
 	int oldPosY = this->getY();
 
-	if (map[oldPosY][oldPosX -1]) {
+	if (this->isWalkable(map[oldPosY][oldPosX - 1]) == true) {
+		this->setX(oldPosX - 1);
+		this->setY(oldPosY);
+	} else {
+		std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX - 1 << '\n';
 	}
 	(void)map;
 }
@@ -67,7 +94,11 @@ void 			APCharacter::movePlayerDown(int **map) {
 	int oldPosX = this->getX();
 	int oldPosY = this->getY();
 
-	if (map[oldPosY - 1][oldPosX]) {
+	if (this->isWalkable(map[oldPosY - 1][oldPosX]) == true) {
+		this->setX(oldPosX);
+		this->setY(oldPosY - 1);
+	} else {
+		std::cout << "You cannot move to this position Y: " << oldPosY - 1 << " | X : " << oldPosX  << '\n';
 	}
 	(void)map;
 }
