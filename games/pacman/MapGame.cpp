@@ -22,8 +22,8 @@ MapGame::MapGame(int newLength, int newHeight)
 
 void	MapGame::fillUpData(int index_line, const std::string &line)
 {
-	for (size_t index_char = 0; index_char != line.length(); ++index_char) {
-      this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
+  for (size_t index_char = 0; index_char != line.length(); ++index_char) {
+    this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
   }
 }
 
@@ -60,7 +60,7 @@ void 	MapGame::setMapLength(int newLength)
 
 int 	**MapGame::getData() const
 {
-	if (this->_data == NULL)
-		throw Arcade::ArcadeException("Cannot get non-generated map");
-	return (this->_data);
+  if (this->_data == NULL)
+    throw Arcade::ArcadeException("Cannot get non-generated map");
+  return (this->_data);
 }
