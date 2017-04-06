@@ -12,7 +12,14 @@
 
 Graph::GraphicInit::GraphicInit(const std::string &title)
 {
+  sf::Image	icon;
+  sf::Vector2u	sizeIco;
+
+  if (!icon.loadFromFile("assets/img/icon.png"))
+    throw Arcade::ArcadeException("Cannot load the icon of the window");
+  sizeIco = icon.getSize();
   this->_window = new sf::RenderWindow(sf::VideoMode(1280, 720), title);
+  this->_window->setIcon(sizeIco.x, sizeIco.y, icon.getPixelsPtr());
 }
 
 Graph::GraphicInit::GraphicInit(const Graph::GraphicInit &obj)
@@ -49,6 +56,7 @@ void	Graph::GraphicInit::drawScore(int, int) {};
 void	Graph::GraphicInit::drawFood(int, int, char) {};
 void	Graph::GraphicInit::drawLoose(void) {};
 int	Graph::GraphicInit::recoverKey(void) {return (0);};
+bool	Graph::GraphicInit::checkSizeWindow(int, int) {return (false);}
 
 std::pair<std::string, std::string>	Graph::GraphicInit::startMenu(const std::vector<std::string> &v1, const std::vector<std::string> &v2)
 {
