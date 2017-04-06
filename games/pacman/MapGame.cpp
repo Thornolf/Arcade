@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Thu Apr 06 18:19:32 2017 Quentin Baudet
+** Last update Thu Apr 06 18:40:06 2017 Quentin Baudet
 */
 
 #include "ParserMap.hpp"
@@ -73,10 +73,10 @@ int 	**MapGame::getData() const
   return (this->_data);
 }
 
-int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX/*, Pacman *pacman*/) {
+int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Pacman *pacman) {
     if (newMap[newPosY][newPosX] == 1) {
 		newMap[newPosY][newPosX] = -1;
-		// pacman->increaseScore(Score::PACGUM);
+		pacman->increaseScore(Score::PACGUM);
 
 	}
 	return (newMap);

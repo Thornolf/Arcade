@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:53:52 2017 Quentin Baudet
-** Last update Thu Apr 06 17:41:14 2017 Quentin Baudet
+** Last update Thu Apr 06 18:44:55 2017 Quentin Baudet
 */
 
 #include "APCharacter.hpp"
@@ -41,7 +41,7 @@ APCharacter::~APCharacter () {}
 /* ACTION */
 
 BlockType 		APCharacter::getType(int newType) const {
-  if (newType == BlockType::WAY) {
+  if (newType == BlockType::WAY || newType == BlockType::VOID) {
     return (BlockType::WAY);
   } else {
     return (BlockType::BLOCK);
@@ -49,7 +49,7 @@ BlockType 		APCharacter::getType(int newType) const {
 }
 
 bool 			APCharacter::isWalkable(int newBlock) const {
-  if (newBlock == BlockType::WAY) {
+  if (newBlock == BlockType::WAY || newBlock == BlockType::VOID) {
     return (true);
   } else {
     return (false);

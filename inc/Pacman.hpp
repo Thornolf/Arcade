@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Thu Apr 06 15:49:38 2017 Quentin Baudet
-** Last update Thu Apr 06 18:01:19 2017 Quentin Baudet
+** Last update Thu Apr 06 18:36:01 2017 Quentin Baudet
 */
 
 #ifndef PACMAN_HPP
@@ -18,7 +18,8 @@ enum Score {
 	GHOST = 200,
 };
 
-class Pacman : public APCharacter {
+class Pacman : public APCharacter
+{
 	private:
 		int		_score;
 

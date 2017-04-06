@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:55:13 2017 Quentin Baudet
-** Last update Thu Apr 06 17:56:25 2017 Quentin Baudet
+** Last update Thu Apr 06 18:47:39 2017 Quentin Baudet
 */
 
 #ifndef APCHARACTER_HPP
@@ -14,7 +14,14 @@
 # include <iostream>
 # include <functional>
 # include "IGame.hpp"
-# include "MapGame.hpp"
+
+enum BlockType { /* !! */
+	VOID = -1,
+	BLOCK = 0,
+	WAY = 1,
+	TEL_LEFT = 2,
+	TEL_RIGHT = 3
+};
 
 class APCharacter : public Game::IGame {
 public:
@@ -30,10 +37,10 @@ private:
 	Game::Direction		_direction;
 	Game::State 		_state;
 	APCharacter::Hp		_hp;
-	std::string		_name;
-	int			_id;
-	int 			_X;
-	int 			_Y;
+	std::string			_name;
+	int					_id;
+	int 				_X;
+	int 				_Y;
 
 public:
 	APCharacter ();

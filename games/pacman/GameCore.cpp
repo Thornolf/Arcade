@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 18:18:30 2017 Quentin Baudet
+** Last update Thu Apr 06 18:40:59 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -58,8 +58,9 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 		break;
    std::cout << "Y: "<< pacman->getY() << " X: " << pacman->getX() << std::endl;
    pacman->movePlayer(map, dir);
+   map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX(), pacman);
+   std::cout << "New score : " << pacman->getScore() << std::endl;
    parser->getMap()->displayMap(map);
-   map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX()/*, pacman*/);
    sleep(1); /* !! */
   	}
   /* DISPLAY THE MAP */

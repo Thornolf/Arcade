@@ -5,12 +5,14 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Thu Apr 06 15:49:40 2017 Quentin Baudet
-** Last update Thu Apr 06 17:41:11 2017 Quentin Baudet
+** Last update Thu Apr 06 18:42:37 2017 Quentin Baudet
 */
 
 #include "Pacman.hpp"
 
-Pacman::Pacman() : APCharacter() {}
+Pacman::Pacman() : APCharacter() {
+	this->_score = 0;
+}
 
 Pacman::Pacman(	std::string newName,
 			  	int newId,
