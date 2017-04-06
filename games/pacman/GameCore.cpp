@@ -31,10 +31,10 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-	APCharacter	*character = new APCharacter();
+  APCharacter	*character = new APCharacter();
   ParserMap		*parser;
   Graph::IGraph		*LibGraphic;
-  int				**tmp;
+  int			**tmp;
 
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();

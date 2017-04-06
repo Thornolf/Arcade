@@ -54,8 +54,8 @@ void		GameCore::setScore(int) {}
 
 extern "C"
 {
-Game::IGame	*getInstanceGame()
-{
-  return ((Game::IGame *)new GameCore());
-}
+  Game::IGame	*getInstanceGame()
+  {
+    return ((Game::IGame *)new GameCore());
+  }
 }

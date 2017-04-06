@@ -47,6 +47,12 @@ void	Graph::PacmanDisplayerMap::Game() {}
 void	Graph::PacmanDisplayerMap::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::PacmanDisplayerMap::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::PacmanDisplayerMap::Animation() {}
+void	Graph::PacmanDisplayerMap::drawMap(int, int, char) {}
+void	Graph::PacmanDisplayerMap::drawPlayer(std::vector<Game::IGame*>, char) {};
+void	Graph::PacmanDisplayerMap::drawScore(int, int) {};
+void	Graph::PacmanDisplayerMap::drawFood(int, int, char) {};
+void	Graph::PacmanDisplayerMap::drawLoose(void) {};
+int	Graph::PacmanDisplayerMap::recoverKey(void) {return (0);};
 
 std::pair<std::string, std::string>	Graph::PacmanDisplayerMap::startMenu(const std::vector<std::string> &title, const std::vector<std::string> &list)
 {

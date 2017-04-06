@@ -221,3 +221,9 @@ void	Graph::GraphicMenu::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; 
 void	Graph::GraphicMenu::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::GraphicMenu::Animation() {}
 void	Graph::GraphicMenu::displayMap(int **ptr){(void)ptr;};
+void	Graph::GraphicMenu::drawMap(int, int, char) {}
+void	Graph::GraphicMenu::drawPlayer(std::vector<Game::IGame*>, char) {};
+void	Graph::GraphicMenu::drawScore(int, int) {};
+void	Graph::GraphicMenu::drawFood(int, int, char) {};
+void	Graph::GraphicMenu::drawLoose(void) {};
+int	Graph::GraphicMenu::recoverKey(void) {return (0);};

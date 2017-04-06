@@ -11,7 +11,9 @@
 #ifndef		_SNAKE_PART__HPP_
 # define	_SNAKE_PART__HPP_
 
-class	SnakePart
+# include "IGame.hpp"
+
+class	SnakePart : public Game::IGame
 {
   public:
     /* Canonical functions */
@@ -20,6 +22,22 @@ class	SnakePart
     SnakePart(const SnakePart &);
     virtual	~SnakePart();
     SnakePart	&operator=(const SnakePart &);
+
+    /* Inherit from Game::IGame */
+    void		startCore(Arcade::DLLoader<Graph::IGraph> &);
+    void		movePlayer(std::map<int, std::map<int, int>>);
+    void		setState(Game::State);
+    void		setSpeed(size_t);
+    void		setDirection(Game::Direction);
+    void		setLive(bool);
+    Game::State		getState(void) const;
+    size_t		getSpeed(void) const;
+    Game::Direction	getDirection(void) const;
+    int			getType(void) const;
+    bool		isAlive(void) const;
+    void		Dump(void) const;
+    int			getScore(void) const;
+    void		setScore(int);
 
     /* Members functions */
     void	setX(int);

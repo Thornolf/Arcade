@@ -269,6 +269,12 @@ void	Graph::GraphicMenu::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x
 void	Graph::GraphicMenu::Animation() {}
 void	Graph::GraphicMenu::displayMap(int **ptr){(void)ptr;};
 void	Graph::GraphicMenu::LaunchMenuSound(sf::Music &, const std::string &filepath) const {(void)filepath;}
+void	Graph::GraphicMenu::drawMap(int, int, char) {}
+void	Graph::GraphicMenu::drawPlayer(std::vector<Game::IGame*>, char) {};
+void	Graph::GraphicMenu::drawScore(int, int) {};
+void	Graph::GraphicMenu::drawFood(int, int, char) {};
+void	Graph::GraphicMenu::drawLoose(void) {};
+int	Graph::GraphicMenu::recoverKey(void) {return (0);};
 
 sf::Sprite	Graph::GraphicMenu::createSpriteFromFile(sf::Texture &texture, const std::string &filepath, bool smooth) const
 {

@@ -15,6 +15,7 @@
 # include <vector>
 # include "SnakePart.hpp"
 # include "SnakeGame.hpp"
+# include "SnakeGraph.hpp"
 # include "GameCore.hpp"
 
 class SnakeCore : public GameCore
@@ -29,17 +30,20 @@ class SnakeCore : public GameCore
     /* CoreGame */
     void	startCore(Arcade::DLLoader<Graph::IGraph> &);
 
+    /* Getters */
+    std::vector<Game::IGame*>	getSnakeBody(void) const;
+
     /* Snake Event */
-    void	putfood(void);
-    bool	collision(void);
-    void	movesnake(void);
+    void	putFood(Graph::IGraph *);
+    bool	collision(Graph::IGraph *);
+    void	moveSnake(Graph::IGraph *);
 
   private:
     bool			get;
     char			direction;
-    SnakePart			food;
+    Game::IGame			*food;
     SnakeGame			*game;
-    std::vector<SnakePart>	snake;
+    std::vector<Game::IGame *>	snake;
 };
 
 #endif		/* !_SNAKE_CORE_HPP_ */

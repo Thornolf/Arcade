@@ -56,3 +56,19 @@ int	SnakePart::getY(void) const
 {
   return (this->y);
 }
+
+/* Unused methods inherit from Game::IGame */
+void		SnakePart::startCore(Arcade::DLLoader<Graph::IGraph> &) {}
+void		SnakePart::movePlayer(std::map<int, std::map<int, int>>) {}
+void		SnakePart::setState(Game::State) {}
+void		SnakePart::setSpeed(size_t) {}
+void		SnakePart::setDirection(Game::Direction) {}
+void		SnakePart::setLive(bool) {}
+Game::State	SnakePart::getState(void) const {return (Game::VULNERABLE);}
+size_t		SnakePart::getSpeed(void) const {return (0);}
+Game::Direction	SnakePart::getDirection(void) const {return (Game::UP);}
+int		SnakePart::getType(void) const {return (0);};
+bool		SnakePart::isAlive(void) const {return (false);};
+void		SnakePart::Dump(void) const {}
+int		SnakePart::getScore(void) const {return (0);}
+void		SnakePart::setScore(int) {}

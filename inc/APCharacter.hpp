@@ -67,12 +67,12 @@ public:
 	Game::Direction		getDirection(void) const;
 	BlockType		getType(int) const;
 
-	/* fossae_t */
+	/* Unused member function from Game::IGame */
 	void		movePlayer(std::map<int, std::map<int, int>>);
-	int			getType(void) const;
+	int		getType(void) const;
 	bool		isAlive(void) const;
 	void		Dump(void) const;
-	int			getScore(void) const;
+	int		getScore(void) const;
 	void		setScore(int);
 };
 

@@ -11,7 +11,6 @@
 #ifndef		_GAME_CORE__HPP_
 # define	_GAME_CORE__HPP_
 
-# include <ncurses.h>
 # include "IGame.hpp"
 # include "IGraph.hpp"
 # include "ArcadeException.hpp"
