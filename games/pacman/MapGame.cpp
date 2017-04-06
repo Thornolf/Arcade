@@ -5,11 +5,11 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Wed Apr 05 14:20:51 2017 Quentin Baudet
+** Last update Thu Apr 06 18:19:32 2017 Quentin Baudet
 */
 
-#include "MapGame.hpp"
 #include "ParserMap.hpp"
+#include "MapGame.hpp"
 
 MapGame::MapGame(int newLength, int newHeight)
 {
@@ -58,9 +58,26 @@ void 	MapGame::setMapLength(int newLength)
 
 /* GETTER */
 
+void 	MapGame::displayMap(int** newMap) const {
+	for (int i = 0; i < this->getMapHeight(); i++) {
+		for (int j = 0; j < this->getMapLength(); j++) {
+			std::cout << newMap[i][j] << "  ";
+		}
+		std::cout << std::endl;
+	}
+}
 int 	**MapGame::getData() const
 {
   if (this->_data == NULL)
     throw Arcade::ArcadeException("Cannot get non-generated map");
   return (this->_data);
+}
+
+int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX/*, Pacman *pacman*/) {
+    if (newMap[newPosY][newPosX] == 1) {
+		newMap[newPosY][newPosX] = -1;
+		// pacman->increaseScore(Score::PACGUM);
+
+	}
+	return (newMap);
 }

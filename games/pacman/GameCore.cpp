@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 11:33:23 2017 Quentin Baudet
+** Last update Thu Apr 06 18:18:30 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -13,7 +13,10 @@
 #include "MapGame.hpp"
 #include "GameCore.hpp"
 #include "APCharacter.hpp"
+#include "Pacman.hpp"
+#include "Ghost.hpp"
 
+#include <unistd.h>
 GameCore::GameCore() {}
 
 GameCore::GameCore(const GameCore &obj)
@@ -31,26 +34,36 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-	APCharacter	*character = new APCharacter();
-  ParserMap		*parser;
+	Pacman	*pacman = new Pacman();
+  ParserMap			*parser;
   Graph::IGraph		*LibGraphic;
-  int				**tmp;
+  Game::Direction 	dir = Game::UP;
+  int				**map;
 
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();
   LibGraphic = LoaderGraphicLib.getInstance("getInstancePacmanDisplayerMap");
   LibGraphic->displayMap(NULL);
-  tmp = parser->getMap()->getData();
-  (void)tmp;
-  std::cout << "Player UP" << '\n';
-  character->movePlayerUp(tmp);
-  std::cout << "Player DOWN" << '\n';
-  character->movePlayerDown(tmp);
-  std::cout << "Player LEFT" << '\n';
-  character->movePlayerLeft(tmp);
-  std::cout << "Player RIGHT" << '\n';
-  character->movePlayerRight(tmp);
-
+  map = parser->getMap()->getData();
+ for (std::string line; std::getline(std::cin, line);) {
+ 	if (line == "UP")
+ 		dir = Game::UP;
+ 	if (line == "DOWN")
+ 		dir = Game::DOWN;
+ 	if (line == "LEFT")
+ 		dir = Game::LEFT;
+ 	if (line == "RIGHT")
+ 		dir = Game::RIGHT;
+	if (line == "exit")
+		break;
+   std::cout << "Y: "<< pacman->getY() << " X: " << pacman->getX() << std::endl;
+   pacman->movePlayer(map, dir);
+   parser->getMap()->displayMap(map);
+   map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX()/*, pacman*/);
+   sleep(1); /* !! */
+  	}
+  /* DISPLAY THE MAP */
+  std::cout << pacman->getScore()  << std::endl;
   delete parser;
 }
 

@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:55:13 2017 Quentin Baudet
-** Last update Thu Apr 06 11:45:35 2017 Quentin Baudet
+** Last update Thu Apr 06 17:56:25 2017 Quentin Baudet
 */
 
 #ifndef APCHARACTER_HPP
@@ -13,8 +13,8 @@
 
 # include <iostream>
 # include <functional>
-#include "MapGame.hpp"
 # include "IGame.hpp"
+# include "MapGame.hpp"
 
 class APCharacter : public Game::IGame {
 public:

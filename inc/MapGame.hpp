@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:06:09 2017 Quentin Baudet
-** Last update Thu Apr 06 11:40:33 2017 Quentin Baudet
+** Last update Thu Apr 06 18:21:17 2017 Quentin Baudet
 */
 
 #ifndef		MAPGAME_HPP
@@ -13,14 +13,15 @@
 
 # include <iostream>
 # include <fstream>
+// # include "Pacman.hpp"
 
 enum BlockType {
+	VOID = -1,
 	BLOCK = 0,
 	WAY = 1,
 	TEL_LEFT = 2,
 	TEL_RIGHT = 3
 };
-
 class MapGame
 {
   public:
@@ -38,6 +39,7 @@ class MapGame
     int**	getData() const;
 	void	fillUpData(int, const std::string &);
 	void 	displayMap(int**) const;
+	int 	**modifyMap(int**, int, int/*, Pacman* */);
 
   private:
     void	setMapHeight(int);
