@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:55:13 2017 Quentin Baudet
-** Last update Thu Apr 06 18:47:39 2017 Quentin Baudet
+** Last update Thu Apr 06 20:01:41 2017 Quentin Baudet
 */
 
 #ifndef APCHARACTER_HPP
@@ -67,20 +67,20 @@ public:
 	void			setLive(bool);
 
 	/* GETTER */
-	int			getX(void) const;
-	int			getY(void) const;
+	int				getX(void) const;
+	int				getY(void) const;
 	Game::State		getState(void) const;
 	size_t			getSpeed(void) const;
 	Game::Direction		getDirection(void) const;
 	BlockType		getType(int) const;
 
 	/* fossae_t */
-	void		movePlayer(std::map<int, std::map<int, int>>);
-	int			getType(void) const;
-	bool		isAlive(void) const;
-	void		Dump(void) const;
-	int			getScore(void) const;
-	void		setScore(int);
+	void			movePlayer(std::map<int, std::map<int, int>>);
+	int				getType(void) const;
+	bool			isAlive(void) const;
+	void			Dump(void) const;
+	int				getScore(void) const;
+	void			setScore(int);
 };
 
 #endif
