@@ -36,7 +36,7 @@ sf::RenderWindow	*Graph::GraphicInit::getWindow(void)
   return (this->_window);
 }
 
-/* Unused function herit from IGraph */
+/* Unused function inherit from IGraph */
 void	Graph::GraphicInit::createMap(void) {}
 void	Graph::GraphicInit::Game(void)  {}
 void	Graph::GraphicInit::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
