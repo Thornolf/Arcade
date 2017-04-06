@@ -5,13 +5,14 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Wed Apr 05 14:26:07 2017 Quentin Baudet
+** Last update Wed Apr 05 22:16:20 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
 #include "ParserMap.hpp"
 #include "MapGame.hpp"
 #include "GameCore.hpp"
+#include "APCharacter.hpp"
 
 GameCore::GameCore() {}
 
@@ -30,6 +31,7 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
+	APCharacter	*character = new APCharacter();
   ParserMap		*parser;
   Graph::IGraph		*LibGraphic;
   int				**tmp;
@@ -40,6 +42,9 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
   LibGraphic->displayMap(NULL);
   tmp = parser->getMap()->getData();
   (void)tmp;
+
+std::cout << character->getX() << std::endl;
+
   delete parser;
 }
 
