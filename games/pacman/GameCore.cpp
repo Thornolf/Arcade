@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 18:40:59 2017 Quentin Baudet
+** Last update Thu Apr 06 20:47:18 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -35,11 +35,19 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
 	Pacman	*pacman = new Pacman();
+	Ghost	*blinky = new Ghost("Blinky", 2, 11, 12);
+	Ghost	*pinky = new Ghost("Pinky", 3, 12, 12);
+	Ghost	*clyde = new Ghost("Clyde", 4, 11, 13);
+	Ghost	*inky = new Ghost("Inky", 5, 10, 13);
+
   ParserMap			*parser;
   Graph::IGraph		*LibGraphic;
   Game::Direction 	dir = Game::UP;
   int				**map;
-
+	(void)blinky;
+	(void)pinky;
+	(void)clyde;
+	(void)inky;
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();
   LibGraphic = LoaderGraphicLib.getInstance("getInstancePacmanDisplayerMap");

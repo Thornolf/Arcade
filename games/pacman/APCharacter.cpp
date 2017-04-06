@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:53:52 2017 Quentin Baudet
-** Last update Thu Apr 06 18:44:55 2017 Quentin Baudet
+** Last update Thu Apr 06 20:42:39 2017 Quentin Baudet
 */
 
 #include "APCharacter.hpp"
@@ -13,9 +13,6 @@
 APCharacter::APCharacter () {
   this->_name = "Fossae_t";
   this->_id = 1;
-  this->_hp = APCharacter::ALIVE;
-  this->_state = Game::VULNERABLE;
-  this->_direction = Game::UP;
   this->_X = 10;
   this->_Y = 15;
 }
@@ -32,6 +29,19 @@ APCharacter::APCharacter (	std::string newName,
   this->_hp = newHp;
   this->_state = newState;
   this->_direction = newDirection;
+  this->_X = newX;
+  this->_Y = newY;
+}
+
+APCharacter::APCharacter (	std::string newName,
+				  			int newId,
+				  			int newX,
+				  			int newY) {
+  this->_name = newName;
+  this->_hp = APCharacter::ALIVE;
+  this->_state = Game::VULNERABLE;
+  this->_direction = Game::UP;
+  this->_id = newId;
   this->_X = newX;
   this->_Y = newY;
 }
