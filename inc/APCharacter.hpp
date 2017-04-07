@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:55:13 2017 Quentin Baudet
-** Last update Thu Apr 06 20:22:38 2017 Quentin Baudet
+** Last update Thu Apr 06 22:19:53 2017 Quentin Baudet
 */
 
 #ifndef		APCHARACTER_HPP
@@ -14,6 +14,11 @@
 # include <iostream>
 # include <functional>
 # include "IGame.hpp"
+
+enum Score {
+ 	PACGUM = 10,
+	GHOST = 200,
+};
 
 enum BlockType { /* !! */
   VOID = -1,
@@ -41,6 +46,7 @@ class APCharacter : public Game::IGame {
     int				_id;
     int 			_X;
     int 			_Y;
+	int 			_score;
 
 public:
 	APCharacter ();
@@ -74,14 +80,16 @@ public:
     size_t		getSpeed(void) const;
     Game::Direction	getDirection(void) const;
     BlockType		getType(int) const;
+	int 		getId(void) const;
 
     /* Unused member function from Game::IGame */
     void	movePlayer(std::map<int, std::map<int, int>>);
     int		getType(void) const;
     bool	isAlive(void) const;
     void	Dump(void) const;
-    int		getScore(void) const;
     void	setScore(int);
+	int		getScore(void) const;
+	void 	increaseScore(int);
 
 };
 

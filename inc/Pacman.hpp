@@ -5,18 +5,13 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Thu Apr 06 15:49:38 2017 Quentin Baudet
-** Last update Thu Apr 06 20:20:32 2017 Quentin Baudet
+** Last update Thu Apr 06 22:23:21 2017 Quentin Baudet
 */
 
 #ifndef PACMAN_HPP
 # define PACMAN_HPP
 
 #include "APCharacter.hpp"
-
-enum Score {
- 	PACGUM = 10,
-	GHOST = 200,
-};
 
 class Pacman : public APCharacter
 {
@@ -28,8 +23,6 @@ class Pacman : public APCharacter
 		/* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY | Score */
 		Pacman (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int, int);
 		virtual ~Pacman ();
-		void 	increaseScore(int);
-		int 	getScore();
 };
 
 #endif	/* !PACMAN_HPP */

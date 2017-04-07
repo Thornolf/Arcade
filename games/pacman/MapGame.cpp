@@ -5,11 +5,12 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Thu Apr 06 20:20:24 2017 Quentin Baudet
+** Last update Thu Apr 06 22:03:52 2017 Quentin Baudet
 */
 
 #include "ParserMap.hpp"
 #include "MapGame.hpp"
+#include "APCharacter.hpp"
 
 MapGame::MapGame(int newLength, int newHeight)
 {
@@ -17,7 +18,7 @@ MapGame::MapGame(int newLength, int newHeight)
   this->_length = newLength;
   this->_data = new int*[this->_height + 1];
   for (int i = 0; i != this->_height + 1; i++)
-    this->_data[i] = new int[this->_length + 1]; 
+    this->_data[i] = new int[this->_length + 1];
 }
 
 void	MapGame::fillUpData(int index_line, const std::string &line)
@@ -77,10 +78,17 @@ int 	**MapGame::getData() const
 }
 
 int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Pacman *pacman) {
-    if (newMap[newPosY][newPosX] == 1) {
+    if (newMap[newPosY][newPosX] == 1 && pacman->getId() == 1) {
 		newMap[newPosY][newPosX] = -1;
 		pacman->increaseScore(Score::PACGUM);
 
+	}
+	return (newMap);
+}
+
+int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Ghost *ghost) {
+    if ((newMap[newPosY][newPosX] == BlockType::VOID || newMap[newPosY][newPosX] == BlockType::WAY )&& ghost->getId() == 2) {
+		newMap[newPosY][newPosX] = 9;
 	}
 	return (newMap);
 }

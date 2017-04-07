@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:53:52 2017 Quentin Baudet
-** Last update Thu Apr 06 20:42:39 2017 Quentin Baudet
+** Last update Thu Apr 06 23:02:37 2017 Quentin Baudet
 */
 
 #include "APCharacter.hpp"
@@ -15,6 +15,7 @@ APCharacter::APCharacter () {
   this->_id = 1;
   this->_X = 10;
   this->_Y = 15;
+  this->_score = 0;
 }
 
 APCharacter::APCharacter (	std::string newName,
@@ -31,6 +32,7 @@ APCharacter::APCharacter (	std::string newName,
   this->_direction = newDirection;
   this->_X = newX;
   this->_Y = newY;
+  this->_score = 0;
 }
 
 APCharacter::APCharacter (	std::string newName,
@@ -44,6 +46,7 @@ APCharacter::APCharacter (	std::string newName,
   this->_id = newId;
   this->_X = newX;
   this->_Y = newY;
+  this->_score = 0;
 }
 
 APCharacter::~APCharacter () {}
@@ -65,6 +68,7 @@ bool 			APCharacter::isWalkable(int newBlock) const {
     return (false);
   }
 }
+
 void 			APCharacter::movePlayerUp(int **map) {
   int oldPosX = this->getX();
   int oldPosY = this->getY();
@@ -74,8 +78,8 @@ void 			APCharacter::movePlayerUp(int **map) {
   } else {
     std::cout << "You cannot move to this position Y: " << oldPosY - 1 << " | X : " << oldPosX  << '\n';
   }
-  (void)map;
 }
+
 void 			APCharacter::movePlayerRight(int **map) {
   int oldPosX = this->getX();
   int oldPosY = this->getY();
@@ -86,7 +90,6 @@ void 			APCharacter::movePlayerRight(int **map) {
   } else {
     std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX  + 1<< '\n';
   }
-  (void)map;
 }
 void 			APCharacter::movePlayerLeft(int **map) {
   int oldPosX = this->getX();
@@ -98,7 +101,6 @@ void 			APCharacter::movePlayerLeft(int **map) {
   } else {
     std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX - 1 << '\n';
   }
-  (void)map;
 }
 void 			APCharacter::movePlayerDown(int **map) {
   int oldPosX = this->getX();
@@ -110,10 +112,14 @@ void 			APCharacter::movePlayerDown(int **map) {
   } else {
     std::cout << "You cannot move to this position Y: " << oldPosY + 1 << " | X : " << oldPosX  << '\n';
   }
-  (void)map;
 }
 
 void 		APCharacter::movePlayer(int **map, Game::Direction direction) {
+	// std::cout << "CELL : " << map[this->getY()][this->getX()] << std::endl;
+	if (map[this->getY()][this->getX()] == 1 || this->getId() == 1) {
+		map[this->getY()][this->getX()] = -1;
+		this->increaseScore(Score::PACGUM);
+	}
   std::map<Game::Direction, std::function<void(int **)>>	moveActions;
 
   moveActions[Game::UP] = std::bind(&APCharacter::movePlayerUp, this, std::placeholders::_1);
@@ -122,6 +128,7 @@ void 		APCharacter::movePlayer(int **map, Game::Direction direction) {
   moveActions[Game::RIGHT] = std::bind(&APCharacter::movePlayerRight, this, std::placeholders::_1);
 
   moveActions[direction](map);
+  map[this->getY()][this->getX()] = 7;
 }
 
 /* SETTER */
@@ -157,24 +164,34 @@ Game::State	APCharacter::getState(void) const {
   return (this->_state);
 }
 
-Game::Direction	APCharacter::getDirection(void) const{
+Game::Direction	APCharacter::getDirection(void) const {
   return (Game::UP);
 }
 
 /* Return l'ID */
-int			APCharacter::getType(void) const{
+int			APCharacter::getType(void) const {
   return (0);
+}
+
+int 		APCharacter::getId(void) const {
+	return (this->_id);
 }
 
 bool		APCharacter::isAlive(void) const{
   return (true);
 }
 
-void		APCharacter::Dump(void) const{}
+void 	APCharacter::increaseScore(int newScore) {
+	this->_score += newScore;
+}
 
+int 	APCharacter::getScore(void) const{
+	return (this->_score);
+}
+
+void		APCharacter::Dump(void) const{}
 void		APCharacter::setScore(int){}
 void		APCharacter::setLive(bool newLive){	(void)newLive; }
-int		APCharacter::getScore(void) const{ return (0); }
 size_t		APCharacter::getSpeed(void) const{ return (0); }
 void		APCharacter::setSpeed(size_t newSpeed){ (void)newSpeed;}
 void		APCharacter::movePlayer(std::map<int, std::map<int, int>>){}

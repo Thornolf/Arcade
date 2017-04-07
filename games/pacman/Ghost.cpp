@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Thu Apr 06 15:49:36 2017 Quentin Baudet
-** Last update Thu Apr 06 20:38:37 2017 Quentin Baudet
+** Last update Thu Apr 06 21:33:52 2017 Quentin Baudet
 */
 
 #include "Ghost.hpp"
@@ -42,5 +42,18 @@ Ghost::Ghost (	std::string newName,
   newY
 )
 {}
+
+void 		Ghost::goingOut(int **newMap, int newPosX, int newPosY) {
+	if (newMap[newPosY][newPosX] == 5)
+		setDoorCheck(true);
+}
+
+void 		Ghost::setDoorCheck(bool newDoorCheck) {
+	this->_doorCheck = newDoorCheck;
+}
+
+bool 		Ghost::getDoorCheck(void) {
+	return (this->_doorCheck);
+}
 
 Ghost::~Ghost () {}
