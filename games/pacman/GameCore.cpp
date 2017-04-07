@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 12:09:29 2017 Quentin Baudet
+** Last update Fri Apr 07 18:21:58 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -49,7 +49,7 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
   parser->generateMap();
 
   LibGraphic = LoaderGraphicLib.getInstance("getInstancePacmanDisplayerMap");
-  LibGraphic->displayMap(parser->getMap()->getData());
+  // LibGraphic->displayMap(parser->getMap()->getData());
 
   map = parser->getMap()->getData();
 

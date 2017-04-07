@@ -5,14 +5,13 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Tue Apr 04 16:10:01 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 12:10:55 2017 Quentin Baudet
+** Last update Fri Apr 07 18:30:28 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
 
 Graph::PacmanDisplayerMap::PacmanDisplayerMap()
 {
-  std::cout << "PASSE ICI" << std::endl;
   this->_key = 3;
   this->_init = new Graph::GraphicInit();
   init_pair(1, COLOR_BLUE, COLOR_BLACK);
@@ -37,10 +36,6 @@ Graph::PacmanDisplayerMap	&Graph::PacmanDisplayerMap::operator=(const Graph::Pac
 
 void	Graph::PacmanDisplayerMap::displayMap(int **map)
 {
-  int	i = 0;
-  int	j = 0;
-  (void)i;
-  (void)j;
   (void)map;
 }
 
@@ -61,15 +56,20 @@ void	Graph::PacmanDisplayerMap::displayMap(int **map, int length, int height)
   int	i = 0;
   int	j = 0;
 
+(void)map;
+	int	maxX = 0;
+	int	maxY = 0;
+  getmaxyx(stdscr, maxY, maxX);
+ 	printf("%d			%d\n", maxX, maxY);
   while (i < height)
   {
     j = 0;
     while (j < length)
     {
-      if (map[i][j] == 0)
-	drawElem('c', i, j);
+      mvprintw(j, i,"%d", 0);
       j++;
     }
+	printf("\n");
     i++;
   }
 }
