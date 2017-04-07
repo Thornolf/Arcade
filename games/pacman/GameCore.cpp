@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 18:21:58 2017 Quentin Baudet
+** Last update Fri Apr 07 19:45:50 2017 Robin Grattepanche
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -38,7 +38,7 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 
   ParserMap			*parser;
   Graph::IGraph		*LibGraphic;
-  // Game::Direction 	dir = Game::UP;
+  Game::Direction 	dir = Game::UP;
   int				**map;
   // (void)blinky;
   // (void)pinky;
@@ -65,12 +65,28 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
   // if (line == "exit")
   // 	break;
 
-  // pacman->movePlayer(map, dir);
 
   /* DISPLAY in TERMINAL */
-  // parser->getMap()->displayMap(map);
-  LibGraphic->displayMap(map, pacman->getX(), pacman->getY());
+  	LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength());
+	// for (int i = 0; i < 10; i++)
+	while (1)
+	{
+		if (LibGraphic->recoverKey() == 0)
+		dir = Game::UP;
+		else if (LibGraphic->recoverKey() == 1)
+		dir = Game::RIGHT;
+		else if (LibGraphic->recoverKey() == 2)
+		dir = Game::DOWN;
+		else if (LibGraphic->recoverKey() == 3)
+		dir = Game::LEFT;
 
+		pacman->movePlayer(map, dir);
+
+		map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX(), pacman);
+	    LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength());
+ 		usleep(120000);
+
+ 	}
   /* DISPLAY THE MAP */
   // delete blinky;
   // delete pinky;

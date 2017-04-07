@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Tue Apr 04 16:10:01 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 18:30:28 2017 Quentin Baudet
+** Last update Fri Apr 07 19:43:57 2017 Robin Grattepanche
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -14,7 +14,7 @@ Graph::PacmanDisplayerMap::PacmanDisplayerMap()
 {
   this->_key = 3;
   this->_init = new Graph::GraphicInit();
-  init_pair(1, COLOR_BLUE, COLOR_BLACK);
+  init_pair(1, COLOR_BLUE, COLOR_BLUE);
   init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 }
 
@@ -46,8 +46,24 @@ void 	Graph::PacmanDisplayerMap::drawElem(char printChar, int x, int y)
   if (printChar == 'c')
   {
     attron(COLOR_PAIR(1));
-    mvprintw(0, 0, "TOTO");
+    mvprintw(x, y, "c");
     attroff(COLOR_PAIR(1));
+  }
+  else if (printChar == '.')
+  {
+    attron(COLOR_PAIR(2));
+    mvprintw(x, y, ".");
+    attroff(COLOR_PAIR(2));
+  }
+  else if (printChar == 'C')
+  {
+    attron(COLOR_PAIR(2));
+    mvprintw(x, y, "C");
+    attroff(COLOR_PAIR(2));
+  }
+  else if (printChar == ' ')
+  {
+    mvprintw(x, y, " ");
   }
 }
 
@@ -56,22 +72,24 @@ void	Graph::PacmanDisplayerMap::displayMap(int **map, int length, int height)
   int	i = 0;
   int	j = 0;
 
-(void)map;
-	int	maxX = 0;
-	int	maxY = 0;
-  getmaxyx(stdscr, maxY, maxX);
- 	printf("%d			%d\n", maxX, maxY);
-  while (i < height)
+  while (i < length)
   {
-    j = 0;
-    while (j < length)
+    while (j < height)
     {
-      mvprintw(j, i,"%d", 0);
+		if (map[i][j] == 0)
+      		drawElem('c', i, j);
+		else if (map[i][j] == 1)
+			drawElem('.', i, j);
+		else if (map[i][j] == 7)
+			drawElem('C', i, j);
+		else if (map[i][j] == -1)
+			drawElem(' ', i, j);
       j++;
     }
-	printf("\n");
+	j = 0;
     i++;
   }
+  refresh();
 }
 
 int		Graph::PacmanDisplayerMap::recoverKey(void)
@@ -81,20 +99,16 @@ int		Graph::PacmanDisplayerMap::recoverKey(void)
   switch(tmp)
   {
     case KEY_UP:
-      if (this->_key != 2)
-	this->_key = 0;
+		this->_key = 0;
       break;
     case KEY_RIGHT:
-      if (this->_key != 3)
-	this->_key = 1;
+		this->_key = 1;
       break;
     case KEY_DOWN:
-      if (this->_key != 0)
-	this->_key = 2;
+		this->_key = 2;
       break;
     case KEY_LEFT:
-      if (this->_key != 1)
-	this->_key = 3;
+		this->_key = 3;
       break;
     case 27:
       this->_key = 5;
