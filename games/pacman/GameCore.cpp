@@ -30,20 +30,20 @@ GameCore	&GameCore::operator=(const GameCore &)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-	Pacman	*pacman = new Pacman();
-	// Ghost	*blinky = new Ghost("Blinky", 2, 11, 12);
-	// Ghost	*pinky = new Ghost("Pinky", 2, 12, 12);
-	// Ghost	*clyde = new Ghost("Clyde", 2, 11, 13);
-	// Ghost	*inky = new Ghost("Inky", 2, 10, 13);
+  Pacman	*pacman = new Pacman();
+  // Ghost	*blinky = new Ghost("Blinky", 2, 11, 12);
+  // Ghost	*pinky = new Ghost("Pinky", 2, 12, 12);
+  // Ghost	*clyde = new Ghost("Clyde", 2, 11, 13);
+  // Ghost	*inky = new Ghost("Inky", 2, 10, 13);
 
   ParserMap			*parser;
   Graph::IGraph		*LibGraphic;
   // Game::Direction 	dir = Game::UP;
   int				**map;
-	// (void)blinky;
-	// (void)pinky;
-	// (void)clyde;
-	// (void)inky;
+  // (void)blinky;
+  // (void)pinky;
+  // (void)clyde;
+  // (void)inky;
 
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();
@@ -53,30 +53,30 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 
   map = parser->getMap()->getData();
 
- // for (std::string line; std::getline(std::cin, line);) {
- // 	if (line == "UP")
- // 		dir = Game::UP;
- // 	if (line == "DOWN")
- // 		dir = Game::DOWN;
- // 	if (line == "LEFT")
- // 		dir = Game::LEFT;
- // 	if (line == "RIGHT")
- // 		dir = Game::RIGHT;
- // if (line == "exit")
- // 	break;
+  // for (std::string line; std::getline(std::cin, line);) {
+  // 	if (line == "UP")
+  // 		dir = Game::UP;
+  // 	if (line == "DOWN")
+  // 		dir = Game::DOWN;
+  // 	if (line == "LEFT")
+  // 		dir = Game::LEFT;
+  // 	if (line == "RIGHT")
+  // 		dir = Game::RIGHT;
+  // if (line == "exit")
+  // 	break;
 
-   // pacman->movePlayer(map, dir);
+  // pacman->movePlayer(map, dir);
 
-   /* DISPLAY in TERMINAL */
-   // parser->getMap()->displayMap(map);
-   LibGraphic->displayMap(map, pacman->getX(), pacman->getY());
+  /* DISPLAY in TERMINAL */
+  // parser->getMap()->displayMap(map);
+  LibGraphic->displayMap(map, pacman->getX(), pacman->getY());
 
   /* DISPLAY THE MAP */
-  delete blinky;
-  delete pinky;
-  delete clyde;
-  delete inky;
-  delete parser;
+  // delete blinky;
+  // delete pinky;
+  // delete clyde;
+  // delete inky;
+  // delete parser;
 }
 
 /* Unused function pure form IGame */
@@ -100,8 +100,8 @@ void		GameCore::setScore(int) {}
 
 extern "C"
 {
-  Game::IGame	*getInstanceGame()
-  {
-    return (new GameCore());
-  }
+Game::IGame	*getInstanceGame()
+{
+  return (new GameCore());
+}
 }

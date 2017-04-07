@@ -34,7 +34,7 @@ namespace Graph
       void	UnsetSprite(int, int, Game::IGame *);
       void	Animation();
       void	displayMap(int **);
-      void 	displayMap(int **, int, int){};
+      void 	displayMap(int **, int, int);
       void	drawMap(int, int, char);
       void	drawPlayer(std::vector<Game::IGame*>, char);
       void	drawScore(int, int);

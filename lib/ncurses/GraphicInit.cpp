@@ -47,6 +47,7 @@ void	Graph::GraphicInit::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; 
 void	Graph::GraphicInit::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::GraphicInit::Animation() {}
 void	Graph::GraphicInit::displayMap(int **ptr){(void)ptr;}
+void	Graph::GraphicInit::displayMap(int **, int, int) {}
 void	Graph::GraphicInit::drawMap(int, int, char) {}
 void	Graph::GraphicInit::drawPlayer(std::vector<Game::IGame*>, char) {}
 void	Graph::GraphicInit::drawScore(int, int) {}

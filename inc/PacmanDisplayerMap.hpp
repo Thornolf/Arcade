@@ -32,7 +32,6 @@ namespace Graph
 	  int					recoverKey(void);
 	  bool					checkSizeWindow(int x, int y);
 	  void					displayMap(int **);
-	  /* MAP | Y | X */
 	  void					displayMap(int **, int, int);
 	  void 					drawElem(char, int, int);
 

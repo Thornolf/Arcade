@@ -36,7 +36,7 @@ namespace Graph
       void	drawScore(int, int);
       void	drawFood(int, int, char);
       void	drawLoose(void);
-	  void	drawTitle(int y);
+      void	drawTitle(int y);
       int	recoverKey(void);
       bool	checkSizeWindow(int x, int y);
 
@@ -47,7 +47,7 @@ namespace Graph
       void	UnsetSprite(int, int, Game::IGame *);
       void	Animation();
       void	displayMap(int **);
-      void 	displayMap(int **, int, int){};
+      void 	displayMap(int **, int, int);
       std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &);
   };
 }

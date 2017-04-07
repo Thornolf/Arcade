@@ -54,6 +54,7 @@ void	Graph::SnakeGraph::SetSprite(int, int, Game::IGame *)  {}
 void	Graph::SnakeGraph::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::SnakeGraph::Animation() {}
 void	Graph::SnakeGraph::displayMap(int **){}
+void	Graph::SnakeGraph::displayMap(int **, int, int) {}
 bool	Graph::SnakeGraph::checkSizeWindow(int, int) {return (false);}
 
 std::pair<std::string, std::string>	Graph::SnakeGraph::startMenu(const std::vector<std::string> &, const std::vector<std::string> &)

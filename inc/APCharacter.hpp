@@ -16,8 +16,8 @@
 # include "IGame.hpp"
 
 enum Score {
- 	PACGUM = 10,
-	GHOST = 200,
+  PACGUM = 10,
+  GHOST = 200,
 };
 
 enum BlockType { /* !! */
@@ -46,14 +46,14 @@ class APCharacter : public Game::IGame {
     int				_id;
     int 			_X;
     int 			_Y;
-	int 			_score;
+    int 			_score;
 
-public:
-	APCharacter ();
-	/* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY */
-	APCharacter (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int);
-	APCharacter (std::string, int, int, int);
-	virtual ~APCharacter ();
+  public:
+    APCharacter ();
+    /* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY */
+    APCharacter (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int);
+    APCharacter (std::string, int, int, int);
+    virtual ~APCharacter ();
 
     void			startCore(Arcade::DLLoader<Graph::IGraph> &lib);
 
@@ -80,7 +80,7 @@ public:
     size_t		getSpeed(void) const;
     Game::Direction	getDirection(void) const;
     BlockType		getType(int) const;
-	int 		getId(void) const;
+    int 		getId(void) const;
 
     /* Unused member function from Game::IGame */
     void	movePlayer(std::map<int, std::map<int, int>>);
@@ -88,8 +88,8 @@ public:
     bool	isAlive(void) const;
     void	Dump(void) const;
     void	setScore(int);
-	int		getScore(void) const;
-	void 	increaseScore(int);
+    int		getScore(void) const;
+    void 	increaseScore(int);
 
 };
 
