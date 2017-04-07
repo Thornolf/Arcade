@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:53:52 2017 Quentin Baudet
-** Last update Thu Apr 06 23:02:37 2017 Quentin Baudet
+** Last update Fri Apr 07 10:47:11 2017 Quentin Baudet
 */
 
 #include "APCharacter.hpp"
@@ -71,9 +71,10 @@ void 			APCharacter::movePlayerUp(int **map)
   {
     this->setX(oldPosX);
     this->setY(oldPosY - 1);
+  } else {
+	  return ;
+    // std::cout << "You cannot move to this position Y: " << oldPosY - 1 << " | X : " << oldPosX  << '\n';
   }
-  else
-    std::cout << "You cannot move to this position Y: " << oldPosY - 1 << " | X : " << oldPosX  << '\n';
 }
 
 void 			APCharacter::movePlayerRight(int **map) {
@@ -84,9 +85,10 @@ void 			APCharacter::movePlayerRight(int **map) {
   {
     this->setX(oldPosX + 1);
     this->setY(oldPosY);
+  } else {
+	  return ;
+    // std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX  + 1<< '\n';
   }
-  else
-    std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX  + 1<< '\n';
 }
 void 			APCharacter::movePlayerLeft(int **map)
 {
@@ -97,9 +99,10 @@ void 			APCharacter::movePlayerLeft(int **map)
   {
     this->setX(oldPosX - 1);
     this->setY(oldPosY);
+  } else {
+	  return ;
+    // std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX - 1 << '\n';
   }
-  else
-    std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX - 1 << '\n';
 }
 
 void 			APCharacter::movePlayerDown(int **map)
@@ -111,9 +114,10 @@ void 			APCharacter::movePlayerDown(int **map)
   {
     this->setX(oldPosX);
     this->setY(oldPosY + 1);
+  } else {
+	  return ;
+    // std::cout << "You cannot move to this position Y: " << oldPosY + 1 << " | X : " << oldPosX  << '\n';
   }
-  else
-    std::cout << "You cannot move to this position Y: " << oldPosY + 1 << " | X : " << oldPosX  << '\n';
 }
 
 void 		APCharacter::movePlayer(int **map, Game::Direction direction)

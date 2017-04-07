@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:39:42 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 22:38:32 2017 Robin Grattepanche
+** Last update Fri Apr 07 11:50:14 2017 Quentin Baudet
 */
 
 #ifndef		_SNAKE_GRAPH__HPP_
@@ -36,7 +36,7 @@ namespace Graph
       void	drawScore(int, int);
       void	drawFood(int, int, char);
       void	drawLoose(void);
-	  void	drawTitle(int y);
+      void	drawTitle(int y);
       int	recoverKey(void);
       bool	checkSizeWindow(int x, int y);
 
@@ -47,6 +47,7 @@ namespace Graph
       void	UnsetSprite(int, int, Game::IGame *);
       void	Animation();
       void	displayMap(int **);
+      void 	displayMap(int **, int, int);
       std::pair<std::string, std::string>	startMenu(const std::vector<std::string> &, const std::vector<std::string> &);
   };
 }

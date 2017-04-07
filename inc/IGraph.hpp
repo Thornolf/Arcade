@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Mon Mar 13 16:42:14 2017 Thomas Fossaert
-** Last update Thu Mar 23 16:44:05 2017 Thomas Fossaert
+** Last update Fri Apr 07 11:49:06 2017 Quentin Baudet
 */
 
 #ifndef		__IGRAPH_HPP__
@@ -34,6 +34,7 @@ namespace Graph
       virtual void					UnsetSprite(int, int, Game::IGame *) = 0;
       virtual void					Animation(void) = 0;
       virtual void					displayMap(int **) = 0;
+      virtual void					displayMap(int **, int, int) = 0;
       virtual void					drawMap(int, int, char) = 0;
       virtual void					drawPlayer(std::vector<Game::IGame*>, char) = 0;
       virtual void					drawScore(int, int) = 0;

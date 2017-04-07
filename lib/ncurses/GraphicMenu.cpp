@@ -267,7 +267,8 @@ void	Graph::GraphicMenu::Game(void)  {}
 void	Graph::GraphicMenu::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::GraphicMenu::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::GraphicMenu::Animation() {}
-void	Graph::GraphicMenu::displayMap(int **ptr){(void)ptr;};
+void	Graph::GraphicMenu::displayMap(int **){};
+void	Graph::GraphicMenu::displayMap(int **, int, int) {}
 void	Graph::GraphicMenu::LaunchMenuSound(sf::Music &, const std::string &filepath) const {(void)filepath;}
 void	Graph::GraphicMenu::drawMap(int, int, char) {}
 void	Graph::GraphicMenu::drawPlayer(std::vector<Game::IGame*>, char) {};
