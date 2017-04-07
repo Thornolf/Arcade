@@ -10,19 +10,15 @@
 
 #include "ParserMap.hpp"
 
-/*       this->_map[height - 2][i] = (line.c_str())[i];
- */
-
-/*Constructor */
 ParserMap::ParserMap(const std::string &filepath)
 {
-  std::ifstream	myfile (filepath);
+  std::ifstream	myFile (filepath);
   std::string	line;
   size_t	i = 0;
 
-  if (!myfile.is_open())
+  if (!myFile.is_open())
     throw Arcade::ArcadeException("Cannot read the map file");
-  while (getline(myfile,line))
+  while (getline(myFile,line))
   {
     if (i == 0)
       this->_height = std::stoi(line);
@@ -33,10 +29,9 @@ ParserMap::ParserMap(const std::string &filepath)
     i++;
   }
   this->_map = new MapGame(this->_length, this->_height);
-  myfile.close();
+  myFile.close();
 }
 
-/* Destructor */
 ParserMap::~ParserMap() {}
 
 MapGame		*ParserMap::getMap() const

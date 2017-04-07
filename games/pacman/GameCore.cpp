@@ -15,8 +15,8 @@
 #include "APCharacter.hpp"
 #include "Pacman.hpp"
 #include "Ghost.hpp"
-
 #include <unistd.h>
+
 GameCore::GameCore() {}
 
 GameCore::GameCore(const GameCore &obj)
@@ -34,47 +34,53 @@ GameCore	&GameCore::operator=(const GameCore &obj)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-	Pacman	*pacman = new Pacman();
-	Ghost	*blinky = new Ghost("Blinky", 2, 11, 12);
-	Ghost	*pinky = new Ghost("Pinky", 2, 12, 12);
-	Ghost	*clyde = new Ghost("Clyde", 2, 11, 13);
-	Ghost	*inky = new Ghost("Inky", 2, 10, 13);
+  Pacman	*pacman = new Pacman();
+  Ghost		*blinky = new Ghost("Blinky", 2, 11, 12);
+  Ghost		*pinky = new Ghost("Pinky", 2, 12, 12);
+  Ghost		*clyde = new Ghost("Clyde", 2, 11, 13);
+  Ghost		*inky = new Ghost("Inky", 2, 10, 13);
 
   ParserMap			*parser;
   Graph::IGraph		*LibGraphic;
   Game::Direction 	dir = Game::UP;
   int				**map;
-	(void)blinky;
-	(void)pinky;
-	(void)clyde;
-	(void)inky;
+
+  (void)blinky;
+  (void)pinky;
+  (void)clyde;
+  (void)inky;
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();
   LibGraphic = LoaderGraphicLib.getInstance("getInstancePacmanDisplayerMap");
   LibGraphic->displayMap(NULL);
   map = parser->getMap()->getData();
 
- for (std::string line; std::getline(std::cin, line);) {
- 	if (line == "UP")
- 		dir = Game::UP;
- 	if (line == "DOWN")
- 		dir = Game::DOWN;
- 	if (line == "LEFT")
- 		dir = Game::LEFT;
- 	if (line == "RIGHT")
- 		dir = Game::RIGHT;
-	if (line == "exit")
-		break;
-   std::cout << "Y: "<< pacman->getY() << " X: " << pacman->getX() << std::endl;
+  for (std::string line; std::getline(std::cin, line);)
+  {
+    if (line == "UP")
+      dir = Game::UP;
+    if (line == "DOWN")
+      dir = Game::DOWN;
+    if (line == "LEFT")
+      dir = Game::LEFT;
+    if (line == "RIGHT")
+      dir = Game::RIGHT;
+    if (line == "exit")
+      break;
+    std::cout << "Y: "<< pacman->getY() << " X: " << pacman->getX() << std::endl;
 
-   pacman->movePlayer(map, dir);
-   std::cout << "New score : " << pacman->getScore() << std::endl;
+    pacman->movePlayer(map, dir);
+    std::cout << "New score : " << pacman->getScore() << std::endl;
 
-   parser->getMap()->displayMap(map);
+    parser->getMap()->displayMap(map);
 
-   sleep(1); /* !! */
-  	}
+    sleep(1); /* !! */
+  }
   /* DISPLAY THE MAP */
+  delete blinky;
+  delete pinky;
+  delete clyde;
+  delete inky;
   delete parser;
 }
 
@@ -101,6 +107,6 @@ extern "C"
 {
   Game::IGame	*getInstanceGame()
   {
-    return ((Game::IGame *)new GameCore());
+    return (new GameCore());
   }
 }

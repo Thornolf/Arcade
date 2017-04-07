@@ -10,26 +10,15 @@
 
 #include "Pacman.hpp"
 
-Pacman::Pacman() : APCharacter() {
-	this->_score = 0;
+Pacman::Pacman() : APCharacter()
+{
+  this->_score = 0;
 }
 
-Pacman::Pacman(	std::string newName,
-			  	int newId,
-			  	APCharacter::Hp newHp,
-			  	Game::State newState,
-			  	Game::Direction newDirection,
-			  	int newX,
-			  	int newY,
-				int newScore) :
-				APCharacter(newName,
-							newId,
-							newHp,
-							newState,
-							newDirection,
-							newX,
-							newY) {
-	this->_score = newScore;
+Pacman::Pacman(	std::string newName, int newId, APCharacter::Hp newHp, Game::State newState, Game::Direction newDirection, int newX, int newY, int newScore) :
+  APCharacter(newName, newId, newHp, newState, newDirection, newX, newY)
+{
+  this->_score = newScore;
 }
 
 Pacman::~Pacman() {}

@@ -13,47 +13,30 @@
 Ghost::Ghost() : APCharacter() {
 }
 
-Ghost::Ghost(	std::string newName,
-			  	int newId,
-			  	APCharacter::Hp newHp,
-			  	Game::State newState,
-			  	Game::Direction newDirection,
-			  	int newX,
-			  	int newY) :
-				APCharacter(newName,
-							newId,
-							newHp,
-							newState,
-							newDirection,
-							newX,
-							newY) {
+Ghost::Ghost(std::string newName, int newId, APCharacter::Hp newHp, Game::State newState, Game::Direction newDirection, int newX, int newY) :
+  APCharacter(newName, newId, newHp, newState, newDirection, newX, newY)
+{
 }
 
-Ghost::Ghost (	std::string newName,
-				  			int newId,
-				  			int newX,
-				  			int newY) : APCharacter (
-  newName,
-  newId,
-  APCharacter::ALIVE,
-  Game::INVUNERABLE,
-  Game::UP,
-  newX,
-  newY
-)
-{}
-
-void 		Ghost::goingOut(int **newMap, int newPosX, int newPosY) {
-	if (newMap[newPosY][newPosX] == 5)
-		setDoorCheck(true);
+Ghost::Ghost (std::string newName, int newId, int newX, int newY) :
+  APCharacter(newName, newId, APCharacter::ALIVE, Game::INVUNERABLE, Game::UP, newX, newY)
+{
 }
 
-void 		Ghost::setDoorCheck(bool newDoorCheck) {
-	this->_doorCheck = newDoorCheck;
+void 		Ghost::goingOut(int **newMap, int newPosX, int newPosY)
+{
+  if (newMap[newPosY][newPosX] == 5)
+    setDoorCheck(true);
 }
 
-bool 		Ghost::getDoorCheck(void) {
-	return (this->_doorCheck);
+void 		Ghost::setDoorCheck(bool newDoorCheck)
+{
+  this->_doorCheck = newDoorCheck;
+}
+
+bool 		Ghost::getDoorCheck(void)
+{
+  return (this->_doorCheck);
 }
 
 Ghost::~Ghost () {}

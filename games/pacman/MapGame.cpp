@@ -23,11 +23,12 @@ MapGame::MapGame(int newLength, int newHeight)
 
 void	MapGame::fillUpData(int index_line, const std::string &line)
 {
-  for (size_t index_char = 0; index_char != line.length(); ++index_char) {
+  for (size_t index_char = 0; index_char != line.length(); ++index_char)
+  {
     if ( line.c_str()[index_char] - '0' == 9)
-		this->_data[index_line][index_char] = -1;
-	else
-    	this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
+      this->_data[index_line][index_char] = -1;
+    else
+      this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
   }
 }
 
@@ -62,13 +63,14 @@ void 	MapGame::setMapLength(int newLength)
 
 /* GETTER */
 
-void 	MapGame::displayMap(int** newMap) const {
-	for (int i = 0; i < this->getMapHeight(); i++) {
-		for (int j = 0; j < this->getMapLength(); j++) {
-			std::cout << newMap[i][j] << "  ";
-		}
-		std::cout << std::endl;
-	}
+void 	MapGame::displayMap(int** newMap) const
+{
+  for (int i = 0; i < this->getMapHeight(); i++)
+  {
+    for (int j = 0; j < this->getMapLength(); j++)
+      std::cout << newMap[i][j] << "  ";
+    std::cout << std::endl;
+  }
 }
 int 	**MapGame::getData() const
 {
@@ -77,18 +79,19 @@ int 	**MapGame::getData() const
   return (this->_data);
 }
 
-int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Pacman *pacman) {
-    if (newMap[newPosY][newPosX] == 1 && pacman->getId() == 1) {
-		newMap[newPosY][newPosX] = -1;
-		pacman->increaseScore(Score::PACGUM);
-
-	}
-	return (newMap);
+int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Pacman *pacman)
+{
+  if (newMap[newPosY][newPosX] == 1 && pacman->getId() == 1)
+  {
+    newMap[newPosY][newPosX] = -1;
+    pacman->increaseScore(Score::PACGUM);
+  }
+  return (newMap);
 }
 
-int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Ghost *ghost) {
-    if ((newMap[newPosY][newPosX] == BlockType::VOID || newMap[newPosY][newPosX] == BlockType::WAY )&& ghost->getId() == 2) {
-		newMap[newPosY][newPosX] = 9;
-	}
-	return (newMap);
+int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Ghost *ghost)
+{
+  if ((newMap[newPosY][newPosX] == BlockType::VOID || newMap[newPosY][newPosX] == BlockType::WAY )&& ghost->getId() == 2)
+    newMap[newPosY][newPosX] = 9;
+  return (newMap);
 }

@@ -64,6 +64,6 @@ extern "C"
 {
   Game::IGame	*getInstanceGame()
   {
-    return ((Game::IGame *)new GameCore());
+    return (new GameCore());
   }
 }

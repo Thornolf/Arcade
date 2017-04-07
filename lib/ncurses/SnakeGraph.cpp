@@ -156,6 +156,6 @@ extern "C"
 {
   Graph::IGraph*	getInstanceSnakeGraph()
   {
-    return ((Graph::IGraph *)new Graph::SnakeGraph());
+    return (reinterpret_cast<Graph::IGraph*>(new Graph::SnakeGraph()));
   }
 }
