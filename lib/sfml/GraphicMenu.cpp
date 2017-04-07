@@ -135,7 +135,6 @@ std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
 						const std::string &title,
 						std::vector<std::string> listItems)
 {
-  sf::Event			event;
   int				alpha = 190;
   int				cursorSpeedFadeEffect = 0;
   int				cursorFadeEffect = 1;
@@ -152,10 +151,21 @@ std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
     window.draw(sprite_logo);
     displayTitle(window, title);
     drawListMenu = displayListItems(window, listItems);
+    sf::Event		event;
     while (window.pollEvent(event))
     {
-      if (event.type == sf::Event::Closed || (sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
-	window.close();
+      switch (event.type)
+      {
+	case sf::Event::Closed:
+	  window.close();
+	  break;
+	case sf::Event::KeyPressed:
+	  if (event.key.code == sf::Keyboard::Escape)
+	    window.close();
+	  break;
+	default:
+	    break;
+      }
       if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
       {
 	choice = getItemClicked(sf::Mouse::getPosition(window), drawListMenu);

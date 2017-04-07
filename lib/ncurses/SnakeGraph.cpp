@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 22:05:12 2017 Robin Grattepanche
+** Last update Thu Apr 06 22:59:23 2017 Robin Grattepanche
 */
 
 #include "ncurses/GraphicInit.hpp"
@@ -61,6 +61,7 @@ void	Graph::SnakeGraph::drawMap(int width, int height, char wallChar)
     addch(wallChar);
   }
   attroff(COLOR_PAIR(1));
+  this->drawTitle(height);
 }
 
 void	Graph::SnakeGraph::drawScore(int score, int width)
@@ -132,9 +133,28 @@ bool	Graph::SnakeGraph::checkSizeWindow(int minX, int minY)
   int	y = 0;
 
   getmaxyx(stdscr, y, x);
-  if (x <= minX + 15 || y <= minY)
+  if (x <= minX + 15 || y <= minY + 11)
     return (false);
   return (true);
+}
+
+void	Graph::SnakeGraph::drawTitle(int y)
+{
+	init_color(COLOR_YELLOW, 105, 520, 300);
+	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+	attron(COLOR_PAIR(3));
+	mvprintw(y, 1, "               ____  ___      ___       _     ___    __ __________             ");
+	mvprintw(y + 1, 1, "              6MMMMb\\`MM\\     `M'      dM.    `MM    d'  `MMMMMMMMM            ");
+	mvprintw(y + 2, 1, "             6M'    ` MMM\\     M      ,MMb     MM   d'   MM      \\             ");
+	mvprintw(y + 3, 1, "\\M\\          MM       M\\MM\\    M      d'YM.    MM  d'    MM                 /M/");
+	mvprintw(y + 4, 1, " \\M\\         YM.      M \\MM\\   M     ,P `Mb    MM d'     MM    ,           /M/");
+	mvprintw(y + 5, 1, "  \\M\\         YMMMMb  M  \\MM\\  M     d'  YM.   MMd'      MMMMMMM          /M/  ");
+	mvprintw(y + 6, 1, "   \\M\\            `Mb M   \\MM\\ M    ,P   `Mb   MMYM.     MM    `         /M/   ");
+	mvprintw(y + 7, 1, "   /M/             MM M    \\MM\\M    d'    YM.  MM YM.    MM              \\M\\   ");
+	mvprintw(y + 8, 1, "  /M/              MM M     \\MMM   ,MMMMMMMMb  MM  YM.   MM               \\M\\  ");
+	mvprintw(y + 9, 1, " /M/         L    ,M9 M      \\MM   d'      YM. MM   YM.  MM      /         \\M\\ ");
+	mvprintw(y + 10, 1, "/M/          MYMMMM9 _M_      \\M _dM_     _dMM_MM_   YM._MMMMMMMMM          \\M\\");
+	attroff(COLOR_PAIR(3));
 }
 
 /* Unused function inherit from IGraph */
@@ -156,6 +176,6 @@ extern "C"
 {
   Graph::IGraph*	getInstanceSnakeGraph()
   {
-    return ((Graph::IGraph *)new Graph::SnakeGraph());
+    return (reinterpret_cast<Graph::IGraph*>(new Graph::SnakeGraph()));
   }
 }

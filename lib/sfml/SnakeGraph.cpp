@@ -40,45 +40,24 @@ void	Graph::SnakeGraph::drawMap(int width, int height, char wallChar)
   (void)wallChar;
 }
 
-void	Graph::SnakeGraph::drawScore(int score, int width)
-{
-  (void)score;
-  (void)width;
-}
-
-void	Graph::SnakeGraph::drawPlayer(std::vector<Game::IGame *> snake, char partChar)
-{
-  (void)snake;
-  (void)partChar;
-}
-
-void	Graph::SnakeGraph::drawFood(int height, int width, char foodChar)
-{
-  (void)height;
-  (void)width;
-  (void)foodChar;
-}
-
-int	Graph::SnakeGraph::recoverKey(void)
-{
-  return (this->_key);
-}
-
+/* Need be implemented */
+void	Graph::SnakeGraph::drawScore(int, int) {}
+void	Graph::SnakeGraph::drawPlayer(std::vector<Game::IGame*>, char) {}
+void	Graph::SnakeGraph::drawFood(int, int, char) {}
+int	Graph::SnakeGraph::recoverKey(void) { return (this->_key); }
 void	Graph::SnakeGraph::drawLoose(void) {}
 
 /* Unused function inherit from IGraph */
 void	Graph::SnakeGraph::createMap(void) {}
 void	Graph::SnakeGraph::Game(void)  {}
-void	Graph::SnakeGraph::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
-void	Graph::SnakeGraph::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
+void	Graph::SnakeGraph::SetSprite(int, int, Game::IGame *)  {}
+void	Graph::SnakeGraph::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::SnakeGraph::Animation() {}
-void	Graph::SnakeGraph::displayMap(int **ptr){(void)ptr;}
+void	Graph::SnakeGraph::displayMap(int **){}
 bool	Graph::SnakeGraph::checkSizeWindow(int, int) {return (false);}
 
-std::pair<std::string, std::string>	Graph::SnakeGraph::startMenu(const std::vector<std::string> &v1, const std::vector<std::string> &v2)
+std::pair<std::string, std::string>	Graph::SnakeGraph::startMenu(const std::vector<std::string> &, const std::vector<std::string> &)
 {
-  (void)v1;
-  (void)v2;
   return (std::make_pair("", ""));
 }
 
@@ -86,6 +65,6 @@ extern "C"
 {
   Graph::IGraph*	getInstanceSnakeGraph()
   {
-    return ((Graph::IGraph *)new Graph::SnakeGraph());
+    return (reinterpret_cast<Graph::IGraph*>(new Graph::SnakeGraph()));
   }
 }

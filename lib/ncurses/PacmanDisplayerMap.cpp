@@ -120,7 +120,7 @@ extern "C"
 {
   Graph::IGraph	*getInstancePacmanDisplayerMap()
   {
-    return ((Graph::IGraph *)new Graph::PacmanDisplayerMap());
+    return (new Graph::PacmanDisplayerMap());
   }
 }
 /* Unused Methods from Graph::IGraph */

@@ -36,6 +36,7 @@ namespace Graph
       void	drawScore(int, int);
       void	drawFood(int, int, char);
       void	drawLoose(void);
+	  void	drawTitle(int y);
       int	recoverKey(void);
       bool	checkSizeWindow(int x, int y);
 

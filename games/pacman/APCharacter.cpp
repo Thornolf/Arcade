@@ -10,7 +10,8 @@
 
 #include "APCharacter.hpp"
 
-APCharacter::APCharacter () {
+APCharacter::APCharacter ()
+{
   this->_name = "Fossae_t";
   this->_id = 1;
   this->_X = 10;
@@ -18,13 +19,9 @@ APCharacter::APCharacter () {
   this->_score = 0;
 }
 
-APCharacter::APCharacter (	std::string newName,
-				  int newId,
-				  APCharacter::Hp newHp,
-				  Game::State newState,
-				  Game::Direction newDirection,
-				  int newX,
-				  int newY) {
+APCharacter::APCharacter (std::string newName, int newId, APCharacter::Hp newHp,
+			  Game::State newState, Game::Direction newDirection, int newX, int newY)
+{
   this->_name = newName;
   this->_id = newId;
   this->_hp = newHp;
@@ -35,10 +32,8 @@ APCharacter::APCharacter (	std::string newName,
   this->_score = 0;
 }
 
-APCharacter::APCharacter (	std::string newName,
-				  			int newId,
-				  			int newX,
-				  			int newY) {
+APCharacter::APCharacter (std::string newName, int newId, int newX, int newY)
+{
   this->_name = newName;
   this->_hp = APCharacter::ALIVE;
   this->_state = Game::VULNERABLE;
@@ -52,27 +47,28 @@ APCharacter::APCharacter (	std::string newName,
 APCharacter::~APCharacter () {}
 
 /* ACTION */
-
-BlockType 		APCharacter::getType(int newType) const {
-  if (newType == BlockType::WAY || newType == BlockType::VOID) {
+BlockType 		APCharacter::getType(int newType) const
+{
+  if (newType == BlockType::WAY || newType == BlockType::VOID)
     return (BlockType::WAY);
-  } else {
+  else
     return (BlockType::BLOCK);
-  }
 }
 
-bool 			APCharacter::isWalkable(int newBlock) const {
-  if (newBlock == BlockType::WAY || newBlock == BlockType::VOID) {
+bool 			APCharacter::isWalkable(int newBlock) const
+{
+  if (newBlock == BlockType::WAY || newBlock == BlockType::VOID)
     return (true);
-  } else {
+  else
     return (false);
-  }
 }
 
-void 			APCharacter::movePlayerUp(int **map) {
+void 			APCharacter::movePlayerUp(int **map)
+{
   int oldPosX = this->getX();
   int oldPosY = this->getY();
-  if (this->isWalkable(map[oldPosY - 1][oldPosX]) == true) {
+  if (this->isWalkable(map[oldPosY - 1][oldPosX]) == true)
+  {
     this->setX(oldPosX);
     this->setY(oldPosY - 1);
   } else {
@@ -85,7 +81,8 @@ void 			APCharacter::movePlayerRight(int **map) {
   int oldPosX = this->getX();
   int oldPosY = this->getY();
 
-  if (this->isWalkable(map[oldPosY][oldPosX + 1]) == true) {
+  if (this->isWalkable(map[oldPosY][oldPosX + 1]) == true)
+  {
     this->setX(oldPosX + 1);
     this->setY(oldPosY);
   } else {
@@ -93,11 +90,13 @@ void 			APCharacter::movePlayerRight(int **map) {
     // std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX  + 1<< '\n';
   }
 }
-void 			APCharacter::movePlayerLeft(int **map) {
+void 			APCharacter::movePlayerLeft(int **map)
+{
   int oldPosX = this->getX();
   int oldPosY = this->getY();
 
-  if (this->isWalkable(map[oldPosY][oldPosX - 1]) == true) {
+  if (this->isWalkable(map[oldPosY][oldPosX - 1]) == true)
+  {
     this->setX(oldPosX - 1);
     this->setY(oldPosY);
   } else {
@@ -105,11 +104,14 @@ void 			APCharacter::movePlayerLeft(int **map) {
     // std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX - 1 << '\n';
   }
 }
-void 			APCharacter::movePlayerDown(int **map) {
+
+void 			APCharacter::movePlayerDown(int **map)
+{
   int oldPosX = this->getX();
   int oldPosY = this->getY();
 
-  if (this->isWalkable(map[oldPosY + 1][oldPosX]) == true) {
+  if (this->isWalkable(map[oldPosY + 1][oldPosX]) == true)
+  {
     this->setX(oldPosX);
     this->setY(oldPosY + 1);
   } else {
@@ -118,85 +120,98 @@ void 			APCharacter::movePlayerDown(int **map) {
   }
 }
 
-void 		APCharacter::movePlayer(int **map, Game::Direction direction) {
-	// std::cout << "CELL : " << map[this->getY()][this->getX()] << std::endl;
-	if (map[this->getY()][this->getX()] == 1 || this->getId() == 1) {
-		map[this->getY()][this->getX()] = -1;
-		this->increaseScore(Score::PACGUM);
-	}
+void 		APCharacter::movePlayer(int **map, Game::Direction direction)
+{
   std::map<Game::Direction, std::function<void(int **)>>	moveActions;
 
   moveActions[Game::UP] = std::bind(&APCharacter::movePlayerUp, this, std::placeholders::_1);
   moveActions[Game::DOWN] = std::bind(&APCharacter::movePlayerDown, this, std::placeholders::_1);
   moveActions[Game::LEFT] = std::bind(&APCharacter::movePlayerLeft, this, std::placeholders::_1);
   moveActions[Game::RIGHT] = std::bind(&APCharacter::movePlayerRight, this, std::placeholders::_1);
-
+  if (map[this->getY()][this->getX()] == 1 || this->getId() == 1)
+  {
+    map[this->getY()][this->getX()] = -1;
+    this->increaseScore(Score::PACGUM);
+  }
   moveActions[direction](map);
   map[this->getY()][this->getX()] = 7;
 }
 
 /* SETTER */
 
-void		APCharacter::setX(int newX) {
+void		APCharacter::setX(int newX)
+{
   this->_X = newX;
 }
 
-void		APCharacter::setY(int newY) {
+void		APCharacter::setY(int newY)
+{
   this->_Y = newY;
 }
 
-void		APCharacter::setState(Game::State newState){
+void		APCharacter::setState(Game::State newState)
+{
   this->_state = newState;
 }
 
 
-void		APCharacter::setDirection(Game::Direction newDirection) {
+void		APCharacter::setDirection(Game::Direction newDirection)
+{
   this->_direction = newDirection;
 }
 
 /* GETTER */
 
-int			APCharacter::getX(void) const {
+int			APCharacter::getX(void) const
+{
   return (this->_X);
 }
 
-int			APCharacter::getY(void) const {
+int			APCharacter::getY(void) const
+{
   return (this->_Y);
 }
 
-Game::State	APCharacter::getState(void) const {
+Game::State	APCharacter::getState(void) const
+{
   return (this->_state);
 }
 
-Game::Direction	APCharacter::getDirection(void) const {
+Game::Direction	APCharacter::getDirection(void) const
+{
   return (Game::UP);
 }
 
 /* Return l'ID */
-int			APCharacter::getType(void) const {
+int			APCharacter::getType(void) const
+{
   return (0);
 }
 
-int 		APCharacter::getId(void) const {
-	return (this->_id);
+int 		APCharacter::getId(void) const
+{
+  return (this->_id);
 }
 
-bool		APCharacter::isAlive(void) const{
+bool		APCharacter::isAlive(void) const
+{
   return (true);
 }
 
-void 	APCharacter::increaseScore(int newScore) {
-	this->_score += newScore;
+void 	APCharacter::increaseScore(int newScore)
+{
+  this->_score += newScore;
 }
 
-int 	APCharacter::getScore(void) const{
-	return (this->_score);
+int 	APCharacter::getScore(void) const
+{
+  return (this->_score);
 }
 
-void		APCharacter::Dump(void) const{}
-void		APCharacter::setScore(int){}
-void		APCharacter::setLive(bool newLive){	(void)newLive; }
-size_t		APCharacter::getSpeed(void) const{ return (0); }
-void		APCharacter::setSpeed(size_t newSpeed){ (void)newSpeed;}
-void		APCharacter::movePlayer(std::map<int, std::map<int, int>>){}
+void		APCharacter::Dump(void) const {}
+void		APCharacter::setScore(int) {}
+void		APCharacter::setLive(bool newLive) { (void)newLive; }
+size_t		APCharacter::getSpeed(void) const { return (0); }
+void		APCharacter::setSpeed(size_t newSpeed) { (void)newSpeed; }
+void		APCharacter::movePlayer(std::map<int, std::map<int, int>>) {}
 void 		APCharacter::startCore(Arcade::DLLoader<Graph::IGraph> &lib) { (void)lib; }

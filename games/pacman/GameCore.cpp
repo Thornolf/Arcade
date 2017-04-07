@@ -15,20 +15,16 @@
 #include "APCharacter.hpp"
 #include "Pacman.hpp"
 #include "Ghost.hpp"
-
 #include <unistd.h>
+
 GameCore::GameCore() {}
 
-GameCore::GameCore(const GameCore &obj)
-{
-  (void)obj;
-}
+GameCore::GameCore(const GameCore &) {}
 
 GameCore::~GameCore() {}
 
-GameCore	&GameCore::operator=(const GameCore &obj)
+GameCore	&GameCore::operator=(const GameCore &)
 {
-  (void)obj;
   return (*this);
 }
 
@@ -75,8 +71,11 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
    // parser->getMap()->displayMap(map);
    LibGraphic->displayMap(map, pacman->getX(), pacman->getY());
 
-   sleep(1); /* !! */
- //  	}w
+  /* DISPLAY THE MAP */
+  delete blinky;
+  delete pinky;
+  delete clyde;
+  delete inky;
   delete parser;
 }
 
@@ -103,6 +102,6 @@ extern "C"
 {
   Game::IGame	*getInstanceGame()
   {
-    return ((Game::IGame *)new GameCore());
+    return (new GameCore());
   }
 }

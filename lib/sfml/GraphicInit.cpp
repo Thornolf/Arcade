@@ -15,7 +15,7 @@ Graph::GraphicInit::GraphicInit(const std::string &title)
   sf::Image	icon;
   sf::Vector2u	sizeIco;
 
-  if (!icon.loadFromFile("assets/img/icon.png"))
+  if (!(icon.loadFromFile("assets/img/icon.png")))
     throw Arcade::ArcadeException("Cannot load the icon of the window");
   sizeIco = icon.getSize();
   this->_window = new sf::RenderWindow(sf::VideoMode(1280, 720), title);
