@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 22:59:23 2017 Robin Grattepanche
+** Last update Fri Apr 07 17:12:40 2017 Robin Grattepanche
 */
 
 #include "ncurses/GraphicInit.hpp"
@@ -143,17 +143,13 @@ void	Graph::SnakeGraph::drawTitle(int y)
 	init_color(COLOR_YELLOW, 105, 520, 300);
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
 	attron(COLOR_PAIR(3));
-	mvprintw(y, 1, "               ____  ___      ___       _     ___    __ __________             ");
-	mvprintw(y + 1, 1, "              6MMMMb\\`MM\\     `M'      dM.    `MM    d'  `MMMMMMMMM            ");
-	mvprintw(y + 2, 1, "             6M'    ` MMM\\     M      ,MMb     MM   d'   MM      \\             ");
-	mvprintw(y + 3, 1, "\\M\\          MM       M\\MM\\    M      d'YM.    MM  d'    MM                 /M/");
-	mvprintw(y + 4, 1, " \\M\\         YM.      M \\MM\\   M     ,P `Mb    MM d'     MM    ,           /M/");
-	mvprintw(y + 5, 1, "  \\M\\         YMMMMb  M  \\MM\\  M     d'  YM.   MMd'      MMMMMMM          /M/  ");
-	mvprintw(y + 6, 1, "   \\M\\            `Mb M   \\MM\\ M    ,P   `Mb   MMYM.     MM    `         /M/   ");
-	mvprintw(y + 7, 1, "   /M/             MM M    \\MM\\M    d'    YM.  MM YM.    MM              \\M\\   ");
-	mvprintw(y + 8, 1, "  /M/              MM M     \\MMM   ,MMMMMMMMb  MM  YM.   MM               \\M\\  ");
-	mvprintw(y + 9, 1, " /M/         L    ,M9 M      \\MM   d'      YM. MM   YM.  MM      /         \\M\\ ");
-	mvprintw(y + 10, 1, "/M/          MYMMMM9 _M_      \\M _dM_     _dMM_MM_   YM._MMMMMMMMM          \\M\\");
+	mvprintw(y, 5, "               .M\"\"\"bgd `7MN.   `7MF'     db      `7MMF' `YMM' `7MM\"\"\"YMM");
+	mvprintw(y + 1, 5, "`\\\\.          ,MI    \"Y   MMN.    M      ;MM:       MM   .M'     MM    `7           ,;//'");
+	mvprintw(y + 2, 5, "   `\\\\:.      `MMb.       M YMb   M     ,V^MM.      MM .d\"       MM   d          ,;//'");
+	mvprintw(y + 3, 5, "      `\\\\.      `YMMNq.   M  `MN. M    ,M  `MM      MMMMM.       MMmmMM        ,//'");
+	mvprintw(y + 4, 5, "     ,;//'    .     `MM   M   `MM.M    AbmmmqMA     MM  VMA      MM   Y  ,     `\\\\.");
+	mvprintw(y + 5, 5, "  ,;//'       Mb     dM   M     YMM   A'     VML    MM   `MM.    MM     ,M        `\\\\:.");
+	mvprintw(y + 6, 5, ",//'          P\"Ybmmd\"  .JML.    YM .AMA.   .AMMA..JMML.   MMb..JMMmmmmMMM           `\\\\.");
 	attroff(COLOR_PAIR(3));
 }
 
