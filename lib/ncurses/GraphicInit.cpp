@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 16:35:23 2017 Guillaume CAUCHOIS
-** Last update Wed Apr 05 16:35:23 2017 Guillaume CAUCHOIS
+** Last update Fri Apr 07 12:11:45 2017 Quentin Baudet
 */
 
 #include "ncurses/GraphicInit.hpp"
