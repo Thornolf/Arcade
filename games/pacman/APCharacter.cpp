@@ -19,13 +19,8 @@ APCharacter::APCharacter ()
   this->_score = 0;
 }
 
-APCharacter::APCharacter (std::string newName,
-			  int newId,
-			  APCharacter::Hp newHp,
-			  Game::State newState,
-			  Game::Direction newDirection,
-			  int newX,
-			  int newY)
+APCharacter::APCharacter (std::string newName, int newId, APCharacter::Hp newHp,
+			  Game::State newState, Game::Direction newDirection, int newX, int newY)
 {
   this->_name = newName;
   this->_id = newId;
@@ -37,10 +32,7 @@ APCharacter::APCharacter (std::string newName,
   this->_score = 0;
 }
 
-APCharacter::APCharacter (std::string newName,
-			  int newId,
-			  int newX,
-			  int newY)
+APCharacter::APCharacter (std::string newName, int newId, int newX, int newY)
 {
   this->_name = newName;
   this->_hp = APCharacter::ALIVE;
@@ -55,7 +47,6 @@ APCharacter::APCharacter (std::string newName,
 APCharacter::~APCharacter () {}
 
 /* ACTION */
-
 BlockType 		APCharacter::getType(int newType) const
 {
   if (newType == BlockType::WAY || newType == BlockType::VOID)

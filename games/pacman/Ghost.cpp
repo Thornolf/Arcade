@@ -14,14 +14,10 @@ Ghost::Ghost() : APCharacter() {
 }
 
 Ghost::Ghost(std::string newName, int newId, APCharacter::Hp newHp, Game::State newState, Game::Direction newDirection, int newX, int newY) :
-  APCharacter(newName, newId, newHp, newState, newDirection, newX, newY)
-{
-}
+  APCharacter(newName, newId, newHp, newState, newDirection, newX, newY) {}
 
 Ghost::Ghost (std::string newName, int newId, int newX, int newY) :
-  APCharacter(newName, newId, APCharacter::ALIVE, Game::INVUNERABLE, Game::UP, newX, newY)
-{
-}
+  APCharacter(newName, newId, APCharacter::ALIVE, Game::INVUNERABLE, Game::UP, newX, newY) {}
 
 void 		Ghost::goingOut(int **newMap, int newPosX, int newPosY)
 {

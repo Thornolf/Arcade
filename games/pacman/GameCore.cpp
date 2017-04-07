@@ -19,31 +19,26 @@
 
 GameCore::GameCore() {}
 
-GameCore::GameCore(const GameCore &obj)
-{
-  (void)obj;
-}
+GameCore::GameCore(const GameCore &) {}
 
 GameCore::~GameCore() {}
 
-GameCore	&GameCore::operator=(const GameCore &obj)
+GameCore	&GameCore::operator=(const GameCore &)
 {
-  (void)obj;
   return (*this);
 }
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-  Pacman	*pacman = new Pacman();
-  Ghost		*blinky = new Ghost("Blinky", 2, 11, 12);
-  Ghost		*pinky = new Ghost("Pinky", 2, 12, 12);
-  Ghost		*clyde = new Ghost("Clyde", 2, 11, 13);
-  Ghost		*inky = new Ghost("Inky", 2, 10, 13);
-
-  ParserMap			*parser;
+  int			**map;
+  Pacman		*pacman = new Pacman();
+  Ghost			*blinky = new Ghost("Blinky", 2, 11, 12);
+  Ghost			*pinky = new Ghost("Pinky", 2, 12, 12);
+  Ghost			*clyde = new Ghost("Clyde", 2, 11, 13);
+  Ghost			*inky = new Ghost("Inky", 2, 10, 13);
+  ParserMap		*parser;
   Graph::IGraph		*LibGraphic;
   Game::Direction 	dir = Game::UP;
-  int				**map;
 
   (void)blinky;
   (void)pinky;
