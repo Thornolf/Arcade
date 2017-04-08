@@ -5,11 +5,11 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 17:12:40 2017 Robin Grattepanche
+** Last update Sat Apr 08 16:24:53 2017 Robin Grattepanche
 */
 
 #include "ncurses/GraphicInit.hpp"
-#include "SnakeGraph.hpp"
+#include "ncurses/SnakeGraph.hpp"
 
 Graph::SnakeGraph::SnakeGraph()
 {

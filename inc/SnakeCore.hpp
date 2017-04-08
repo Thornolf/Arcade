@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 11:02:48 2017 Guillaume CAUCHOIS
-** Last update Wed Apr 05 11:02:48 2017 Guillaume CAUCHOIS
+** Last update Sat Apr 08 16:27:23 2017 Robin Grattepanche
 */
 
 #ifndef		_SNAKE_CORE__HPP_
@@ -14,8 +14,10 @@
 # include <unistd.h>
 # include <vector>
 # include "SnakePart.hpp"
+# include "SnakePart.hpp"
 # include "SnakeGame.hpp"
-# include "SnakeGraph.hpp"
+# include "ncurses/SnakeGraph.hpp"
+# include "sfml/SnakeGraph.hpp"
 # include "GameCore.hpp"
 
 class SnakeCore : public GameCore
