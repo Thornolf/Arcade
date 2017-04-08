@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Sat Apr 08 17:54:16 2017 Robin Grattepanche
+** Last update Sat Apr 08 14:49:11 2017 Quentin Baudet
 */
 
 #include "sfml/GraphicInit.hpp"
@@ -56,8 +56,8 @@ void	Graph::SnakeGraph::SetSprite(int, int, Game::IGame *)  {}
 void	Graph::SnakeGraph::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::SnakeGraph::Animation() {}
 void	Graph::SnakeGraph::displayMap(int **){}
-void	Graph::SnakeGraph::displayMap(int **, int, int) {}
-bool	Graph::SnakeGraph::checkSizeWindow(int, int) {return (true);}
+void	Graph::SnakeGraph::displayMap(int **, int, int, int) {}
+bool	Graph::SnakeGraph::checkSizeWindow(int, int) {return (false);}
 
 std::pair<std::string, std::string>	Graph::SnakeGraph::startMenu(const std::vector<std::string> &, const std::vector<std::string> &)
 {

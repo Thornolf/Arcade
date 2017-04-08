@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Tue Apr 04 16:13:06 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 13:09:46 2017 Quentin Baudet
+** Last update Sat Apr 08 14:53:34 2017 Quentin Baudet
 */
 
 #ifndef		_PACMAN_DISPLAYER_MAP__HPP_
@@ -28,11 +28,11 @@ namespace Graph
       virtual ~PacmanDisplayerMap();
       PacmanDisplayerMap(const PacmanDisplayerMap &);
       PacmanDisplayerMap	&operator=(const PacmanDisplayerMap &);
-	  
+
 	  int					recoverKey(void);
 	  bool					checkSizeWindow(int x, int y);
 	  void					displayMap(int **);
-	  void					displayMap(int **, int, int);
+	  void					displayMap(int **, int, int, int);
 	  void 					drawElem(char, int, int);
 
       /* Unused Methods from Graph::IGraph */

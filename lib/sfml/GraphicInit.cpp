@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 16:35:23 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 13:12:00 2017 Quentin Baudet
+** Last update Sat Apr 08 14:53:27 2017 Quentin Baudet
 */
 
 #include "sfml/GraphicInit.hpp"
@@ -50,7 +50,7 @@ void	Graph::GraphicInit::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; 
 void	Graph::GraphicInit::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::GraphicInit::Animation() {}
 void	Graph::GraphicInit::displayMap(int **) {}
-void	Graph::GraphicInit::displayMap(int **, int, int) {}
+void	Graph::GraphicInit::displayMap(int **, int, int, int) {}
 void	Graph::GraphicInit::drawMap(int, int, char) {}
 void	Graph::GraphicInit::drawPlayer(std::vector<Game::IGame*>, char) {};
 void	Graph::GraphicInit::drawScore(int, int) {};
