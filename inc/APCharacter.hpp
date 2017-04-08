@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:55:13 2017 Quentin Baudet
-** Last update Thu Apr 06 22:19:53 2017 Quentin Baudet
+** Last update Sat Apr 08 17:06:17 2017 Quentin Baudet
 */
 
 #ifndef		APCHARACTER_HPP
@@ -47,6 +47,7 @@ class APCharacter : public Game::IGame {
     int 			_X;
     int 			_Y;
     int 			_score;
+	int 			_pacgum;
 
   public:
     APCharacter ();
@@ -81,14 +82,16 @@ class APCharacter : public Game::IGame {
     Game::Direction	getDirection(void) const;
     BlockType		getType(int) const;
     int 		getId(void) const;
+	void	setScore(int);
+	int		getScore(void) const;
+	void 	setPacgum(int);
+	int 	getPacgum(void) const;
 
     /* Unused member function from Game::IGame */
     void	movePlayer(std::map<int, std::map<int, int>>);
     int		getType(void) const;
     bool	isAlive(void) const;
     void	Dump(void) const;
-    void	setScore(int);
-    int		getScore(void) const;
     void 	increaseScore(int);
 
 };
