@@ -40,7 +40,7 @@ T*	Arcade::DLLoader<T>::getInstance(const std::string &symbname)
   T	*(*ptr)(void);
 
   if (!(symb = dlsym(this->_handler, symbname.c_str())))
-    throw Arcade::ArcadeException("Cannot find the symbol :" + symbname);
+    throw Arcade::ArcadeException("Cannot find the symbol : " + symbname);
   ptr = reinterpret_cast<T*(*)(void)>(symb);
   return (ptr());
 }

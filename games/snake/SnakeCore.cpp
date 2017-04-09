@@ -34,6 +34,8 @@ SnakeCore::SnakeCore(const SnakeCore &obj) : GameCore(obj)
 
 SnakeCore::~SnakeCore(void)
 {
+  delete this->game;
+  delete this->food;
   for (auto it = this->snake.begin(); it != this->snake.end(); ++it)
   {
     delete *it;

@@ -32,7 +32,10 @@ ParserMap::ParserMap(const std::string &filepath)
   myFile.close();
 }
 
-ParserMap::~ParserMap() {}
+ParserMap::~ParserMap()
+{
+  delete this->_map;
+}
 
 MapGame		*ParserMap::getMap() const
 {

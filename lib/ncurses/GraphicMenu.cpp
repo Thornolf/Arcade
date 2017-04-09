@@ -51,15 +51,12 @@ ITEM	**getItemsList(std::vector<std::string> listChoices)
 {
   ITEM**	itemsList;
   unsigned int	i;
-  char**	CItemList;
 
   itemsList = new ITEM*[listChoices.size() + 1];
-  CItemList = vectorStringToArrayArrayChar(listChoices);
   i = 0;
-  while (i != listChoices.size())
+  for (auto it  = listChoices.begin(); it != listChoices.end(); ++it)
   {
-    itemsList[i] = new_item(CItemList[i], CItemList[i]);
-    i++;
+    itemsList[i++] = new_item(strdup(it->c_str()), "");
   }
   itemsList[i] = NULL;
   return (itemsList);
@@ -216,16 +213,16 @@ void	Graph::GraphicMenu::postMenuInWindow(WINDOW *window, MENU* menu, const std:
 
 std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vector<std::string> &listGraphics, const std::vector<std::string> &listGames)
 {
-  ITEM		**items_graphics;
-  ITEM		**items_games;
-  MENU		*menu_graphics;
-  MENU		*menu_games;
-  std::string	name_library_graphic;
-  std::string	name_library_game;
-  WINDOW	*window;
+  ITEM			**items_graphics;
+  ITEM			**items_games;
+  MENU			*menu_graphics;
+  MENU			*menu_games;
+  std::string		name_library_graphic;
+  std::string		name_library_game;
+  WINDOW		*window;
   Graph::GraphicInit	initGraphic;
 
-  window = newwin(10, 40, 10, 5);
+  window		= newwin(10, 40, 10, 5);
   keypad(window, TRUE);
   items_graphics	= getItemsList(listGraphics);
   menu_graphics		= new_menu(items_graphics);
@@ -235,9 +232,9 @@ std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vec
   this->displayRulesMenu();
   try
   {
-    name_library_graphic	= this->MenuLoop("GRAPHIC LIBRARY", window, menu_graphics);
+    name_library_graphic = this->MenuLoop("GRAPHIC LIBRARY", window, menu_graphics);
     if (!name_library_graphic.empty())
-      name_library_game		= this->MenuLoop("GAME LIBRARY", window, menu_games);
+      name_library_game = this->MenuLoop("GAME LIBRARY", window, menu_games);
   }
   catch (const Arcade::ArcadeException &e)
   {
@@ -263,12 +260,12 @@ extern "C"
 /* Unused pure methods */
 void	Graph::GraphicMenu::createMap(void) {}
 void	Graph::GraphicMenu::Game(void)  {}
-void	Graph::GraphicMenu::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
-void	Graph::GraphicMenu::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
+void	Graph::GraphicMenu::SetSprite(int, int, Game::IGame *) {}
+void	Graph::GraphicMenu::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::GraphicMenu::Animation() {}
 void	Graph::GraphicMenu::displayMap(int **){};
 void	Graph::GraphicMenu::displayMap(int **, int, int, int) {}
-void	Graph::GraphicMenu::LaunchMenuSound(sf::Music &, const std::string &filepath) const {(void)filepath;}
+void	Graph::GraphicMenu::LaunchMenuSound(sf::Music &, const std::string &) const {}
 void	Graph::GraphicMenu::drawMap(int, int, char) {}
 void	Graph::GraphicMenu::drawPlayer(std::vector<Game::IGame*>, char) {};
 void	Graph::GraphicMenu::drawScore(int, int) {};
@@ -282,11 +279,7 @@ sf::Sprite	Graph::GraphicMenu::createSpriteFromFile(sf::Texture &, const std::st
   return (sf::Sprite());
 }
 
-std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &,
-						sf::Sprite &,
-						sf::Sprite &,
-						const std::string &,
-						std::vector<std::string>)
+std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &, sf::Sprite &, sf::Sprite &, const std::string &, std::vector<std::string>)
 {
   return ("");
 }

@@ -122,10 +122,10 @@ bool	Graph::PacmanDisplayerMap::checkSizeWindow(int minX, int minY)
 
 extern "C"
 {
-Graph::IGraph	*getInstancePacmanDisplayerMap()
-{
-  return (new Graph::PacmanDisplayerMap());
-}
+  Graph::IGraph	*getInstancePacmanDisplayerMap()
+  {
+    return (new Graph::PacmanDisplayerMap());
+  }
 }
 /* Unused Methods from Graph::IGraph */
 void	Graph::PacmanDisplayerMap::createMap() {}
