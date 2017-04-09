@@ -11,11 +11,11 @@
 #ifndef		_SNAKE_GRAPH__HPP_
 # define	_SNAKE_GRAPH__HPP_
 
-# include	<ncurses.h>
-# include	<vector>
-# include	<string>
-# include	"SnakePart.hpp"
-# include	"IGraph.hpp"
+# include <ncurses.h>
+# include <vector>
+# include <string>
+# include "SnakePart.hpp"
+# include "IGraph.hpp"
 # include "ncurses/GraphicInit.hpp"
 
 namespace Graph

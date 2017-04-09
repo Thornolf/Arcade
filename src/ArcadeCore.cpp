@@ -12,16 +12,12 @@
 
 Arcade::ArcadeCore::ArcadeCore() {}
 
-Arcade::ArcadeCore::ArcadeCore(const Arcade::ArcadeCore &obj)
-{
-  (void)obj;
-}
+Arcade::ArcadeCore::ArcadeCore(const Arcade::ArcadeCore &) {}
 
 Arcade::ArcadeCore::~ArcadeCore() {}
 
-Arcade::ArcadeCore	&Arcade::ArcadeCore::operator=(const Arcade::ArcadeCore &obj)
+Arcade::ArcadeCore	&Arcade::ArcadeCore::operator=(const Arcade::ArcadeCore &)
 {
-  (void)obj;
   return (*this);
 }
 
@@ -94,7 +90,7 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   }
   if (!(Menu = LibraryLoaderMenu->getInstance("getInstanceGraphicMenu")))
     throw (Arcade::ArcadeException("Cannot make instance of menu from this library"));
-  libs			= Menu->startMenu(this->_listGraphic, this->_listGames);
+  libs = Menu->startMenu(this->_listGraphic, this->_listGames);
   if (libs.first.empty() || libs.second.empty())
     return ;
   try

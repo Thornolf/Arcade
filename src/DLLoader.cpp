@@ -18,10 +18,7 @@ Arcade::DLLoader<T>::DLLoader(const std::string &path_lib)
 }
 
 template <class T>
-Arcade::DLLoader<T>::DLLoader(const Arcade::DLLoader<T> &obj)
-{
-  (void)obj;
-}
+Arcade::DLLoader<T>::DLLoader(const Arcade::DLLoader<T> &) {}
 
 template <class T>
 Arcade::DLLoader<T>::~DLLoader()
@@ -31,9 +28,8 @@ Arcade::DLLoader<T>::~DLLoader()
 }
 
 template <class T>
-Arcade::DLLoader<T>	&Arcade::DLLoader<T>::operator=(const Arcade::DLLoader<T> &obj)
+Arcade::DLLoader<T>	&Arcade::DLLoader<T>::operator=(const Arcade::DLLoader<T> &)
 {
-  (void)obj;
   return (*this);
 }
 

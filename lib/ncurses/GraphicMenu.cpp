@@ -16,16 +16,12 @@
 
 Graph::GraphicMenu::GraphicMenu() {}
 
-Graph::GraphicMenu::GraphicMenu(const Graph::GraphicMenu &obj)
-{
-  (void)obj;
-}
+Graph::GraphicMenu::GraphicMenu(const Graph::GraphicMenu &) {}
 
 Graph::GraphicMenu::~GraphicMenu() {}
 
-Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &obj)
+Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &)
 {
-  (void)obj;
   return (*this);
 }
 
@@ -278,24 +274,16 @@ void	Graph::GraphicMenu::drawLoose(void) {};
 int	Graph::GraphicMenu::recoverKey(void) {return (0);};
 bool	Graph::GraphicMenu::checkSizeWindow(int, int) {return (false);}
 
-sf::Sprite	Graph::GraphicMenu::createSpriteFromFile(sf::Texture &texture, const std::string &filepath, bool smooth) const
+sf::Sprite	Graph::GraphicMenu::createSpriteFromFile(sf::Texture &, const std::string &, bool) const
 {
-  (void)texture;
-  (void)filepath;
-  (void)smooth;
   return (sf::Sprite());
 }
 
-std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
-						sf::Sprite &sprite_bg,
-						sf::Sprite &sprite_logo,
-						const std::string &title,
-						std::vector<std::string> listItems)
+std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &,
+						sf::Sprite &,
+						sf::Sprite &,
+						const std::string &,
+						std::vector<std::string>)
 {
-  (void)window;
-  (void)sprite_bg;
-  (void)sprite_logo;
-  (void)title;
-  (void)listItems;
   return ("");
 }

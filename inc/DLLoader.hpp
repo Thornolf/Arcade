@@ -8,8 +8,8 @@
 ** Last update Thu Mar 30 16:31:23 2017 Guillaume CAUCHOIS
 */
 
-#ifndef			_CPP_ARCADE_DLLOADER__HPP_
-# define		_CPP_ARCADE_DLLOADER__HPP_
+#ifndef		_CPP_ARCADE_DLLOADER__HPP_
+# define	_CPP_ARCADE_DLLOADER__HPP_
 
 # include <dlfcn.h>
 # include "IGraph.hpp"

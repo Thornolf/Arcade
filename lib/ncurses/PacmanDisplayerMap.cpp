@@ -18,31 +18,22 @@ Graph::PacmanDisplayerMap::PacmanDisplayerMap()
   init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 }
 
-Graph::PacmanDisplayerMap::PacmanDisplayerMap(const Graph::PacmanDisplayerMap &obj)
-{
-  (void)obj;
-}
+Graph::PacmanDisplayerMap::PacmanDisplayerMap(const Graph::PacmanDisplayerMap &) {}
 
 Graph::PacmanDisplayerMap::~PacmanDisplayerMap()
 {
   delete this->_init;
 }
 
-Graph::PacmanDisplayerMap	&Graph::PacmanDisplayerMap::operator=(const Graph::PacmanDisplayerMap &obj)
+Graph::PacmanDisplayerMap	&Graph::PacmanDisplayerMap::operator=(const Graph::PacmanDisplayerMap &)
 {
-  (void)obj;
   return (*this);
 }
 
-void	Graph::PacmanDisplayerMap::displayMap(int **map)
-{
-  (void)map;
-}
+void	Graph::PacmanDisplayerMap::displayMap(int **) {}
 
 void 	Graph::PacmanDisplayerMap::drawElem(char printChar, int x, int y)
 {
-  (void)x;
-  (void)y;
   if (printChar == 'c')
   {
     attron(COLOR_PAIR(1));
@@ -76,17 +67,17 @@ void	Graph::PacmanDisplayerMap::displayMap(int **map, int length, int height)
   {
     while (j < height)
     {
-		if (map[i][j] == 0)
-      		drawElem('c', i, j);
-		else if (map[i][j] == 1)
-			drawElem('.', i, j);
-		else if (map[i][j] == 7)
-			drawElem('C', i, j);
-		else if (map[i][j] == -1)
-			drawElem(' ', i, j);
+      if (map[i][j] == 0)
+	drawElem('c', i, j);
+      else if (map[i][j] == 1)
+	drawElem('.', i, j);
+      else if (map[i][j] == 7)
+	drawElem('C', i, j);
+      else if (map[i][j] == -1)
+	drawElem(' ', i, j);
       j++;
     }
-	j = 0;
+    j = 0;
     i++;
   }
   refresh();
@@ -99,16 +90,16 @@ int		Graph::PacmanDisplayerMap::recoverKey(void)
   switch(tmp)
   {
     case KEY_UP:
-		this->_key = 0;
+      this->_key = 0;
       break;
     case KEY_RIGHT:
-		this->_key = 1;
+      this->_key = 1;
       break;
     case KEY_DOWN:
-		this->_key = 2;
+      this->_key = 2;
       break;
     case KEY_LEFT:
-		this->_key = 3;
+      this->_key = 3;
       break;
     case 27:
       this->_key = 5;
@@ -147,9 +138,7 @@ void	Graph::PacmanDisplayerMap::drawScore(int, int) {};
 void	Graph::PacmanDisplayerMap::drawFood(int, int, char) {};
 void	Graph::PacmanDisplayerMap::drawLoose(void) {};
 
-std::pair<std::string, std::string>	Graph::PacmanDisplayerMap::startMenu(const std::vector<std::string> &title, const std::vector<std::string> &list)
+std::pair<std::string, std::string>	Graph::PacmanDisplayerMap::startMenu(const std::vector<std::string> &, const std::vector<std::string> &)
 {
-  (void)list;
-  (void)title;
   return (std::pair<std::string, std::string>("", ""));
 }

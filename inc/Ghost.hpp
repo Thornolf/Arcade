@@ -14,19 +14,19 @@
 #include "APCharacter.hpp"
 
 class Ghost : public APCharacter {
-private:
-	bool 		_doorCheck;
+  private:
+    bool 		_doorCheck;
 
-public:
-	Ghost ();
-	/* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY */
-	Ghost (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int);
-	/* NAME | ID | POS X | POS Y */
-	Ghost (std::string, int , int , int );
-	virtual ~Ghost ();
+  public:
+    Ghost ();
+    /* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY */
+    Ghost (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int);
+    /* NAME | ID | POS X | POS Y */
+    Ghost (std::string, int , int , int );
+    virtual ~Ghost ();
 
-	void 		goingOut(int **, int, int);
-	void 		setDoorCheck(bool);
-	bool 		getDoorCheck(void);
+    void 		goingOut(int **, int, int);
+    void 		setDoorCheck(bool);
+    bool 		getDoorCheck(void);
 };
 #endif	/* !GHOST_HPP */

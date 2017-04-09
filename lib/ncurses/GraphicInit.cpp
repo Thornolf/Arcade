@@ -43,8 +43,8 @@ Graph::GraphicInit	&Graph::GraphicInit::operator=(const Graph::GraphicInit &obj)
 /* Unused function inherit from IGraph */
 void	Graph::GraphicInit::createMap(void) {}
 void	Graph::GraphicInit::Game(void)  {}
-void	Graph::GraphicInit::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
-void	Graph::GraphicInit::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
+void	Graph::GraphicInit::SetSprite(int, int, Game::IGame *)  {}
+void	Graph::GraphicInit::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::GraphicInit::Animation() {}
 void	Graph::GraphicInit::displayMap(int **ptr){(void)ptr;}
 void	Graph::GraphicInit::displayMap(int **, int, int) {}

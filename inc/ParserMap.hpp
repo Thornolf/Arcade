@@ -35,7 +35,7 @@ class ParserMap
     MapGame	*getMap(void) const;
 
   private:
-	int				_height;
+    int				_height;
     int				_length;
     std::vector<std::string>	_buffer;
     MapGame			*_map;

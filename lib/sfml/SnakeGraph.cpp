@@ -33,12 +33,7 @@ Graph::SnakeGraph	&Graph::SnakeGraph::operator=(const Graph::SnakeGraph &obj)
   return (*this);
 }
 
-void	Graph::SnakeGraph::drawMap(int width, int height, char wallChar)
-{
-  (void)width;
-  (void)height;
-  (void)wallChar;
-}
+void	Graph::SnakeGraph::drawMap(int, int, char) {}
 
 /* Need be implemented */
 void	Graph::SnakeGraph::drawScore(int, int) {}

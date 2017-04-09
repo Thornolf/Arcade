@@ -22,19 +22,15 @@ Graph::GraphicInit::GraphicInit(const std::string &title)
   this->_window->setIcon(sizeIco.x, sizeIco.y, icon.getPixelsPtr());
 }
 
-Graph::GraphicInit::GraphicInit(const Graph::GraphicInit &obj)
-{
-  (void)obj;
-}
+Graph::GraphicInit::GraphicInit(const Graph::GraphicInit &) {}
 
 Graph::GraphicInit::~GraphicInit()
 {
   delete this->_window;
 }
 
-Graph::GraphicInit	&Graph::GraphicInit::operator=(const Graph::GraphicInit &obj)
+Graph::GraphicInit	&Graph::GraphicInit::operator=(const Graph::GraphicInit &)
 {
-  (void)obj;
   return (*this);
 }
 
@@ -59,9 +55,7 @@ void	Graph::GraphicInit::drawLoose(void) {};
 int	Graph::GraphicInit::recoverKey(void) {return (0);};
 bool	Graph::GraphicInit::checkSizeWindow(int, int) {return (false);}
 
-std::pair<std::string, std::string>	Graph::GraphicInit::startMenu(const std::vector<std::string> &v1, const std::vector<std::string> &v2)
+std::pair<std::string, std::string>	Graph::GraphicInit::startMenu(const std::vector<std::string> &, const std::vector<std::string> &)
 {
-  (void)v1;
-  (void)v2;
   return (std::make_pair("", ""));
 }

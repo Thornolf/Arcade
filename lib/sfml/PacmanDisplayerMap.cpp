@@ -10,42 +10,32 @@
 
 #include "PacmanDisplayerMap.hpp"
 
-Graph::PacmanDisplayerMap::PacmanDisplayerMap()
-{
+Graph::PacmanDisplayerMap::PacmanDisplayerMap() {}
 
-}
-
-Graph::PacmanDisplayerMap::PacmanDisplayerMap(const Graph::PacmanDisplayerMap &obj)
-{
-  (void)obj;
-}
+Graph::PacmanDisplayerMap::PacmanDisplayerMap(const Graph::PacmanDisplayerMap &) {}
 
 Graph::PacmanDisplayerMap::~PacmanDisplayerMap() {}
 
-Graph::PacmanDisplayerMap	&Graph::PacmanDisplayerMap::operator=(const Graph::PacmanDisplayerMap &obj)
+Graph::PacmanDisplayerMap	&Graph::PacmanDisplayerMap::operator=(const Graph::PacmanDisplayerMap &)
 {
-  (void)obj;
   return (*this);
 }
 
-void	Graph::PacmanDisplayerMap::displayMap(int **map)
-{
-  std::cout << "DISPLAY LA MAP" << std::endl;
-  (void)map;
-}
+void	Graph::PacmanDisplayerMap::displayMap(int **) {}
 
 extern "C"
 {
-Graph::IGraph	*getInstancePacmanDisplayerMap()
-{
-  return (new Graph::PacmanDisplayerMap());
+  Graph::IGraph	*getInstancePacmanDisplayerMap()
+  {
+    return (new Graph::PacmanDisplayerMap());
+  }
 }
-}
+
 /* Unused Methods from Graph::IGraph */
 void	Graph::PacmanDisplayerMap::createMap() {}
 void	Graph::PacmanDisplayerMap::Game() {}
-void	Graph::PacmanDisplayerMap::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
-void	Graph::PacmanDisplayerMap::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
+void	Graph::PacmanDisplayerMap::SetSprite(int, int, Game::IGame *)  {}
+void	Graph::PacmanDisplayerMap::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::PacmanDisplayerMap::Animation() {}
 void	Graph::PacmanDisplayerMap::drawMap(int, int, char) {}
 void	Graph::PacmanDisplayerMap::displayMap(int **, int, int) {}
@@ -55,10 +45,7 @@ void	Graph::PacmanDisplayerMap::drawFood(int, int, char) {};
 void	Graph::PacmanDisplayerMap::drawLoose(void) {};
 int	Graph::PacmanDisplayerMap::recoverKey(void) {return (0);};
 bool	Graph::PacmanDisplayerMap::checkSizeWindow(int, int) {return (false);}
-
-std::pair<std::string, std::string>	Graph::PacmanDisplayerMap::startMenu(const std::vector<std::string> &title, const std::vector<std::string> &list)
+std::pair<std::string, std::string>	Graph::PacmanDisplayerMap::startMenu(const std::vector<std::string> &, const std::vector<std::string> &)
 {
-  (void)list;
-  (void)title;
   return (std::pair<std::string, std::string>("", ""));
 }

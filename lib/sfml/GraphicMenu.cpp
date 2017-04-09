@@ -20,9 +20,8 @@ Graph::GraphicMenu::GraphicMenu(const Graph::GraphicMenu &obj)
 
 Graph::GraphicMenu::~GraphicMenu() {}
 
-Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &obj)
+Graph::GraphicMenu	&Graph::GraphicMenu::operator=(const Graph::GraphicMenu &)
 {
-  (void)obj;
   return (*this);
 }
 
@@ -141,8 +140,6 @@ std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
   std::string			choice;
   std::vector<t_menu_item>	drawListMenu;
 
-  (void)listItems;
-  (void)title;
   while (window.isOpen())
   {
     sprite_logo.setColor(sf::Color(255, 255, 255, alpha)); // à moitié transparent

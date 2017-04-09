@@ -19,21 +19,21 @@ namespace Graph
 {
   class PacmanDisplayerMap : public Graph::IGraph
   {
-  private:
-	  int					_key;
-	  Graph::GraphicInit	*_init;
+    private:
+      int					_key;
+      Graph::GraphicInit	*_init;
     public:
       /* Canonical Functions */
       PacmanDisplayerMap();
       virtual ~PacmanDisplayerMap();
       PacmanDisplayerMap(const PacmanDisplayerMap &);
       PacmanDisplayerMap	&operator=(const PacmanDisplayerMap &);
-	  
-	  int					recoverKey(void);
-	  bool					checkSizeWindow(int x, int y);
-	  void					displayMap(int **);
-	  void					displayMap(int **, int, int);
-	  void 					drawElem(char, int, int);
+
+      int					recoverKey(void);
+      bool					checkSizeWindow(int x, int y);
+      void					displayMap(int **);
+      void					displayMap(int **, int, int);
+      void 					drawElem(char, int, int);
 
       /* Unused Methods from Graph::IGraph */
       void					createMap();

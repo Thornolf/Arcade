@@ -72,17 +72,17 @@ void	Graph::SnakeGraph::drawScore(int score, int width)
 
 void	Graph::SnakeGraph::drawPlayer(std::vector<Game::IGame *> snake, char partChar)
 {
-  init_pair(2, COLOR_GREEN, COLOR_BLACK);
-  attron(COLOR_PAIR(2));
-  for (size_t i = 0; i < snake.size(); i++)
-  {
-    move(snake[i]->getY(), snake[i]->getX());
-    addch(partChar);
-  }
-  attroff(COLOR_PAIR(2));
-  move(snake[snake.size() - 1]->getY(), snake[snake.size() - 1]->getX());
-  printw(" ");
-  refresh();
+init_pair(2, COLOR_GREEN, COLOR_BLACK);
+attron(COLOR_PAIR(2));
+for (size_t i = 0; i < snake.size(); i++)
+{
+move(snake[i]->getY(), snake[i]->getX());
+addch(partChar);
+}
+attroff(COLOR_PAIR(2));
+move(snake[snake.size() - 1]->getY(), snake[snake.size() - 1]->getX());
+printw(" ");
+refresh();
 }
 
 void	Graph::SnakeGraph::drawFood(int height, int width, char foodChar)

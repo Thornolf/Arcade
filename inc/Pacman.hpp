@@ -15,14 +15,14 @@
 
 class Pacman : public APCharacter
 {
-	private:
-		int		_score;
+  private:
+    int		_score;
 
-	public:
-		Pacman ();
-		/* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY | Score */
-		Pacman (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int, int);
-		virtual ~Pacman ();
+  public:
+    Pacman ();
+    /* Name | ID | HP (Dead or Alvie) | State (Eatable or Eater) | DIrection | PosX | PosY | Score */
+    Pacman (std::string, int, APCharacter::Hp, Game::State, Game::Direction, int, int, int);
+    virtual ~Pacman ();
 };
 
 #endif	/* !PACMAN_HPP */
