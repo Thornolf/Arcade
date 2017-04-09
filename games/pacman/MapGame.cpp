@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Thu Apr 06 22:03:52 2017 Quentin Baudet
+** Last update Sat Apr 08 17:03:48 2017 Quentin Baudet
 */
 
 #include "ParserMap.hpp"
@@ -14,11 +14,20 @@
 
 MapGame::MapGame(int newLength, int newHeight)
 {
+	this->_amountPacGum = 0;
   this->_height = newHeight;
   this->_length = newLength;
   this->_data = new int*[this->_height + 1];
   for (int i = 0; i != this->_height + 1; i++)
     this->_data[i] = new int[this->_length + 1];
+}
+
+void 	MapGame::setAmountPacGum(int newAmountPacGum) {
+	this->_amountPacGum = newAmountPacGum;
+}
+
+int 	MapGame::getAmountPacGum(void) const {
+	return (this->_amountPacGum);
 }
 
 void	MapGame::fillUpData(int index_line, const std::string &line)
@@ -29,6 +38,11 @@ void	MapGame::fillUpData(int index_line, const std::string &line)
       this->_data[index_line][index_char] = -1;
     else
       this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
+	 if ( line.c_str()[index_char] - '0' == 1)
+	 {
+		 int tmp = this->getAmountPacGum() + 1;
+		 this->setAmountPacGum(tmp);
+	}
   }
 }
 
@@ -83,8 +97,13 @@ int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Pacman *pacman
 {
   if (newMap[newPosY][newPosX] == 1 && pacman->getId() == 1)
   {
-    newMap[newPosY][newPosX] = -1;
-    pacman->increaseScore(Score::PACGUM);
+    // newMap[newPosY][newPosX] = -1;
+
+	// int tmp = this->getAmountPacGum() - 1;
+	// if (tmp == 0)
+	// 	exit(42);
+	// else
+	// 	this->setAmountPacGum(tmp);
   }
   return (newMap);
 }

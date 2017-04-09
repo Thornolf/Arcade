@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 16:35:23 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 12:11:45 2017 Quentin Baudet
+** Last update Sat Apr 08 14:53:11 2017 Quentin Baudet
 */
 
 #include "ncurses/GraphicInit.hpp"
@@ -47,7 +47,7 @@ void	Graph::GraphicInit::SetSprite(int, int, Game::IGame *)  {}
 void	Graph::GraphicInit::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::GraphicInit::Animation() {}
 void	Graph::GraphicInit::displayMap(int **ptr){(void)ptr;}
-void	Graph::GraphicInit::displayMap(int **, int, int) {}
+void	Graph::GraphicInit::displayMap(int **, int, int, int) {}
 void	Graph::GraphicInit::drawMap(int, int, char) {}
 void	Graph::GraphicInit::drawPlayer(std::vector<Game::IGame*>, char) {}
 void	Graph::GraphicInit::drawScore(int, int) {}

@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 19:45:50 2017 Robin Grattepanche
+** Last update Sat Apr 08 17:36:52 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -67,10 +67,14 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 
 
   /* DISPLAY in TERMINAL */
-  	LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength());
+  	LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
 	// for (int i = 0; i < 10; i++)
+	pacman->setPacgum(parser->getMap()->getAmountPacGum() - 1);
 	while (1)
 	{
+		if (pacman->getPacgum() == 0) {
+			break;
+		}
 		if (LibGraphic->recoverKey() == 0)
 		dir = Game::UP;
 		else if (LibGraphic->recoverKey() == 1)
@@ -79,11 +83,9 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 		dir = Game::DOWN;
 		else if (LibGraphic->recoverKey() == 3)
 		dir = Game::LEFT;
-
 		pacman->movePlayer(map, dir);
-
 		map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX(), pacman);
-	    LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength());
+	    LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
  		usleep(120000);
 
  	}
@@ -93,6 +95,7 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
   // delete clyde;
   // delete inky;
   // delete parser;
+  delete LibGraphic;
 }
 
 /* Unused function pure form IGame */

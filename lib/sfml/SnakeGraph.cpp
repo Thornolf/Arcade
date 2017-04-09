@@ -5,11 +5,11 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
+** Last update Sat Apr 08 18:25:21 2017 Robin Grattepanche
 */
 
 #include "sfml/GraphicInit.hpp"
-#include "SnakeGraph.hpp"
+#include "sfml/SnakeGraph.hpp"
 
 Graph::SnakeGraph::SnakeGraph()
 {
@@ -19,7 +19,7 @@ Graph::SnakeGraph::SnakeGraph()
 
 Graph::SnakeGraph::SnakeGraph(const Graph::SnakeGraph &obj)
 {
-  this->_key = obj._key;
+	(void)obj;
 }
 
 Graph::SnakeGraph::~SnakeGraph()
@@ -33,7 +33,14 @@ Graph::SnakeGraph	&Graph::SnakeGraph::operator=(const Graph::SnakeGraph &obj)
   return (*this);
 }
 
-void	Graph::SnakeGraph::drawMap(int, int, char) {}
+void	Graph::SnakeGraph::drawMap(int width, int height, char wallChar)
+{
+	(void)width;
+	(void)height;
+	(void)wallChar;
+	sf::CircleShape shape(50);
+	shape.setFillColor(sf::Color(100, 250, 50));
+}
 
 /* Need be implemented */
 void	Graph::SnakeGraph::drawScore(int, int) {}
@@ -49,8 +56,8 @@ void	Graph::SnakeGraph::SetSprite(int, int, Game::IGame *)  {}
 void	Graph::SnakeGraph::UnsetSprite(int, int, Game::IGame *)  {}
 void	Graph::SnakeGraph::Animation() {}
 void	Graph::SnakeGraph::displayMap(int **){}
-void	Graph::SnakeGraph::displayMap(int **, int, int) {}
-bool	Graph::SnakeGraph::checkSizeWindow(int, int) {return (false);}
+void	Graph::SnakeGraph::displayMap(int **, int, int, int) {}
+bool	Graph::SnakeGraph::checkSizeWindow(int, int) {return (true);}
 
 std::pair<std::string, std::string>	Graph::SnakeGraph::startMenu(const std::vector<std::string> &, const std::vector<std::string> &)
 {

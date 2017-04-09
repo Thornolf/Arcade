@@ -5,11 +5,11 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 17:12:40 2017 Robin Grattepanche
+** Last update Sat Apr 08 18:25:30 2017 Robin Grattepanche
 */
 
 #include "ncurses/GraphicInit.hpp"
-#include "SnakeGraph.hpp"
+#include "ncurses/SnakeGraph.hpp"
 
 Graph::SnakeGraph::SnakeGraph()
 {
@@ -160,7 +160,7 @@ void	Graph::SnakeGraph::SetSprite(int x, int y, Game::IGame *entry)  {(void)x; (
 void	Graph::SnakeGraph::UnsetSprite(int x, int y, Game::IGame *entry)  {(void)x; (void)y;(void)entry;}
 void	Graph::SnakeGraph::Animation() {}
 void	Graph::SnakeGraph::displayMap(int **ptr){(void)ptr;}
-void	Graph::SnakeGraph::displayMap(int **, int, int) {}
+void	Graph::SnakeGraph::displayMap(int **, int, int, int) {}
 
 std::pair<std::string, std::string>	Graph::SnakeGraph::startMenu(const std::vector<std::string> &v1, const std::vector<std::string> &v2)
 {

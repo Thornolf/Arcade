@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Tue Apr 04 16:10:01 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 19:43:57 2017 Robin Grattepanche
+** Last update Sat Apr 08 16:48:57 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -58,7 +58,7 @@ void 	Graph::PacmanDisplayerMap::drawElem(char printChar, int x, int y)
   }
 }
 
-void	Graph::PacmanDisplayerMap::displayMap(int **map, int length, int height)
+void	Graph::PacmanDisplayerMap::displayMap(int **map, int length, int height, int newScore)
 {
   int	i = 0;
   int	j = 0;
@@ -80,6 +80,7 @@ void	Graph::PacmanDisplayerMap::displayMap(int **map, int length, int height)
     j = 0;
     i++;
   }
+  mvprintw(30, 5, "Score : %d", newScore);
   refresh();
 }
 

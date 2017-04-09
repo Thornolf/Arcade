@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 16:41:34 2017 Guillaume CAUCHOIS
-** Last update Fri Apr 07 11:51:47 2017 Quentin Baudet
+** Last update Sat Apr 08 14:51:09 2017 Quentin Baudet
 */
 
 #ifndef		_GRAPHIC_INIT__HPP_
@@ -34,7 +34,7 @@ namespace Graph
       void	UnsetSprite(int, int, Game::IGame *);
       void	Animation();
       void	displayMap(int **);
-      void 	displayMap(int **, int, int);
+      void 	displayMap(int **, int, int, int);
       void	drawMap(int, int, char);
       void	drawPlayer(std::vector<Game::IGame*>, char);
       void	drawScore(int, int);
