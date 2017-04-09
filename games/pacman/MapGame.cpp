@@ -49,11 +49,11 @@ MapGame		&MapGame::operator=(const MapGame &obj)
 }
 
 void 	MapGame::setAmountPacGum(int newAmountPacGum) {
-	this->_amountPacGum = newAmountPacGum;
+  this->_amountPacGum = newAmountPacGum;
 }
 
 int 	MapGame::getAmountPacGum(void) const {
-	return (this->_amountPacGum);
+  return (this->_amountPacGum);
 }
 
 void	MapGame::fillUpData(int index_line, const std::string &line)
@@ -64,20 +64,12 @@ void	MapGame::fillUpData(int index_line, const std::string &line)
       this->_data[index_line][index_char] = -1;
     else
       this->_data[index_line][index_char] = (line.c_str())[index_char] - '0';
-	 if ( line.c_str()[index_char] - '0' == 1)
-	 {
-		 int tmp = this->getAmountPacGum() + 1;
-		 this->setAmountPacGum(tmp);
-	}
+    if ( line.c_str()[index_char] - '0' == 1)
+    {
+      int tmp = this->getAmountPacGum() + 1;
+      this->setAmountPacGum(tmp);
+    }
   }
-  for (int i = 0; i <= this->_height; i++) {
-	  if (i == 0 || i == this->_height - 1) {
-		  for (int j = 0; j <= this->_length; j++) {
-			  if (this->_data[i][j] != 0)
-			  	throw Arcade::ArcadeException("Bad map format");
-		  }
-	  }
-	}
 }
 
 /* NO USED */

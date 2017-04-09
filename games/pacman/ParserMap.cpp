@@ -22,33 +22,33 @@ ParserMap::ParserMap(const std::string &filepath)
   this->_length = 0;
 
   if (!myFile.is_open())
-  	throw Arcade::ArcadeException("Cannot read the map file");
+    throw Arcade::ArcadeException("Cannot read the map file");
   while (getline(myFile,line))
   {
-	  if (!is_digits(line))
-		  throw Arcade::ArcadeException("The map file must contain only digit.");
+    if (!is_digits(line))
+      throw Arcade::ArcadeException("The map file must contain only digit.");
     if (i == 0) {
       this->_height = std::stoi(line);
-  }
+    }
     else if (i == 1){
       this->_length = std::stoi(line);
-  }
+    }
     if (i >= 2)
-	{
-		if (i > 2) {
-			int tmp = line.length();
-			if ((tmp_length != tmp))
-				throw Arcade::ArcadeException("Bad map format");
-		}
-		tmp_length = line.length();
+    {
+      if (i > 2) {
+	int tmp = line.length();
+	if ((tmp_length != tmp))
+	  throw Arcade::ArcadeException("Bad map format");
+      }
+      tmp_length = line.length();
       this->_buffer.push_back(line);
-  	}
+    }
     i++;
   }
   if ((i - 2) != this->_height)
-  	throw Arcade::ArcadeException("Bad map format");
+    throw Arcade::ArcadeException("Bad map format");
   if (tmp_length != this->_length)
-  	throw Arcade::ArcadeException("Bad map format");
+    throw Arcade::ArcadeException("Bad map format");
   this->_map = new MapGame(this->_length, this->_height);
   myFile.close();
 }
@@ -65,7 +65,7 @@ MapGame		*ParserMap::getMap() const
 
 bool ParserMap::is_digits(const std::string &str)
 {
-	return std::all_of(str.begin(), str.end(), ::isdigit); // C++11
+  return std::all_of(str.begin(), str.end(), ::isdigit); // C++11
 }
 
 void 	ParserMap::generateMap(void)
