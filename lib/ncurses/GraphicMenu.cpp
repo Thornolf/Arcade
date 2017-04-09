@@ -30,23 +30,6 @@ void	Graph::GraphicMenu::SetLibraryChoices(const std::vector<std::string> &ListG
   this->_choicesLibraries = ListGraphics;
 }
 
-char**	vectorStringToArrayArrayChar(const std::vector<std::string> &vector)
-{
-  char	**array;
-  int	i;
-
-  array = new char*[vector.size() + 1];
-  i = 0;
-  for (auto it = vector.begin(); it != vector.end(); ++it)
-  {
-    array[i] = new char[strlen(it->c_str()) + 1];
-    strcpy(array[i], it->c_str());
-    i++;
-  }
-  array[i] = NULL;
-  return (array);
-}
-
 ITEM	**getItemsList(std::vector<std::string> listChoices)
 {
   ITEM**	itemsList;

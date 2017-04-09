@@ -161,7 +161,7 @@ std::string	Graph::GraphicMenu::MenuLoop(sf::RenderWindow &window,
 	    window.close();
 	  break;
 	default:
-	    break;
+	  break;
       }
       if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
       {
@@ -209,16 +209,16 @@ std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vec
   this->LaunchMenuSound(music, "assets/music/menu.ogg");
   library_graphic_chosen = this->MenuLoop(*(initGraphic.getWindow()), sprite_bg, sprite_logo, "Please select a graphic library", listGraphics);
   if (!library_graphic_chosen.empty())
-  library_games_chosen = this->MenuLoop(*(initGraphic.getWindow()), sprite_bg, sprite_logo, "Please select a game library", listGames);
+    library_games_chosen = this->MenuLoop(*(initGraphic.getWindow()), sprite_bg, sprite_logo, "Please select a game library", listGames);
   return (std::make_pair(library_graphic_chosen, library_games_chosen));
 }
 
 extern "C"
 {
-  Graph::IGraph	*getInstanceGraphicMenu()
-  {
-    return (new Graph::GraphicMenu());
-  }
+Graph::IGraph	*getInstanceGraphicMenu()
+{
+  return (new Graph::GraphicMenu());
+}
 }
 
 /* Unused pure methods */
