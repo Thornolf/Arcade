@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:34:11 2017 Guillaume CAUCHOIS
-** Last update Sun Apr 09 11:29:41 2017 Robin Grattepanche
+** Last update Sun Apr 09 19:41:08 2017 Robin Grattepanche
 */
 
 #include "sfml/GraphicInit.hpp"
@@ -35,9 +35,17 @@ Graph::SnakeGraph	&Graph::SnakeGraph::operator=(const Graph::SnakeGraph &obj)
 
 void	Graph::SnakeGraph::drawMap(int width, int height, char wallChar)
 {
+	sf::Sprite	title;
+	sf::Texture	texture;
+
 	(void)height;
 	(void)width;
 	(void)wallChar;
+	if (!texture.loadFromFile("games/snake/assets/title.png"))
+		throw Arcade::ArcadeException("Cannot load the snake picture !");
+	title.setTexture(texture);
+	title.setPosition(300, 420);
+
 	sf::RectangleShape rectUp(sf::Vector2f(1000, 20));
 	rectUp.setFillColor(sf::Color(255, 10, 10));
 	this->_init->getWindow()->draw(rectUp);
@@ -46,7 +54,7 @@ void	Graph::SnakeGraph::drawMap(int width, int height, char wallChar)
 	rectLeft.setFillColor(sf::Color(255, 10, 10));
 	this->_init->getWindow()->draw(rectLeft);
 
-	sf::RectangleShape rectDown(sf::Vector2f(1000, 20));
+	sf::RectangleShape rectDown(sf::Vector2f(1020, 20));
 	rectDown.setFillColor(sf::Color(255, 10, 10));
 	rectDown.setPosition(0, 400);
 	this->_init->getWindow()->draw(rectDown);
@@ -55,8 +63,9 @@ void	Graph::SnakeGraph::drawMap(int width, int height, char wallChar)
 	rectRight.setFillColor(sf::Color(255, 10, 10));
 	rectRight.setPosition(1000, 0);
 	this->_init->getWindow()->draw(rectRight);
+	this->_init->getWindow()->draw(title);
 
-	// this->_init->getWindow()->display();
+
 }
 void	Graph::SnakeGraph::drawPlayer(std::vector<Game::IGame*> snake, char partChar)
 {
@@ -82,7 +91,7 @@ void	Graph::SnakeGraph::drawFood(int y, int x, char foodChar)
 	food.setFillColor(sf::Color(150, 150, 20));
 	food.setPosition(x * 10, y * 10);
 	this->_init->getWindow()->draw(food);
-	this->_init->getWindow()->display();
+	// this->_init->getWindow()->display();
 }
 
 int		Graph::SnakeGraph::recoverKey(void)
@@ -111,8 +120,14 @@ int		Graph::SnakeGraph::recoverKey(void)
 			this->_key = 5;
 	return (this->_key);
 }
+
+void	Graph::SnakeGraph::drawScore(int score, int x)
+{
+	(void)x;
+	std::cout << "Your score is : " << score << std::endl;
+}
+
 /* Need be implemented */
-void	Graph::SnakeGraph::drawScore(int, int) {}
 void	Graph::SnakeGraph::drawLoose(void) {}
 
 /* Unused function inherit from IGraph */
