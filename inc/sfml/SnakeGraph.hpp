@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Thu Apr 06 12:39:42 2017 Guillaume CAUCHOIS
-** Last update Sat Apr 08 18:14:02 2017 Robin Grattepanche
+** Last update Sun Apr 09 17:57:46 2017 Robin Grattepanche
 */
 
 #ifndef		_SNAKE_GRAPH__HPP_
@@ -14,6 +14,7 @@
 # include	<ncurses.h>
 # include	<vector>
 # include	<string>
+#include	<sstream>
 # include	"SnakePart.hpp"
 # include	"IGraph.hpp"
 # include	"sfml/GraphicInit.hpp"

@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 17:48:29 2017 Quentin Baudet
-** Last update Wed Apr 05 11:40:12 2017 Quentin Baudet
+** Last update Sun Apr 09 19:20:47 2017 Quentin Baudet
 */
 
 #ifndef 	PARSERMAP_HPP
@@ -32,7 +32,8 @@ class ParserMap
      * Member functions
      */
     void	generateMap(void);
-    MapGame	*getMap(void) const;
+	MapGame	*getMap(void) const;
+	bool 	is_digits(const std::string &);
 
   private:
     int				_height;

@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 18:09:11 2017 Quentin Baudet
-** Last update Sat Apr 08 17:03:48 2017 Quentin Baudet
+** Last update Sun Apr 09 19:10:41 2017 Quentin Baudet
 */
 
 #include "ParserMap.hpp"
@@ -70,6 +70,14 @@ void	MapGame::fillUpData(int index_line, const std::string &line)
 		 this->setAmountPacGum(tmp);
 	}
   }
+  for (int i = 0; i <= this->_height; i++) {
+	  if (i == 0 || i == this->_height - 1) {
+		  for (int j = 0; j <= this->_length; j++) {
+			  if (this->_data[i][j] != 0)
+			  	throw Arcade::ArcadeException("Bad map format");
+		  }
+	  }
+	}
 }
 
 /* NO USED */
@@ -122,15 +130,7 @@ int 	**MapGame::getData() const
 int 	**MapGame::modifyMap(int **newMap, int newPosY, int newPosX, Pacman *pacman)
 {
   if (newMap[newPosY][newPosX] == 1 && pacman->getId() == 1)
-  {
-    // newMap[newPosY][newPosX] = -1;
-
-	// int tmp = this->getAmountPacGum() - 1;
-	// if (tmp == 0)
-	// 	exit(42);
-	// else
-	// 	this->setAmountPacGum(tmp);
-  }
+  {}
   return (newMap);
 }
 

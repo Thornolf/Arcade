@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 10:59:53 2017 Guillaume CAUCHOIS
-** Last update Sun Apr 09 11:28:57 2017 Robin Grattepanche
+** Last update Sun Apr 09 18:41:42 2017 Robin Grattepanche
 */
 
 # include "SnakeCore.hpp"
@@ -59,11 +59,11 @@ void		SnakeCore::startCore(Arcade::DLLoader<Graph::IGraph> &libraryGraph)
     throw Arcade::ArcadeException("The window is too small to be displayed correctly");
   }
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawScore(this->game->getPoints(), this->game->getWidth());
-  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
+  // (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
   this->putFood(graph);
   while(1)
   {
-	//   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
+	  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
 	  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawPlayer(this->getSnakeBody(), this->game->getPartChar());
     if (collision(graph))
     {
