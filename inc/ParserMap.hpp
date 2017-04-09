@@ -32,8 +32,8 @@ class ParserMap
      * Member functions
      */
     void	generateMap(void);
-	MapGame	*getMap(void) const;
-	bool 	is_digits(const std::string &);
+    MapGame	*getMap(void) const;
+    bool 	is_digits(const std::string &);
 
   private:
     int				_height;

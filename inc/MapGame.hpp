@@ -31,12 +31,12 @@ class MapGame
     int		getMapLength(void) const;
     void	setData(int **newData);
     int**	getData() const;
-	void 	setAmountPacGum(int);
-	int 	getAmountPacGum(void) const; 
-	void	fillUpData(int, const std::string &);
-	void 	displayMap(int**) const;
-	int 	**modifyMap(int**, int, int, Pacman* );
-	int 	**modifyMap(int**, int, int, Ghost* );
+    void 	setAmountPacGum(int);
+    int 	getAmountPacGum(void) const;
+    void	fillUpData(int, const std::string &);
+    void 	displayMap(int**) const;
+    int 	**modifyMap(int**, int, int, Pacman* );
+    int 	**modifyMap(int**, int, int, Ghost* );
 
   private:
     void	setMapHeight(int);
