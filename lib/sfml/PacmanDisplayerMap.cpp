@@ -8,13 +8,21 @@
 ** Last update Sat Apr 08 14:49:04 2017 Quentin Baudet
 */
 
+#include "sfml/GraphicInit.hpp"
 #include "PacmanDisplayerMap.hpp"
 
-Graph::PacmanDisplayerMap::PacmanDisplayerMap() {}
+Graph::PacmanDisplayerMap::PacmanDisplayerMap()
+{
+  throw Arcade::ArcadeException("Pacman not implemented for lib-sfml");
+  this->_init	= new Graph::GraphicInit("GAME-OVER ARCADE | PACMAN");
+}
 
 Graph::PacmanDisplayerMap::PacmanDisplayerMap(const Graph::PacmanDisplayerMap &) {}
 
-Graph::PacmanDisplayerMap::~PacmanDisplayerMap() {}
+Graph::PacmanDisplayerMap::~PacmanDisplayerMap()
+{
+  delete this->_init;
+}
 
 Graph::PacmanDisplayerMap	&Graph::PacmanDisplayerMap::operator=(const Graph::PacmanDisplayerMap &)
 {

@@ -14,12 +14,38 @@
 
 MapGame::MapGame(int newLength, int newHeight)
 {
-	this->_amountPacGum = 0;
+  this->_amountPacGum = 0;
   this->_height = newHeight;
   this->_length = newLength;
   this->_data = new int*[this->_height + 1];
   for (int i = 0; i != this->_height + 1; i++)
     this->_data[i] = new int[this->_length + 1];
+}
+
+MapGame::MapGame(const MapGame &obj)
+{
+  this->_amountPacGum = obj._amountPacGum;
+  this->_height = obj._height;
+  this->_length = obj._length;
+  this->_data = obj._data;
+}
+
+MapGame::~MapGame()
+{
+  for (int i = 0; i != this->_height + 1; i++)
+  {
+    delete[] this->_data[i];
+  }
+  delete[] this->_data;
+}
+
+MapGame		&MapGame::operator=(const MapGame &obj)
+{
+  this->_amountPacGum = obj._amountPacGum;
+  this->_height = obj._height;
+  this->_length = obj._length;
+  this->_data = obj._data;
+  return (*this);
 }
 
 void 	MapGame::setAmountPacGum(int newAmountPacGum) {

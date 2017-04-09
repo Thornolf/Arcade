@@ -103,7 +103,7 @@ int		Graph::PacmanDisplayerMap::recoverKey(void)
       this->_key = 3;
       break;
     case 27:
-      this->_key = 5;
+      this->_key = 4;
       break;
   }
   return (this->_key);

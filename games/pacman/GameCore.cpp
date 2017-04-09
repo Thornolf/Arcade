@@ -67,28 +67,29 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 
 
   /* DISPLAY in TERMINAL */
-  	LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
-	// for (int i = 0; i < 10; i++)
-	pacman->setPacgum(parser->getMap()->getAmountPacGum() - 1);
-	while (1)
-	{
-		if (pacman->getPacgum() == 0) {
-			break;
-		}
-		if (LibGraphic->recoverKey() == 0)
-		dir = Game::UP;
-		else if (LibGraphic->recoverKey() == 1)
-		dir = Game::RIGHT;
-		else if (LibGraphic->recoverKey() == 2)
-		dir = Game::DOWN;
-		else if (LibGraphic->recoverKey() == 3)
-		dir = Game::LEFT;
-		pacman->movePlayer(map, dir);
-		map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX(), pacman);
-	    LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
- 		usleep(120000);
+  LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
+  // for (int i = 0; i < 10; i++)
+  pacman->setPacgum(parser->getMap()->getAmountPacGum() - 1);
+  while (1)
+  {
+    if (pacman->getPacgum() == 0)
+      break;
+    if (LibGraphic->recoverKey() == 0)
+      dir = Game::UP;
+    else if (LibGraphic->recoverKey() == 1)
+      dir = Game::RIGHT;
+    else if (LibGraphic->recoverKey() == 2)
+      dir = Game::DOWN;
+    else if (LibGraphic->recoverKey() == 3)
+      dir = Game::LEFT;
+    else if (LibGraphic->recoverKey() == 4)
+      break;
+    pacman->movePlayer(map, dir);
+    map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX(), pacman);
+    LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
+    usleep(120000);
 
- 	}
+  }
   /* DISPLAY THE MAP */
   // delete blinky;
   // delete pinky;

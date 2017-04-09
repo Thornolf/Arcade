@@ -23,8 +23,8 @@ class MapGame
 
     MapGame(int, int);
     MapGame(const MapGame &);
-    virtual ~MapGame () {}
-    MapGame		&operator=(const MapGame &);
+    virtual ~MapGame ();
+    MapGame	&operator=(const MapGame &);
 
     /* Member functions */
     int		getMapHeight(void) const;

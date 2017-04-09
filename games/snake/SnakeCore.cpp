@@ -21,7 +21,7 @@ SnakeCore::SnakeCore(void)
   this->food->setX(0);
   this->food->setY(0);
   for (int i = 0; i < 4; i++)
-    snake.push_back(new SnakePart(40 + i, 10));
+    this->snake.push_back(new SnakePart(40 + i, 10));
   get = 0;
   direction = 3;
   srand(time(NULL));
@@ -34,6 +34,10 @@ SnakeCore::SnakeCore(const SnakeCore &obj) : GameCore(obj)
 
 SnakeCore::~SnakeCore(void)
 {
+  for (auto it = this->snake.begin(); it != this->snake.end(); ++it)
+  {
+    delete *it;
+  }
 }
 
 SnakeCore	&SnakeCore::operator=(const SnakeCore &obj)

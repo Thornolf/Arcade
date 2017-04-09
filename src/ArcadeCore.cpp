@@ -112,6 +112,9 @@ void	Arcade::ArcadeCore::startCore(const std::string &library_menu_path)
   {
     throw Arcade::ArcadeException(e.what());
   }
+  delete Game;
+  delete Menu;
   delete LibraryLoaderMenu;
   delete LibraryLoaderGame;
+  delete LibraryLoaderGraphic;
 }

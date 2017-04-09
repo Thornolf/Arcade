@@ -72,8 +72,10 @@ std::string	Graph::GraphicMenu::MenuLoop(const std::string &title, WINDOW *win, 
   std::stringstream	ss;
 
   this->postMenuInWindow(win, menu, title);
-  while ((pkey = wgetch(win)) != 10 && pkey != KEY_RIGHT)
+  while ((pkey = wgetch(win)) != 10)
   {
+    if (pkey == 27)
+      return ("");
     switch (pkey)
     {
       case KEY_DOWN:
@@ -234,7 +236,8 @@ std::pair<std::string, std::string>	Graph::GraphicMenu::startMenu(const std::vec
   try
   {
     name_library_graphic	= this->MenuLoop("GRAPHIC LIBRARY", window, menu_graphics);
-    name_library_game		= this->MenuLoop("GAME LIBRARY", window, menu_games);
+    if (!name_library_graphic.empty())
+      name_library_game		= this->MenuLoop("GAME LIBRARY", window, menu_games);
   }
   catch (const Arcade::ArcadeException &e)
   {

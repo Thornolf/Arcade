@@ -16,7 +16,6 @@
 # include <string>
 # include "SnakePart.hpp"
 # include "IGraph.hpp"
-# include "ncurses/GraphicInit.hpp"
 
 namespace Graph
 {
