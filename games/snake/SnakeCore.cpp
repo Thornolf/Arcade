@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 10:59:53 2017 Guillaume CAUCHOIS
-** Last update Sat Apr 08 18:25:44 2017 Robin Grattepanche
+** Last update Sun Apr 09 11:28:57 2017 Robin Grattepanche
 */
 
 # include "SnakeCore.hpp"
@@ -52,12 +52,13 @@ void		SnakeCore::startCore(Arcade::DLLoader<Graph::IGraph> &libraryGraph)
     delete graph;
     throw Arcade::ArcadeException("The window is too small to be displayed correctly");
   }
-  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
-  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawPlayer(this->getSnakeBody(), this->game->getPartChar());
   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawScore(this->game->getPoints(), this->game->getWidth());
+  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
   this->putFood(graph);
   while(1)
   {
+	//   (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawMap(this->game->getWidth(), this->game->getHeight(), this->game->getOldalChar());
+	  (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawPlayer(this->getSnakeBody(), this->game->getPartChar());
     if (collision(graph))
     {
       (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawLoose();
@@ -95,11 +96,11 @@ void		SnakeCore::moveSnake(Graph::IGraph *graph)
 bool	SnakeCore::collision(Graph::IGraph *graph)
 {
   if (snake[0]->getX() == 0 || snake[0]->getX() == this->game->getWidth() - 1 || snake[0]->getY() == 0 || snake[0]->getY() == this->game->getHeight() - 2)
-    return true;
+	return true;
   for (size_t i = 2; i < snake.size(); i++)
   {
     if (snake[0]->getX() == snake[i]->getX() && snake[0]->getY() == snake[i]->getY())
-      return true;
+	  return true;
   }
   if (snake[0]->getX() == this->food->getX() && snake[0]->getY() == this->food->getY())
   {
@@ -107,8 +108,8 @@ bool	SnakeCore::collision(Graph::IGraph *graph)
     putFood(graph);
     this->game->setPoints(this->game->getPoints() + 10);
     (reinterpret_cast<Graph::SnakeGraph*>(graph))->drawScore(this->game->getPoints(), this->game->getWidth());
-    if((this->game->getPoints() % 50) == 0)
-      this->game->setDel(this->game->getDel() - 10000);
+    if((this->game->getPoints() % 20) == 0)
+      this->game->setDel(this->game->getDel() - 2000);
   }
   else
     get=false;

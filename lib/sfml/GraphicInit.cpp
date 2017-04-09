@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Apr 05 16:35:23 2017 Guillaume CAUCHOIS
-** Last update Sat Apr 08 14:53:27 2017 Quentin Baudet
+** Last update Sun Apr 09 11:31:27 2017 Robin Grattepanche
 */
 
 #include "sfml/GraphicInit.hpp"
@@ -18,7 +18,7 @@ Graph::GraphicInit::GraphicInit(const std::string &title)
   if (!(icon.loadFromFile("assets/img/icon.png")))
     throw Arcade::ArcadeException("Cannot load the icon of the window");
   sizeIco = icon.getSize();
-  this->_window = new sf::RenderWindow(sf::VideoMode(1280, 720), title);
+  this->_window = new sf::RenderWindow(sf::VideoMode(1260, 720), title);
   this->_window->setIcon(sizeIco.x, sizeIco.y, icon.getPixelsPtr());
 }
 
