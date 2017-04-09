@@ -5,17 +5,17 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Wed Apr 05 18:53:52 2017 Quentin Baudet
-** Last update Sat Apr 08 17:19:28 2017 Quentin Baudet
+** Last update Sun Apr 09 17:12:01 2017 Quentin Baudet
 */
 
 #include "APCharacter.hpp"
 
 APCharacter::APCharacter ()
 {
-  this->_name = "Fossae_t";
+  this->_name = "default";
   this->_id = 1;
-  this->_X = 10;
-  this->_Y = 15;
+  this->_X = 1;
+  this->_Y = 1;
   this->_score = 0;
   this->_pacgum = 0;
 }
@@ -70,13 +70,13 @@ void 			APCharacter::movePlayerUp(int **map)
 {
   int oldPosX = this->getX();
   int oldPosY = this->getY();
+
   if (this->isWalkable(map[oldPosY - 1][oldPosX]) == true)
   {
     this->setX(oldPosX);
     this->setY(oldPosY - 1);
   } else {
 	  return ;
-    // std::cout << "You cannot move to this position Y: " << oldPosY - 1 << " | X : " << oldPosX  << '\n';
   }
 	  if (map[this->getY()][this->getX()] == 1) {
 		  this->increaseScore(Score::PACGUM);
@@ -88,13 +88,17 @@ void 			APCharacter::movePlayerRight(int **map) {
   int oldPosX = this->getX();
   int oldPosY = this->getY();
 
+  if (map[oldPosY][oldPosX + 1] == 3) {
+	  this->setX(1);
+	  this->setY(11);
+	  return ;
+  }
   if (this->isWalkable(map[oldPosY][oldPosX + 1]) == true)
   {
     this->setX(oldPosX + 1);
     this->setY(oldPosY);
   } else {
 	  return ;
-    // std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX  + 1<< '\n';
   }
 	  if (map[this->getY()][this->getX()] == 1) {
 		  this->increaseScore(Score::PACGUM);
@@ -106,13 +110,18 @@ void 			APCharacter::movePlayerLeft(int **map)
   int oldPosX = this->getX();
   int oldPosY = this->getY();
 
+
+  if (map[oldPosY][oldPosX - 1] == 2) {
+	  this->setX(19);
+	  this->setY(11);
+	  return ;
+  }
   if (this->isWalkable(map[oldPosY][oldPosX - 1]) == true)
   {
     this->setX(oldPosX - 1);
     this->setY(oldPosY);
   } else {
 	  return ;
-    // std::cout << "You cannot move to this position Y: " << oldPosY << " | X : " << oldPosX - 1 << '\n';
   }
 	  if (map[this->getY()][this->getX()] == 1) {
 		  this->increaseScore(Score::PACGUM);
@@ -131,7 +140,6 @@ void 			APCharacter::movePlayerDown(int **map)
     this->setY(oldPosY + 1);
   } else {
 	  return ;
-    // std::cout << "You cannot move to this position Y: " << oldPosY + 1 << " | X : " << oldPosX  << '\n';
   }
 	  if (map[this->getY()][this->getX()] == 1) {
 		  this->increaseScore(Score::PACGUM);
@@ -150,10 +158,15 @@ void 		APCharacter::movePlayer(int **map, Game::Direction direction)
 	{
 		map[this->getY()][this->getX()] = -1;
 	}
+
+	if (map[this->getY()][this->getX()] == -1 || this->getId() == 2)
+		map[this->getY()][this->getX()] = -1;
+
 	moveActions[direction](map);
-	if (this->getId() == 1){
+	if (this->getId() == 1) {
 		map[this->getY()][this->getX()] = 7;
-	} else {
+	}
+	else if (this->getId() == 2) {
 		map[this->getY()][this->getX()] = 10;
 	}
 }
