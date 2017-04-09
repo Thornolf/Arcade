@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 17:45:24 2017 Quentin Baudet
-** Last update Wed Apr 05 14:17:19 2017 Quentin Baudet
+** Last update Sun Apr 09 18:18:21 2017 Quentin Baudet
 */
 
 #include "ParserMap.hpp"
@@ -14,10 +14,13 @@ ParserMap::ParserMap(const std::string &filepath)
 {
   std::ifstream	myFile (filepath);
   std::string	line;
-  size_t	i = 0;
+  int	i = 0;
+  int 	tmp_length = 0;
+  this->_height = 0;
+  this->_length = 0;
 
   if (!myFile.is_open())
-    throw Arcade::ArcadeException("Cannot read the map file");
+  	throw Arcade::ArcadeException("Cannot read the map file");
   while (getline(myFile,line))
   {
     if (i == 0)
@@ -25,9 +28,21 @@ ParserMap::ParserMap(const std::string &filepath)
     else if (i == 1)
       this->_length = std::stoi(line);
     if (i >= 2)
+	{
+		if (i > 2) {
+			int tmp = line.length();
+			if ((tmp_length != tmp))
+				throw Arcade::ArcadeException("Bad map format");
+		}
+		tmp_length = line.length();
       this->_buffer.push_back(line);
+  	}
     i++;
   }
+  if ((i - 2) != this->_height)
+  	throw Arcade::ArcadeException("Bad map format");
+  if (tmp_length != this->_length)
+  	throw Arcade::ArcadeException("Bad map format");
   this->_map = new MapGame(this->_length, this->_height);
   myFile.close();
 }
