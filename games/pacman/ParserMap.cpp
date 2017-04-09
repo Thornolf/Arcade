@@ -5,10 +5,12 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Apr 03 17:45:24 2017 Quentin Baudet
-** Last update Sun Apr 09 18:18:21 2017 Quentin Baudet
+** Last update Sun Apr 09 19:26:08 2017 Quentin Baudet
 */
 
+#include <algorithm>
 #include "ParserMap.hpp"
+
 
 ParserMap::ParserMap(const std::string &filepath)
 {
@@ -23,10 +25,14 @@ ParserMap::ParserMap(const std::string &filepath)
   	throw Arcade::ArcadeException("Cannot read the map file");
   while (getline(myFile,line))
   {
-    if (i == 0)
+	  if (!is_digits(line))
+		  throw Arcade::ArcadeException("The map file must contain only digit.");
+    if (i == 0) {
       this->_height = std::stoi(line);
-    else if (i == 1)
+  }
+    else if (i == 1){
       this->_length = std::stoi(line);
+  }
     if (i >= 2)
 	{
 		if (i > 2) {
@@ -52,6 +58,11 @@ ParserMap::~ParserMap() {}
 MapGame		*ParserMap::getMap() const
 {
   return (this->_map);
+}
+
+bool ParserMap::is_digits(const std::string &str)
+{
+	return std::all_of(str.begin(), str.end(), ::isdigit); // C++11
 }
 
 void 	ParserMap::generateMap(void)
