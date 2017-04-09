@@ -5,17 +5,18 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Tue Apr 04 16:10:01 2017 Guillaume CAUCHOIS
-** Last update Sat Apr 08 16:48:57 2017 Quentin Baudet
+** Last update Sun Apr 09 16:18:29 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
 
 Graph::PacmanDisplayerMap::PacmanDisplayerMap()
 {
-  this->_key = 3;
+  this->_key = 0;
   this->_init = new Graph::GraphicInit();
   init_pair(1, COLOR_BLUE, COLOR_BLUE);
   init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+  init_pair(3, COLOR_RED, COLOR_RED);
 }
 
 Graph::PacmanDisplayerMap::PacmanDisplayerMap(const Graph::PacmanDisplayerMap &) {}
@@ -52,6 +53,12 @@ void 	Graph::PacmanDisplayerMap::drawElem(char printChar, int x, int y)
     mvprintw(x, y, "C");
     attroff(COLOR_PAIR(2));
   }
+  else if (printChar == '@')
+  {
+    attron(COLOR_PAIR(3));
+    mvprintw(x, y, "@");
+    attroff(COLOR_PAIR(3));
+  }
   else if (printChar == ' ')
   {
     mvprintw(x, y, " ");
@@ -73,6 +80,8 @@ void	Graph::PacmanDisplayerMap::displayMap(int **map, int length, int height, in
 	drawElem('.', i, j);
       else if (map[i][j] == 7)
 	drawElem('C', i, j);
+      else if (map[i][j] == 10)
+	drawElem('@', i, j);
       else if (map[i][j] == -1)
 	drawElem(' ', i, j);
       j++;

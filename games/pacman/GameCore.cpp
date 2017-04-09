@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Mar 29 18:34:25 2017 Guillaume CAUCHOIS
-** Last update Sat Apr 08 17:36:52 2017 Quentin Baudet
+** Last update Sun Apr 09 17:11:59 2017 Quentin Baudet
 */
 
 #include "PacmanDisplayerMap.hpp"
@@ -30,45 +30,18 @@ GameCore	&GameCore::operator=(const GameCore &)
 
 void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
 {
-  Pacman	*pacman = new Pacman();
-  // Ghost	*blinky = new Ghost("Blinky", 2, 11, 12);
-  // Ghost	*pinky = new Ghost("Pinky", 2, 12, 12);
-  // Ghost	*clyde = new Ghost("Clyde", 2, 11, 13);
-  // Ghost	*inky = new Ghost("Inky", 2, 10, 13);
-
+  Pacman	*pacman = new Pacman("Pacman", 1, 10, 15);
+  Ghost	*blinky = new Ghost("Blinky", 2, 9, 12);
   ParserMap			*parser;
   Graph::IGraph		*LibGraphic;
   Game::Direction 	dir = Game::UP;
   int				**map;
-  // (void)blinky;
-  // (void)pinky;
-  // (void)clyde;
-  // (void)inky;
 
   parser = new ParserMap(std::string("games/pacman/assets/map.pacman"));
   parser->generateMap();
-
   LibGraphic = LoaderGraphicLib.getInstance("getInstancePacmanDisplayerMap");
-  // LibGraphic->displayMap(parser->getMap()->getData());
-
   map = parser->getMap()->getData();
-
-  // for (std::string line; std::getline(std::cin, line);) {
-  // 	if (line == "UP")
-  // 		dir = Game::UP;
-  // 	if (line == "DOWN")
-  // 		dir = Game::DOWN;
-  // 	if (line == "LEFT")
-  // 		dir = Game::LEFT;
-  // 	if (line == "RIGHT")
-  // 		dir = Game::RIGHT;
-  // if (line == "exit")
-  // 	break;
-
-
-  /* DISPLAY in TERMINAL */
   LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
-  // for (int i = 0; i < 10; i++)
   pacman->setPacgum(parser->getMap()->getAmountPacGum() - 1);
   while (1)
   {
@@ -85,17 +58,15 @@ void		GameCore::startCore(Arcade::DLLoader<Graph::IGraph> &LoaderGraphicLib)
     else if (LibGraphic->recoverKey() == 4)
       break;
     pacman->movePlayer(map, dir);
+
+	blinky->movePlayer(map, Game::UP);
     map = parser->getMap()->modifyMap(map, pacman->getY(), pacman->getX(), pacman);
     LibGraphic->displayMap(map, parser->getMap()->getMapHeight(), parser->getMap()->getMapLength(), pacman->getScore());
     usleep(120000);
-
   }
-  /* DISPLAY THE MAP */
-  // delete blinky;
-  // delete pinky;
-  // delete clyde;
-  // delete inky;
-  // delete parser;
+  delete blinky;
+  delete parser;
+  delete pacman;
   delete LibGraphic;
 }
 
