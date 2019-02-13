@@ -12,19 +12,19 @@ include source.mk
 
 ARCADE				=	arcade
 
-LIB_GRAPHIC_NCURSES	=	lib_arcade_ncurses.so
+LIB_GRAPHIC_NCURSES		=	lib_arcade_ncurses.so
 
-LIB_GRAPHIC_SFML	=	lib_arcade_sfml.so
+LIB_GRAPHIC_SFML		=	lib_arcade_sfml.so
 
-LIB_GAME_SNAKE		=	lib_arcade_snake.so
+LIB_GAME_SNAKE			=	lib_arcade_snake.so
 
-LIB_GAME_PACMAN		=	lib_arcade_pacman.so
+LIB_GAME_PACMAN			=	lib_arcade_pacman.so
 
-CC					=	g++
+CC				=	g++
 
-RM					=	@rm -vf
+RM				=	@rm -vf
 
-CXXFLAGS			=	-fPIC -W -Wall -Wextra -Werror -I./inc/
+CXXFLAGS			=	-fPIC -W -Wall -Wextra -Werror -I./inc/ -I/usr/local/SFML/include 
 
 LDFLAGS				=	-shared
 
@@ -47,7 +47,7 @@ $(LIB_GRAPHIC_NCURSES):	$(OBJ_LIB_GRAPHIC_NCURSES)
 						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_NCURSES) $(OBJ_LIB_GRAPHIC_NCURSES) -lncurses -lmenu
 
 $(LIB_GRAPHIC_SFML):	$(OBJ_LIB_GRAPHIC_SFML)
-						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+						$(CC) ${LDFLAGS} -o $(LIBRARY_DIR)$(LIB_GRAPHIC_SFML) $(OBJ_LIB_GRAPHIC_SFML) -L/usr/local/SFML/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 #########################
 ##                     ##
