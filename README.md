@@ -11,4 +11,4 @@ If it doesn't work in SFML, you will need to export the library path : `export L
 
 ## Contact
 
-If you have any problem or question, contact us quentin.baudet@epitech, guillaume.cauchois@epitech.eu or robin.grattepanche@epitech.eu
+If you have any problem or question, contact us by creating an issue.
